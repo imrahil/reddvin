@@ -1,0 +1,112 @@
+[{
+    "kind": "Listing", 
+    "data": {
+        "modhash": "xcqbct1e8bc4c09d430e45f1e633e058a4a8e0e969706e9282", 
+        "children": [{
+            "kind": "t3", 
+            "data": {
+                "domain": "ted.com", 
+                "media_embed": {}, 
+                "levenshtein": null, 
+                "subreddit": "science", 
+                "selftext_html": null, 
+                "selftext": "", 
+                "likes": null, 
+                "saved": false, 
+                "id": "fz47w", 
+                "clicked": false, 
+                "author": "Illadelphian", 
+                "media": {}, 
+                "score": 2063, 
+                "over_18": false, 
+                "hidden": false, 
+                "thumbnail": "", 
+                "subreddit_id": "t5_mouw", 
+                "downs": 2376, 
+                "is_self": false, 
+                "permalink": "/r/science/comments/fz47w/bill_gates_ted_talk_on_his_view_on_the_future_of/", 
+                "name": "t3_fz47w", 
+                "created": 1299542629.0,
+                "url": "http://www.ted.com/talks/lang/eng/bill_gates.html", 
+                "title": "Regular 1 - Bill Gates TED talk on his view on the future of energy.", 
+                "created_utc": 1299517429.0, 
+                "num_comments": 592, 
+                "ups": 4439
+            }
+        }], 
+        "after": "t3_fz0oi", 
+        "before": null
+    }
+}, 
+{
+    "kind": "Listing", 
+    "data": {
+        "modhash": "hkbus2kc4c24874f99af97fb53e14f47d2b73819001c6b4e8f", 
+        "children": 
+        [{
+            "kind": "t1", 
+            "data": {
+                "body": "LOL, that perked me up.  Thanks.  ", 
+                "subreddit_id": "t5_2qh13", 
+                "name": "t1_c1jqipy",
+                "author": "corinroyal",
+                "downs": 5,
+                "created": 1299553051.0, 
+                "created_utc": 1299527851.0, 
+                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
+                "levenshtein": null, 
+                "link_id": "t3_fz3z1", 
+                "parent_id": "t1_c1jq6yo", 
+                "likes": null, 
+                "replies": "", 
+                "id": "c1jqipy", 
+                "subreddit": "worldnews", 
+                "ups": 8
+            }
+        },
+        {
+            "kind": "t1", 
+            "data": {
+                "body": "LOL1, that perked me up.  Thanks.  ", 
+                "subreddit_id": "t5_2qh13", 
+                "name": "t1_c1jqipy",
+                "author": "corinroyal",
+                "downs": 5,
+                "created": 1299553051.0, 
+                "created_utc": 1299527851.0, 
+                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
+                "levenshtein": null, 
+                "link_id": "t3_fz3z1", 
+                "parent_id": "t1_c1jq6yo", 
+                "likes": null, 
+                "replies": "", 
+                "id": "c1jqipy", 
+                "subreddit": "worldnews", 
+                "ups": 8
+            }
+        },
+        {
+            "kind": "t1", 
+            "data": {
+                "body": "LOL2, that perked me up.  Thanks.  ", 
+                "subreddit_id": "t5_2qh13", 
+                "name": "t1_c1jqipy",
+                "author": "corinroyal",
+                "downs": 5,
+                "created": 1299553051.0, 
+                "created_utc": 1299527851.0, 
+                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
+                "levenshtein": null, 
+                "link_id": "t3_fz3z1", 
+                "parent_id": "t1_c1jq6yo", 
+                "likes": null, 
+                "replies": "", 
+                "id": "c1jqipy", 
+                "subreddit": "worldnews", 
+                "ups": 8
+            }
+        }], 
+        "after": null, 
+        "before": null
+    }
+}]

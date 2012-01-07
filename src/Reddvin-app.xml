@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<application xmlns="http://ns.adobe.com/air/application/3.1">
+
+    <id>com.ania.apps.reddvin</id>
+    <filename>Reddvin</filename>
+    <name>Reddvin</name>
+    <versionNumber>0.3.0</versionNumber>
+    <copyright>Copyright © 2011 Anna Dabrowska</copyright>
+
+    <initialWindow>
+        <content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+        <aspectRatio>landscape</aspectRatio>
+        <autoOrients>true</autoOrients>
+        <fullScreen>false</fullScreen>
+        <visible>true</visible>
+        <softKeyboardBehavior>none</softKeyboardBehavior>
+    </initialWindow>
+
+    <android>
+        <colorDepth>16bit</colorDepth>
+        <manifestAdditions><![CDATA[
+			<manifest android:installLocation="auto">
+			    <uses-permission android:name="android.permission.INTERNET"/>
+			</manifest>
+		]]></manifestAdditions>
+    </android>
+    <iPhone>
+        <InfoAdditions><![CDATA[
+			<key>UIDeviceFamily</key>
+			<array>
+				<string>2</string>
+			</array>
+			<key>UIApplicationExitsOnSuspend</key>
+            <true/>
+		]]></InfoAdditions>
+        <requestedDisplayResolution>high</requestedDisplayResolution>
+    </iPhone>
+</application>

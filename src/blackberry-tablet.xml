@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qnx>
+    <initialWindow>
+        <systemChrome>none</systemChrome>
+        <transparent>false</transparent>
+    </initialWindow>
+    <icon><image>reddvin-icon.png</image></icon>
+    <splashscreen>reddvin-splash.png</splashscreen>
+
+    <permission>access_internet</permission>
+</qnx>

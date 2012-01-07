@@ -1,0 +1,11 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+.myItemStyle {
+	fontSize: 18;
+}
+
+.myItemMessageStyle {
+	fontSize: 12;
+	color: #666666;
+}

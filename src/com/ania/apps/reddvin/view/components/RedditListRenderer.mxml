@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:IconItemRenderer xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					labelField="title" messageFunction="itemMessageFunction" styleName="myItemStyle" messageStyleName="myItemMessageStyle"
+					iconField="thumbnail" iconWidth="70" iconHeight="70" iconFillMode="clip"
+					decorator="@Embed('/assets/images/forward.png')"
+					opaqueBackground="#FFFFFF">
+	<fx:Script>
+		<![CDATA[
+			import com.ania.apps.reddvin.model.vo.RedditVO;
+			
+			private function itemMessageFunction(item:Object):String
+			{
+				var singleItem:RedditVO = item as RedditVO;
+				
+				return singleItem.num_comments + " comments, in: " + singleItem.subreddit + ", " +
+					"by: " + singleItem.author + ", domain: " + singleItem.domain;
+			}
+		]]>
+	</fx:Script>
+	
+</s:IconItemRenderer>
