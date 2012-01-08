@@ -1,5 +1,6 @@
 package com.ania.apps.reddvin.controller.bootstraps
 {
+	import com.ania.apps.reddvin.signals.DisplayPopupMenuSignal;
 	import com.ania.apps.reddvin.signals.ErrorSignal;
 	import com.ania.apps.reddvin.signals.signaltons.DisplayItemSignal;
 	import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
@@ -17,6 +18,8 @@ package com.ania.apps.reddvin.controller.bootstraps
 			injector.mapSingleton(DisplayItemSignal);
 //            injector.mapSingleton(DisplayActivityIndicatorSignal);
 //            injector.mapSingleton(DisplayUrlSignal);
+			
+			injector.mapSingleton(DisplayPopupMenuSignal);
 		}
 	}
 }

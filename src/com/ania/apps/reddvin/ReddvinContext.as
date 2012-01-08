@@ -62,11 +62,11 @@ package com.ania.apps.reddvin
             // Add Services
 			new BootstrapServices(injector); 
             
+			// Add Singleton
+			new BootstrapSignaltons(injector); 
+			
 			// Add View + View Mediators
 			new BootstrapViewMediators(mediatorMap); 
-			
-            // Add Singleton
-			new BootstrapSignaltons(injector); 
 			
 			super.startup(); 
         }

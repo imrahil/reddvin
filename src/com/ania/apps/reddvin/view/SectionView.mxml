@@ -4,11 +4,40 @@
 
 	<fx:Script>
 		<![CDATA[
+			import com.ania.apps.reddvin.constants.ApplicationConstants;
 			import com.ania.apps.reddvin.constants.Resources;
 			import com.ania.apps.reddvin.model.vo.RedditVO;
 			
+			import org.osflash.signals.Signal;
+			
+			public var menuButtonClicked:Signal = new Signal(Button);
+			public var sortChanged:Signal = new Signal(String);
+			
+			[Bindable]
+			private var selectedSort:String = "what's hot";
 		]]>
 	</fx:Script>
+	
+	<s:states>
+		<s:State name="portrait"/>
+		<s:State name="landscape"/>
+	</s:states>
+	
+	<s:navigationContent.portrait>
+		<s:Button id="menuButton" icon="@Embed('/assets/images/spanner32.png')" click="menuButtonClicked.dispatch(menuButton)"/>
+	</s:navigationContent.portrait>
+	
+	<s:actionContent>
+		<s:CalloutButton id="calloutBtn" label="sort: {selectedSort}" verticalPosition="after" close="sortChanged.dispatch(sortList.selectedItem)">
+			<s:calloutLayout>
+				<s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
+			</s:calloutLayout>
+			<s:calloutContent>
+				<s:List id="sortList" dataProvider="{ApplicationConstants.SORT_ORDER}" selectedIndex="0" width="100%" height="100%" change="calloutBtn.callout.close(); selectedSort = sortList.selectedItem" />
+			</s:calloutContent>
+			
+		</s:CalloutButton>
+	</s:actionContent>
 
 	<s:List id="sectionList" width="100%" height="100%" labelField="title" itemRenderer="com.ania.apps.reddvin.view.components.RedditListRenderer" />
 </s:View>

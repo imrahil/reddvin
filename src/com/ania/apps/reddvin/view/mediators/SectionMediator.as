@@ -9,6 +9,7 @@ package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.model.vo.VoteVO;
+    import com.ania.apps.reddvin.signals.DisplayPopupMenuSignal;
     import com.ania.apps.reddvin.signals.StartupSignal;
     import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
@@ -21,6 +22,8 @@ package com.ania.apps.reddvin.view.mediators
     import mx.logging.ILogger;
     
     import org.robotlegs.mvcs.Mediator;
+    
+    import spark.components.Button;
     
     public class SectionMediator extends Mediator
     {
@@ -36,6 +39,9 @@ package com.ania.apps.reddvin.view.mediators
 		[Inject]
 		public var sectionChanged:SectionChangedSignal;        
   
+		[Inject]
+		public var displayPopupMenuSignal:DisplayPopupMenuSignal;
+
 //		[Inject]
 //		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
 
@@ -79,15 +85,38 @@ package com.ania.apps.reddvin.view.mediators
         {
 			logger.debug(": onRegister");
 			
+			view.menuButtonClicked.add(onMenuButtonClicked);
+			view.sortChanged.add(onSortChanged);
+			
 //			eventMap.mapListener(view.sectionList, MouseEvent.MOUSE_UP, onMouseUp); 
 //			eventMap.mapListener(view.sectionList, ListEvent.ITEM_CLICKED, onItemClick); 
 			sectionChanged.add(onSectionChanged);
 			
 			startupSignal.dispatch(); 
-       }
-        
+       	}
+		
         /** methods **/		
 
+		/**
+		 * Menu button handler - in portrait mode only 
+		 * @param owner
+		 * 
+		 */
+		private function onMenuButtonClicked(owner:Button):void
+		{
+			displayPopupMenuSignal.dispatch(owner);
+		}
+		
+		/**
+		 * Sort button handler 
+		 * 
+		 */
+		private function onSortChanged(sortOrder:String):void
+		{
+			// TODO - add call to change/refresh section
+			logger.debug("Sort: " + sortOrder);
+		}
+		
 //		private function onMouseUp(event:MouseEvent):void
 //		{
 //			var temp:* = event.target;

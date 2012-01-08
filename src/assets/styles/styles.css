@@ -1,6 +1,22 @@
 /* CSS file */
 @namespace s "library://ns.adobe.com/flex/spark";
 
+s|ActionBar
+{
+	chromeColor: #EEEEEE;
+}
+
+s|ActionBar #titleDisplay, s|ActionBar s|Button
+{
+	color: #343434;
+	textShadowAlpha: 0;
+}
+
+s|Callout #titleDisplay 
+{
+	color: #FFFFFF;
+}
+
 .myItemStyle {
 	fontSize: 18;
 }

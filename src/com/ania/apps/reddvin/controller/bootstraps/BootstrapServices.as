@@ -10,7 +10,7 @@ package com.ania.apps.reddvin.controller.bootstraps
 	{
 		public function BootstrapServices(injector:IInjector)
 		{
-			injector.mapSingletonOf(IRedditService, RedditService);
+			injector.mapSingletonOf(IRedditService, RedditServiceMock);
 			injector.mapSingletonOf(ISearchResultParser, RedditJSONResultParser);
 		}
 	}
