@@ -5,7 +5,7 @@
     <filename>Reddvin</filename>
     <name>Reddvin</name>
     <versionNumber>0.3.0</versionNumber>
-    <copyright>Copyright © 2011 Anna Dabrowska</copyright>
+    <copyright>Copyright © 2012 Anna Dabrowska</copyright>
 
     <initialWindow>
         <content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
