@@ -40,6 +40,8 @@ package com.ania.apps.reddvin.model
 		
 		private var _currentScreen:String = ApplicationConstants.SECTION_SCREEN
 		
+		private var _loggedIn:Boolean;
+		
 		private var logger:ILogger;
 		
 		/** 
@@ -136,6 +138,21 @@ package com.ania.apps.reddvin.model
 			logger.debug(": set currentScreen");
 
 			_currentScreen = value;
+		}
+		
+		/**
+		 * Logged in or not
+		 */
+		public function get loggedIn():Boolean
+		{
+			return _loggedIn;
+		}
+		
+		public function set loggedIn(value:Boolean):void 
+		{
+			logger.debug(": set loggedIn");
+
+			_loggedIn = value;
 		}
 	}
 }

@@ -7,16 +7,12 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.view.mediators
 {
-    import com.ania.apps.reddvin.model.vo.RedditVO;
-    import com.ania.apps.reddvin.model.vo.VoteVO;
-    import com.ania.apps.reddvin.signals.DisplayPopupMenuSignal;
-    import com.ania.apps.reddvin.signals.StartupSignal;
+    import com.ania.apps.reddvin.signals.RefreshSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayPopupMenuSignal;
     import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
     import com.ania.apps.reddvin.view.SectionView;
-    
-    import flash.events.MouseEvent;
-    import flash.text.Font;
     
     import mx.collections.ArrayList;
     import mx.logging.ILogger;
@@ -42,15 +38,17 @@ package com.ania.apps.reddvin.view.mediators
 		[Inject]
 		public var displayPopupMenuSignal:DisplayPopupMenuSignal;
 
-//		[Inject]
-//		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
+		[Inject]
+		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
 
         /**
          * SIGNAL -> COMMAND
          */
 		[Inject]
-		public var startupSignal:StartupSignal;
+		public var refreshSignal:RefreshSignal;        
 		
+	
+
 //		[Inject]
 //		public var getItem:GetItemSignal;
         
@@ -91,9 +89,17 @@ package com.ania.apps.reddvin.view.mediators
 //			eventMap.mapListener(view.sectionList, MouseEvent.MOUSE_UP, onMouseUp); 
 //			eventMap.mapListener(view.sectionList, ListEvent.ITEM_CLICKED, onItemClick); 
 			sectionChanged.add(onSectionChanged);
-			
-			startupSignal.dispatch(); 
-       	}
+
+			displayActivityIndicator.add(displayBusyIndicator);
+	
+			logger.debug(": sending refresh signal");
+			refreshSignal.dispatch();
+		}
+		
+		override public function onRemove():void
+		{
+			sectionChanged.removeAll();	
+		}
 		
         /** methods **/		
 
@@ -174,9 +180,14 @@ package com.ania.apps.reddvin.view.mediators
 		{
 			logger.debug(": onSectionChanged");
 
-//			displayActivityIndicator.dispatch(false);      
+			view.busyIndicator.visible = false;;      
 
 			view.sectionList.dataProvider = items;
+		}
+		
+		private function displayBusyIndicator(state:Boolean):void
+		{
+			view.busyIndicator.visible = state;
 		}
     }
 }

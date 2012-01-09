@@ -13,7 +13,7 @@ package com.ania.apps.reddvin.signals
 	{
 		public function GetSectionSignal()
 		{
-			super(String);
+			super();
 		}
 	}
 }

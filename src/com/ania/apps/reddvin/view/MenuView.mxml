@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Reddvin v{ApplicationConstants.REDDVIN_APP_VERSION}">
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Reddvin v{ApplicationConstants.REDDVIN_APP_VERSION}" currentState="landscapeLoggedOut">
 	
 	<fx:Script>
 		<![CDATA[
 			import com.ania.apps.reddvin.constants.ApplicationConstants;
+			
+			import org.osflash.signals.Signal;
+
+			public var loginBtnClickSignal:Signal = new Signal();
+			public var logoutBtnClickSignal:Signal = new Signal();
+			public var refreshBtnClickSignal:Signal = new Signal();
+			public var settingsBtnClickSignal:Signal = new Signal();
+			
+			public var closePopupBtnClickSignal:Signal = new Signal();
 		]]>
 	</fx:Script>
 	
 	<s:states>
-		<s:State name="portrait"/>
-		<s:State name="landscape"/>
+		<s:State name="portraitLoggedIn" stateGroups="portrait, loggedIn"/>
+		<s:State name="portraitLoggedOut" stateGroups="portrait, loggedOut"/>
+		<s:State name="landscapeLoggedIn" stateGroups="landscape, loggedIn"/>
+		<s:State name="landscapeLoggedOut" stateGroups="landscape, loggedOut"/>
 	</s:states>
 	
 	<s:layout>
@@ -21,9 +32,19 @@
 		<s:Button icon="@Embed('/assets/images/paperplus32.png')"/>
 	</s:actionContent.landscape>
 
+	<s:actionContent.portrait>
+		<s:Button icon="@Embed('/assets/images/stop32.png')" click="closePopupBtnClickSignal.dispatch()" height="40" chromeColor="#000000"/>
+	</s:actionContent.portrait>
+
 	<s:VGroup width="100%" height="100%" paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
-		<s:Button label="Login" width="100%" />
-		<s:Button label="Subreddits" width="100%" />
-		<s:Button label="Settings" width="100%" />
+		<s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload32.png')" iconPlacement="right" includeIn="loggedOut"
+				  click="loginBtnClickSignal.dispatch()"/>
+		<s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download32.png')" iconPlacement="right" includeIn="loggedIn"
+				  click="logoutBtnClickSignal.dispatch()"/>
+		<s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange32.png')" iconPlacement="right"
+				  click="refreshBtnClickSignal.dispatch()"/>
+		<s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/note32.png')" iconPlacement="right"/>
+		<s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner32.png')" iconPlacement="right" includeIn="loggedIn"
+				  click="settingsBtnClickSignal.dispatch()"/>
 	</s:VGroup>
 </s:View>

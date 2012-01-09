@@ -7,17 +7,14 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.view.mediators
 {
-	import com.ania.apps.reddvin.signals.DisplayPopupMenuSignal;
+	import com.ania.apps.reddvin.signals.signaltons.ResizeSignal;
 	
-	import mx.events.FlexEvent;
 	import mx.events.ResizeEvent;
 	import mx.logging.Log;
 	import mx.logging.LogEventLevel;
 	import mx.logging.targets.TraceTarget;
 	
 	import org.robotlegs.mvcs.Mediator;
-	
-	import spark.components.Button;
 	
 	public class ReddvinMediator extends Mediator
 	{
@@ -28,9 +25,8 @@ package com.ania.apps.reddvin.view.mediators
 		public var view:Reddvin;	
 		
 		[Inject]
-		public var displayPopupMenuSignal:DisplayPopupMenuSignal;
+		public var resizeSignal:ResizeSignal;
 		
-
 		public function ReddvinMediator()
 		{
 			super();
@@ -38,8 +34,6 @@ package com.ania.apps.reddvin.view.mediators
 		
 		override public function onRegister():void
 		{
-			displayPopupMenuSignal.add(displayPopupMenu);
-			
 			addViewListener(ResizeEvent.RESIZE, onResize);
 
 			CONFIG::debugMode
@@ -54,14 +48,11 @@ package com.ania.apps.reddvin.view.mediators
 			}
 		}
 		
-		private function displayPopupMenu(owner:Button):void
-		{
-			view.svn.showFirstViewNavigatorInPopUp(owner);
-		}
-		
 		protected function onResize(event:ResizeEvent):void 
 		{
 			view.currentState = view.aspectRatio;
+			
+			resizeSignal.dispatch(view.aspectRatio);
 		}
 	}
 }

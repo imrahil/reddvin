@@ -8,6 +8,7 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 
 package com.ania.apps.reddvin.services.helpers
 {
+	import com.ania.apps.reddvin.constants.ApplicationConstants;
 	import com.ania.apps.reddvin.model.vo.BaseVO;
 	import com.ania.apps.reddvin.model.vo.CommentVO;
 	import com.ania.apps.reddvin.model.vo.RedditVO;
@@ -19,6 +20,7 @@ package com.ania.apps.reddvin.services.helpers
 	import mx.collections.ArrayList;
 	import mx.logging.ILogger;
 	import mx.logging.Log;
+	import mx.rpc.events.ResultEvent;
 
 	public class RedditJSONResultParser implements ISearchResultParser
 	{
@@ -89,43 +91,22 @@ package com.ania.apps.reddvin.services.helpers
 //			}
 		}
 		
-		public function parseLoginResult(result:Object):Boolean
+		public function checkLoginResult(result:String):String
 		{
-//			logger.debug(": parseLoginResult");
-//			
-//			var resultObject:Object;
-//			
-//			try {
-//				resultObject = JSON.decode(result as String);
-//			}
-//			catch (e:Error)
-//			{
-//				logger.error("JSON decode failed - " + e.message);
-//			}
-//			
-//			if (resultObject && resultObject.jquery is Array && (resultObject.jquery as Array).length > 0)
-//			{
-//				for each (var node:Object in resultObject.jquery)
-//				{
-//					if (node && node is Array)
-//					{
-//						var nodeArray:Array = node as Array;
-//						var subNodeLength:int = nodeArray.length;
-//						
-//						for (var x:int = 0; x < subNodeLength; x++)
-//						{
-//							var subNode:Object = nodeArray[x];
-//							
-//							if (subNode == "call" && x+1 < subNodeLength && nodeArray[x+1] == "invalid password")
-//							{
-//								return false;	
-//							}
-//						}
-//					}
-//				}
-//			}
-//
-			return true;
+			logger.debug(": checkLoginResult");
+			
+			var resultObject:Object = JSON.parse(result);
+
+			if (resultObject && resultObject.json.errors && (resultObject.json.errors as Array).length > 0)
+			{
+				return ApplicationConstants.LOGIN_ERROR;
+			}
+			else
+			{
+				return resultObject.json.data.cookie as String;
+			}
+
+			return ApplicationConstants.LOGIN_ERROR;
 		}
 		
 		private function createBase(targetObject:BaseVO, rawItem:Object, kind:String, modhash:String):void

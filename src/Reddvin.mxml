@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" applicationDPI="160"  
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:reddvin="com.ania.apps.reddvin.*">
+			   xmlns:reddvin="com.ania.apps.reddvin.*" xmlns:view="com.ania.apps.reddvin.view.*" xmlns:context="com.ania.apps.reddvin.context.*">
 	
 	<fx:Style source="/assets/styles/styles.css" />
 	
 	<fx:Declarations>
-		<reddvin:ReddvinContext contextView="{this}" />
+		<context:ReddvinContext contextView="{this}" />
 	</fx:Declarations>
 	
 	<s:states>
@@ -14,8 +14,4 @@
 		<s:State name="landscape"/>
 	</s:states>
 	
-	<s:SplitViewNavigator id="svn" width="100%" height="100%" autoHideFirstViewNavigator="true">
-		<s:ViewNavigator width="250" height="100%" firstView="com.ania.apps.reddvin.view.MenuView" />
-		<s:ViewNavigator width="100%" height="100%" firstView="com.ania.apps.reddvin.view.SectionView" />
-	</s:SplitViewNavigator>
 </s:Application>

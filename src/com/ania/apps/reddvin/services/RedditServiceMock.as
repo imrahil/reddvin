@@ -134,7 +134,7 @@ package com.ania.apps.reddvin.services
 			sessionVO.userVO = userVO;
 			sessionVO.cookie = "cookie monster!";
 			
-//			loginSuccessful.dispatch(sessionVO);
+			loginSuccessful.dispatch(sessionVO);
 		}
 		
 		/**

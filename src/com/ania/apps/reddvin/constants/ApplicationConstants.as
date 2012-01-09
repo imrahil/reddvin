@@ -14,11 +14,13 @@ package com.ania.apps.reddvin.constants
 		public static const REDDVIN_APP_VERSION:String 	= "0.3.0"; 
 
 		public static const REDDIT_API_ENDPOINT:String 	= "http://www.reddit.com"; 
+		public static const REDDIT_API_TYPE:String 		= "json"; 
 		public static const REDDIT_API_EXTENSION:String = ".json"; 
 		public static const REDDIT_API_PREFIX:String 	= "t3_"; 
 		public static const REDDIT_API_LIMIT:int 		= 50; 
 
 		public static const REDDIT_SO_NAME:String 		= "reddvinSessionData"; 
+		public static const LOGIN_ERROR:String 			= "loginError"; 
 
 		public static const SECTION_SCREEN:String 		= "sectionScreen"; 
 		public static const ITEM_SCREEN:String 			= "itemScreen"; 
@@ -27,10 +29,11 @@ package com.ania.apps.reddvin.constants
 		public static const SORT_NEW:String				= "new";
 		public static const SORT_CONTROVERSIAL:String	= "controversial";
 		public static const SORT_TOP:String				= "top";
-		public static const SORT_SAVED:String			= "saved";
+
+		public static const SAVED_ITEMS:String			= "saved";
 		
 		public static const SORT_ORDER:ArrayCollection	= new ArrayCollection([
-			SORT_FRONT, SORT_NEW, SORT_CONTROVERSIAL, SORT_TOP, SORT_SAVED
+			SORT_FRONT, SORT_NEW, SORT_CONTROVERSIAL, SORT_TOP
 		]);
 		public function ApplicationConstants()
 		{

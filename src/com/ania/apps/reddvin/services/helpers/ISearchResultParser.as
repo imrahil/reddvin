@@ -15,6 +15,6 @@ package com.ania.apps.reddvin.services.helpers
 	{
 		function parseSearchResults(results:Object):ArrayList; 
 		function parseSingleItem(results:Object):RedditVO; 
-		function parseLoginResult(result:Object):Boolean; 
+		function checkLoginResult(result:String):String; 
 	}
 }

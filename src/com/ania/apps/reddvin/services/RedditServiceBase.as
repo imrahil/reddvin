@@ -7,13 +7,16 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.services
 {
-	import com.ania.apps.reddvin.model.vo.RedditVO;
+	import com.ania.apps.reddvin.constants.ApplicationConstants;
 	import com.ania.apps.reddvin.model.vo.SessionVO;
 	import com.ania.apps.reddvin.model.vo.UserVO;
 	import com.ania.apps.reddvin.model.vo.VoteVO;
 	import com.ania.apps.reddvin.services.helpers.ISearchResultParser;
-	import com.ania.apps.reddvin.signals.ErrorSignal;
+	import com.ania.apps.reddvin.signals.LoginSuccessfulSignal;
+	import com.ania.apps.reddvin.signals.RefreshSignal;
 	import com.ania.apps.reddvin.signals.SectionLoadedSignal;
+	import com.ania.apps.reddvin.signals.signaltons.ErrorSignal;
+	import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
 	
 	import flash.desktop.NativeApplication;
 	import flash.events.ErrorEvent;
@@ -21,7 +24,6 @@ package com.ania.apps.reddvin.services
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 	import flash.net.URLLoader;
-	import flash.net.URLRequest;
 	
 	import mx.collections.ArrayList;
 	import mx.logging.ILogger;
@@ -37,7 +39,6 @@ package com.ania.apps.reddvin.services
 		protected var userAgent:String;
 		protected var loginSuccess:Boolean = false;
 		
-		protected var cookieValue:String;
 		protected var userVO:UserVO;
 	
 		protected var logger:ILogger;
@@ -48,15 +49,15 @@ package com.ania.apps.reddvin.services
 		
 //		[Inject]
 //		public var itemLoaded:ItemLoadedSignal;
-//		
-//		[Inject]
-//		public var loginSuccessful:LoginSuccessfulSignal;
-//		
-//		[Inject]
-//		public var loginStatusSignal:LoginStatusSignal;        
-//		
-//		[Inject]
-//		public var refreshSignal:RefreshSignal;        
+		
+		[Inject]
+		public var loginSuccessful:LoginSuccessfulSignal;
+		
+		[Inject]
+		public var loginStatusSignal:LoginStatusSignal;        
+		
+		[Inject]
+		public var refreshSignal:RefreshSignal;        
 
 		[Inject]
 		public var errorSignal:ErrorSignal;
@@ -147,38 +148,35 @@ package com.ania.apps.reddvin.services
 //			itemLoaded.dispatch(resultItem);
 //		}
 		
-//		protected function handleLoginComplete(event:Event):void
-//		{
-//			logger.debug(": handleLoginComplete");
-//			
-//			var loader:URLLoader = event.currentTarget as URLLoader; 
-//			
-//			loader.removeEventListener(Event.COMPLETE, handleLoginComplete);
-//			removeLoaderListeners(loader);
-//
-//			if (cookieValue && cookieValue != "")
-//			{
-////				var result:Boolean = _parser.parseLoginResult(loader.data);
-//				
-//				// clean up user's password after successful login
-//				userVO.password = "";
-//				
-//				var sessionVO:SessionVO = new SessionVO();
-//				sessionVO.userVO = userVO;
-//				sessionVO.cookie = cookieValue;
-//				
-//				loginSuccessful.dispatch(sessionVO);
-//				loginStatusSignal.dispatch(true);
-//				refreshSignal.dispatch();
-//
-//				logger.debug(": cookieValue: " + cookieValue);
-//				cookieValue = "";
-//			}
-//			else
-//			{
-//				errorSignal.dispatch("username/password is wrong");
-//			}
-//		}
+		protected function handleLoginComplete(event:Event):void
+		{
+			logger.debug(": handleLoginComplete");
+			
+			var loader:URLLoader = event.currentTarget as URLLoader; 
+			
+			loader.removeEventListener(Event.COMPLETE, handleLoginComplete);
+			removeLoaderListeners(loader);
+
+			var result:String = _parser.checkLoginResult(loader.data as String);
+			
+			if (result != ApplicationConstants.LOGIN_ERROR)
+			{
+				// clean up user's password after successful login
+				userVO.password = "";
+				
+				var sessionVO:SessionVO = new SessionVO();
+				sessionVO.userVO = userVO;
+				sessionVO.cookie = result;
+				
+				loginSuccessful.dispatch(sessionVO);
+
+				logger.debug(": cookie: " + result);
+			}
+			else
+			{
+				errorSignal.dispatch("username/password is wrong");
+			}
+		}
 
 //		protected function handleVoteComplete(event:Event):void
 //		{
