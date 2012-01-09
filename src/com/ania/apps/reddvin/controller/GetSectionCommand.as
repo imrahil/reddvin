@@ -33,13 +33,13 @@ package com.ania.apps.reddvin.controller
 		{
 			redditModel.selectedSubreddit = sectionName;
 			
-			if (redditModel.session && redditModel.session.cookie && redditModel.session.cookie != "")
+			if (redditModel.loggedIn)
 			{
-				redditService.getSection(sectionName, redditModel.session.cookie);
+				redditService.getSection(redditModel.selectedSubreddit, redditModel.session.cookie);
 			}
 			else
 			{
-				redditService.getSection(sectionName);
+				redditService.getSection(redditModel.selectedSubreddit);
 			}
 		}
 	}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="Login to Reddit">
+
+	<s:layout>
+		<s:VerticalLayout paddingTop="30" paddingBottom="10" />
+	</s:layout>
+	
+	<fx:Script>
+		<![CDATA[
+			import org.osflash.signals.Signal;
+			
+			public var loginBtnClickSignal:Signal = new Signal();
+			public var cancelBtnClickSignal:Signal = new Signal();
+		]]>
+	</fx:Script>
+
+	<s:VGroup width="100%" horizontalAlign="center" gap="20">
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="Username:" fontWeight="bold"/>
+		 	<s:TextInput id="usernameTxt" softKeyboardType="email" />
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="Password:" fontWeight="bold" />
+		 	<s:TextInput id="passwordTxt" displayAsPassword="true" />
+		</s:HGroup>
+		<s:HGroup verticalAlign="middle">
+			<s:Label text="Remember me:" />
+			<s:ToggleSwitch id="rememberMeSwitch" skinClass="com.ania.apps.reddvin.view.components.MyToggleSwitchSkin"/>
+		</s:HGroup>
+	</s:VGroup>
+			
+	<s:HGroup width="100%" horizontalAlign="center" gap="25" paddingTop="20">
+		<s:Button label="Login" click="loginBtnClickSignal.dispatch()" />
+		<s:Button label="Cancel" click="cancelBtnClickSignal.dispatch()" />
+	</s:HGroup>
+</s:View>

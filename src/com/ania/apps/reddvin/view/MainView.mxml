@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SplitViewNavigator xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					  xmlns:s="library://ns.adobe.com/flex/spark"
+					  width="100%" height="100%" autoHideFirstViewNavigator="true">
+
+	<s:ViewNavigator id="menuNavigator" width="250" height="100%" firstView="com.ania.apps.reddvin.view.MenuView" />
+	<s:ViewNavigator id="contentNavigator" width="100%" height="100%" firstView="com.ania.apps.reddvin.view.SectionView" />
+
+</s:SplitViewNavigator>

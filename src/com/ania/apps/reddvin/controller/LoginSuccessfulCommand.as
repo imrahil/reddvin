@@ -11,7 +11,7 @@ package com.ania.apps.reddvin.controller
 	import com.ania.apps.reddvin.constants.ApplicationConstants;
 	import com.ania.apps.reddvin.model.RedditModel;
 	import com.ania.apps.reddvin.model.vo.SessionVO;
-	import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
+	import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
 	import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
 	import com.ania.apps.reddvin.utils.LogUtil;
 	
@@ -21,27 +21,29 @@ package com.ania.apps.reddvin.controller
 	
 	import org.robotlegs.mvcs.SignalCommand;
 	
-	public final class StartupCommand extends SignalCommand 
+	public final class LoginSuccessfulCommand extends SignalCommand 
 	{
 		/** PARAMETERS **/
+		[Inject]
+		public var sessionVO:SessionVO;
 		
 		/** INJECTIONS **/
 		[Inject]
 		public var redditModel:RedditModel;
-
-		[Inject]
-		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
-	
+		
 		[Inject]
 		public var loginStatusSignal:LoginStatusSignal;
 		
+		[Inject]
+		public var displayLoginForm:DisplayLoginForm;
+
 		/** variables **/
 		private var logger:ILogger;
 		
 		/** 
 		 * CONSTRUCTOR 
 		 */		
-		public function StartupCommand()
+		public function LoginSuccessfulCommand()
 		{
 			super();
 			
@@ -50,33 +52,26 @@ package com.ania.apps.reddvin.controller
 		}
 
 		/**
-		 * Method handle the logic for <code>StartupCommand</code>
+		 * Method handle the logic for <code>LoginSuccessfulCommand</code>
 		 */        
 		override public function execute():void    
 		{
 			logger.debug(": execute");
 
-			var sessionSO:SharedObject = SharedObject.getLocal(ApplicationConstants.REDDIT_SO_NAME);
+			redditModel.session = sessionVO;
+			redditModel.loggedIn = true;
+
+			if (sessionVO.userVO.rememberMe)
+			{
+				logger.debug(": userVO.rememberMe - true");
+
+				var sessionSO:SharedObject = SharedObject.getLocal(ApplicationConstants.REDDIT_SO_NAME);
+				sessionSO.data.cookie = sessionVO.cookie;
+				sessionSO.flush();
+			}
 			
-			if (sessionSO.data.cookie != undefined)
-			{
-				logger.debug(": SharedObject exist");
-
-				redditModel.session = new SessionVO();
-				redditModel.session.cookie = String(sessionSO.data.cookie);
-				
-				redditModel.loggedIn = true;
-
-				loginStatusSignal.dispatch(true);
-			}
-			else
-			{
-				logger.debug(": logged out");
-
-				redditModel.loggedIn = false;
-
-				loginStatusSignal.dispatch(false);
-			}
+			loginStatusSignal.dispatch(true);
+			displayLoginForm.dispatch(false);
 		}
 	}
 }
