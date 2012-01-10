@@ -19,6 +19,10 @@ s|Callout #titleDisplay
 
 .myItemStyle {
 	fontSize: 18;
+	paddingTop: 15;
+	verticalAlign: top;
+	verticalGap: 8;
+	messageStyleName: myItemMessageStyle;
 }
 
 .myItemMessageStyle {

@@ -13,13 +13,19 @@ package com.ania.apps.reddvin.services
 
 	public interface IRedditService
 	{
+		function login(userVO:UserVO):void;
+
 		function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void;
 		function getReddit(id:String, cookie:String = ""):void;
 		
-		function login(userVO:UserVO):void;
+		
+		function getUserInfo():void;
+		function getUserSubreddits():void;
 
 		function vote(vote:VoteVO, cookie:String):void;
 		
+		
+		// inject
 		function set parser(value:ISearchResultParser):void; 
 	}
 }

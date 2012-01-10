@@ -2,10 +2,6 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
 		xmlns:s="library://ns.adobe.com/flex/spark" title="Login to Reddit">
 
-	<s:layout>
-		<s:VerticalLayout paddingTop="30" paddingBottom="10" />
-	</s:layout>
-	
 	<fx:Script>
 		<![CDATA[
 			import com.ania.apps.reddvin.constants.ApplicationConstants;
@@ -14,10 +10,18 @@
 			
 			public var loginBtnClickSignal:Signal = new Signal();
 			public var cancelBtnClickSignal:Signal = new Signal();
+			
+			private function doLogin():void
+			{
+				busyIndicator.visible = true;
+				loginBtn.enabled = false; 
+				
+				loginBtnClickSignal.dispatch();
+			}
 		]]>
 	</fx:Script>
 
-	<s:VGroup width="100%" horizontalAlign="center" gap="20">
+	<s:VGroup width="100%" height="100%" horizontalAlign="center" paddingTop="30" paddingBottom="10" gap="20">
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Username:" fontWeight="bold"/>
 		 	<s:TextInput id="usernameTxt" softKeyboardType="email" text="{ApplicationConstants.USERNAME}" />
@@ -30,10 +34,15 @@
 			<s:Label text="Remember me:" />
 			<s:ToggleSwitch id="rememberMeSwitch" skinClass="com.ania.apps.reddvin.view.components.MyToggleSwitchSkin"/>
 		</s:HGroup>
-	</s:VGroup>
 			
-	<s:HGroup width="100%" horizontalAlign="center" gap="25" paddingTop="20">
-		<s:Button label="Login" click="loginBtnClickSignal.dispatch()" />
-		<s:Button label="Cancel" click="cancelBtnClickSignal.dispatch()" />
-	</s:HGroup>
+		<s:HGroup width="100%" horizontalAlign="center" gap="25" paddingTop="20">
+			<s:Button label="Login" id="loginBtn" click="doLogin()" />
+			<s:Button label="Cancel" click="cancelBtnClickSignal.dispatch()" />
+		</s:HGroup>
+	</s:VGroup>
+	
+	<s:Group left="0" right="0" top="0" bottom="0">
+		<s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#666666" rotationInterval="50" visible="false"/>
+	</s:Group>
+
 </s:View>

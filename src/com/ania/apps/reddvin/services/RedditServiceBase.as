@@ -80,10 +80,19 @@ package com.ania.apps.reddvin.services
 		}
 		
 		/**
+		 * Login request 
+		 * @param userVO
+		 * http://www.reddit.com/api/login/{username}
+		 */
+		public function login(userVO:UserVO):void
+		{
+			throw new Error("Override this method!");
+		}
+		
+		/**
 		 * request for section (subreddit). Empty means front page. 
 		 * @param path
 		 * @param cookie
-		 * 
 		 */
 		public function getSection(path:String="", sortOrder:String = "", cookie:String = ""):void
 		{
@@ -94,7 +103,6 @@ package com.ania.apps.reddvin.services
 		 * request for one reddit specified by id 
 		 * @param id
 		 * @param cookie
-		 * 
 		 */
 		public function getReddit(id:String, cookie:String = ""):void
 		{
@@ -102,15 +110,29 @@ package com.ania.apps.reddvin.services
 		}
 		
 		/**
-		 * Login request 
-		 * @param userVO
-		 * 
+		 * Retrieve user info
+		 * http://www.reddit.com/api/me.json
 		 */
-		public function login(userVO:UserVO):void
+		public function getUserInfo():void
 		{
 			throw new Error("Override this method!");
 		}
 		
+		/**
+		 * Retrieve user subscribed subreddits
+		 * http://www.reddit.com/reddits/mine.json
+		 */
+		public function getUserSubreddits():void
+		{
+			throw new Error("Override this method!");
+		}
+		
+		/**
+		 * Place vote 
+		 * @param vote with direction
+		 * @param cookie session data
+		 * http://www.reddit.com/api/vote
+		 */
 		public function vote(vote:VoteVO, cookie:String):void
 		{
 			throw new Error("Override this method!");

@@ -11,6 +11,7 @@
 			public var loginBtnClickSignal:Signal = new Signal();
 			public var logoutBtnClickSignal:Signal = new Signal();
 			public var refreshBtnClickSignal:Signal = new Signal();
+			public var accountBtnClickSignal:Signal = new Signal();
 			public var settingsBtnClickSignal:Signal = new Signal();
 			
 			public var closePopupBtnClickSignal:Signal = new Signal();
@@ -39,11 +40,18 @@
 	<s:VGroup width="100%" height="100%" paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
 		<s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload32.png')" iconPlacement="right" includeIn="loggedOut"
 				  click="loginBtnClickSignal.dispatch()"/>
+		
 		<s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download32.png')" iconPlacement="right" includeIn="loggedIn"
 				  click="logoutBtnClickSignal.dispatch()"/>
+		
 		<s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange32.png')" iconPlacement="right"
 				  click="refreshBtnClickSignal.dispatch()"/>
+		
 		<s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/note32.png')" iconPlacement="right"/>
+		
+		<s:Button label="Account" width="100%" icon="@Embed('/assets/images/user32.png')" iconPlacement="right" includeIn="loggedIn"
+				  click="accountBtnClickSignal.dispatch()"/>
+		
 		<s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner32.png')" iconPlacement="right" includeIn="loggedIn"
 				  click="settingsBtnClickSignal.dispatch()"/>
 	</s:VGroup>

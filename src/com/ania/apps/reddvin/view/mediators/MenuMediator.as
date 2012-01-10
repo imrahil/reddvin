@@ -79,6 +79,9 @@ package com.ania.apps.reddvin.view.mediators
 			view.loginBtnClickSignal.add(onLoginBtnClicked);
 			view.logoutBtnClickSignal.add(onLogoutBtnClicked);
 			view.refreshBtnClickSignal.add(onRefreshBtnClicked);
+			
+			view.accountBtnClickSignal.add(onAccountBtnClicked);
+			view.settingsBtnClickSignal.add(onSettingsBtnClicked);
 
 			view.closePopupBtnClickSignal.add(onClosePopupBtnClicked);
 
@@ -115,6 +118,16 @@ package com.ania.apps.reddvin.view.mediators
 			{
 				hidePopupMenuSignal.dispatch();
 			}
+		}
+		
+		private function onAccountBtnClicked():void
+		{
+			// TODO
+		}
+		
+		private function onSettingsBtnClicked():void
+		{
+			// TODO
 		}
 		
 		private function onClosePopupBtnClicked():void

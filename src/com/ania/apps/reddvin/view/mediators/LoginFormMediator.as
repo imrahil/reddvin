@@ -9,7 +9,6 @@ package com.ania.apps.reddvin.view.mediators
 {
 	import com.ania.apps.reddvin.model.vo.UserVO;
 	import com.ania.apps.reddvin.signals.LoginSignal;
-	import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
 	import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
 	import com.ania.apps.reddvin.utils.LogUtil;
 	import com.ania.apps.reddvin.view.LoginForm;
@@ -38,9 +37,6 @@ package com.ania.apps.reddvin.view.mediators
 		[Inject]
 		public var displayLoginForm:DisplayLoginForm;
 	
-		[Inject]
-		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
-		
 
 		/** variables **/
 		private var logger:ILogger;
@@ -75,7 +71,6 @@ package com.ania.apps.reddvin.view.mediators
 			userVO.password = view.passwordTxt.text;
 			userVO.rememberMe = view.rememberMeSwitch.selected;
 			
-			displayActivityIndicator.dispatch(true);
 			loginSignal.dispatch(userVO); 
 		}
 		

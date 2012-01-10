@@ -34,6 +34,37 @@ package com.ania.apps.reddvin.services
 		}
 
 		/**
+		 * LOGIN 
+		 */
+		override public function login(userVO:UserVO):void
+		{
+			logger.debug(" : login - username: " + userVO.username + ", pass: " + userVO.password);
+			
+			loginSuccess = false;
+			this.userVO = userVO;
+			
+			var loader:URLLoader = new URLLoader();
+			var urlRequest:URLRequest = new URLRequest();
+			urlRequest.userAgent = userAgent;
+			urlRequest.manageCookies = false;
+			
+			var url:String = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/login/" + userVO.username;
+			urlRequest.url = url;
+			urlRequest.method = URLRequestMethod.POST;
+			
+			var variables:URLVariables = new URLVariables();
+			variables.user = userVO.username;
+			variables.passwd = userVO.password;
+			variables.api_type = ApplicationConstants.REDDIT_API_TYPE;
+			urlRequest.data = variables;
+			
+			loader.addEventListener(Event.COMPLETE, handleLoginComplete);
+			addLoaderListeners(loader);
+			
+			loader.load(urlRequest);
+		}
+		
+		/**
 		 * GET SECTION 
 		 */
 		override public function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void
@@ -108,37 +139,6 @@ package com.ania.apps.reddvin.services
 //			loader.load(urlRequest);
 		}
 		
-		/**
-		 * LOGIN 
-		 */
-		override public function login(userVO:UserVO):void
-		{
-			logger.debug(" : login - username: " + userVO.username + ", pass: " + userVO.password);
-			
-			loginSuccess = false;
-			this.userVO = userVO;
-			
-			var loader:URLLoader = new URLLoader();
-			var urlRequest:URLRequest = new URLRequest();
-			urlRequest.userAgent = userAgent;
-			urlRequest.manageCookies = false;
-		
-			var url:String = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/login/" + userVO.username;
-			urlRequest.url = url;
-			urlRequest.method = URLRequestMethod.POST;
-			
-			var variables:URLVariables = new URLVariables();
-			variables.user = userVO.username;
-			variables.passwd = userVO.password;
-			variables.api_type = ApplicationConstants.REDDIT_API_TYPE;
-			urlRequest.data = variables;
-
-			loader.addEventListener(Event.COMPLETE, handleLoginComplete);
-			addLoaderListeners(loader);
-			
-			loader.load(urlRequest);
-		}
-
 		/**
 		 * VOTE 
 		 */

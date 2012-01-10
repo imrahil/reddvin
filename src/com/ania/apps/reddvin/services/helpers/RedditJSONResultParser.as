@@ -38,16 +38,8 @@ package com.ania.apps.reddvin.services.helpers
 			logger.debug(": parseSearchResults");
 			
 			var output:ArrayList = new ArrayList();
-			var resultObject:Object;
+			var resultObject:Object = JSON.parse(results as String);
 
-			try {
-				resultObject = JSON.parse(results as String);
-			}
-			catch (e:Error)
-			{
-				logger.error("JSON decode failed - " + e.message);
-			}
-			
 			if (resultObject && resultObject.data)
 			{
 				var modhash:String = resultObject.data.modhash;

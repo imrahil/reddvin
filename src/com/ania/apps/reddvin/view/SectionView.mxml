@@ -42,7 +42,8 @@
 		</s:CalloutButton>
 	</s:actionContent>
 
-	<s:List id="sectionList" width="100%" height="100%" labelField="title" itemRenderer="com.ania.apps.reddvin.view.components.RedditListRenderer" />
+	<s:List id="sectionList" width="100%" height="100%" labelField="title" itemRenderer="com.ania.apps.reddvin.view.components.SectionIconItemRenderer" />
+	
 	<s:Group left="0" right="0" top="0" bottom="0">
 		<s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#666666" rotationInterval="50" visible="false"/>
 	</s:Group>
