@@ -85,7 +85,7 @@ package com.ania.apps.reddvin.services
 			}
 			
 			// if sort order is not empty it means that we should add sort to url :)
-			if (sortOrder != "")
+			if (sortOrder != "" && sortOrder != ApplicationConstants.SORT_FRONT)
 			{
 				url += "/" + sortOrder;
 			}
