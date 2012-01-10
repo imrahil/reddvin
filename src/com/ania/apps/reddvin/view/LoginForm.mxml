@@ -8,6 +8,8 @@
 	
 	<fx:Script>
 		<![CDATA[
+			import com.ania.apps.reddvin.constants.ApplicationConstants;
+			
 			import org.osflash.signals.Signal;
 			
 			public var loginBtnClickSignal:Signal = new Signal();
@@ -18,11 +20,11 @@
 	<s:VGroup width="100%" horizontalAlign="center" gap="20">
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Username:" fontWeight="bold"/>
-		 	<s:TextInput id="usernameTxt" softKeyboardType="email" />
+		 	<s:TextInput id="usernameTxt" softKeyboardType="email" text="{ApplicationConstants.USERNAME}" />
 		</s:HGroup>
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Password:" fontWeight="bold" />
-		 	<s:TextInput id="passwordTxt" displayAsPassword="true" />
+		 	<s:TextInput id="passwordTxt" displayAsPassword="true" text="{ApplicationConstants.PASSWORD}" />
 		</s:HGroup>
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Remember me:" />

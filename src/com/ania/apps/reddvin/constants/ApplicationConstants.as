@@ -35,6 +35,10 @@ package com.ania.apps.reddvin.constants
 		public static const SORT_ORDER:ArrayCollection	= new ArrayCollection([
 			SORT_FRONT, SORT_NEW, SORT_CONTROVERSIAL, SORT_TOP
 		]);
+		
+		public static const USERNAME:String				= CONFIG::username;
+		public static const PASSWORD:String				= CONFIG::password;
+		
 		public function ApplicationConstants()
 		{
 		}
