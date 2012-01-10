@@ -5,7 +5,6 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 @project  Reddvin
 @internal 
 */
-
 package com.ania.apps.reddvin.signals
 {
 	import com.ania.apps.reddvin.model.vo.UserVO;

@@ -53,18 +53,21 @@ package com.ania.apps.reddvin.controller
 		{
 			logger.debug(": execute");
 	
-			displayActivityIndicator.dispatch(true);
-
-			switch (redditModel.currentScreen)
+			if (redditModel.initialized)
 			{
-				case ApplicationConstants.SECTION_SCREEN:
-					updateSection();
-				break;
-				
-				case ApplicationConstants.ITEM_SCREEN:
-					updateItem();
-					updateSection();
-				break;
+				displayActivityIndicator.dispatch(true);
+	
+				switch (redditModel.currentScreen)
+				{
+					case ApplicationConstants.SECTION_SCREEN:
+						updateSection();
+					break;
+					
+					case ApplicationConstants.ITEM_SCREEN:
+						updateItem();
+						updateSection();
+					break;
+				}
 			}
 		}
 		
@@ -72,11 +75,11 @@ package com.ania.apps.reddvin.controller
 		{
 			if (redditModel.loggedIn)
 			{
-				redditService.getSection(redditModel.selectedSubreddit, redditModel.session.cookie);
+				redditService.getSection(redditModel.selectedSubreddit, redditModel.sortOrder, redditModel.session.cookie);
 			}
 			else
 			{
-				redditService.getSection(redditModel.selectedSubreddit);
+				redditService.getSection(redditModel.selectedSubreddit, redditModel.sortOrder);
 			}
 		}
 		

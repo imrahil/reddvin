@@ -18,11 +18,11 @@
 	<s:VGroup width="100%" horizontalAlign="center" gap="20">
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Username:" fontWeight="bold"/>
-		 	<s:TextInput id="usernameTxt" softKeyboardType="email" />
+		 	<s:TextInput id="usernameTxt" softKeyboardType="email" text="amrothos" />
 		</s:HGroup>
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Password:" fontWeight="bold" />
-		 	<s:TextInput id="passwordTxt" displayAsPassword="true" />
+		 	<s:TextInput id="passwordTxt" displayAsPassword="true" text="imrah1l23" />
 		</s:HGroup>
 		<s:HGroup verticalAlign="middle">
 			<s:Label text="Remember me:" />

@@ -38,9 +38,13 @@ package com.ania.apps.reddvin.model
 		private var _session:SessionVO;
 		private var _selectedSubreddit:String = "";
 		
+		private var _sortOrder:String = "";
+		
 		private var _currentScreen:String = ApplicationConstants.SECTION_SCREEN
 		
-		private var _loggedIn:Boolean;
+		private var _loggedIn:Boolean = false;
+		
+		private var _initialized:Boolean = false;
 		
 		private var logger:ILogger;
 		
@@ -55,6 +59,7 @@ package com.ania.apps.reddvin.model
 			logger.debug(": constructor");
 		}
 		
+
 		/**
 		 * List of all Reddits in section
 		 */
@@ -126,6 +131,21 @@ package com.ania.apps.reddvin.model
 		}
 		
 		/**
+		 * Sort order for current subreddit 
+		 */
+		public function get sortOrder():String
+		{
+			return _sortOrder;
+		}
+		
+		public function set sortOrder(value:String):void
+		{
+			logger.debug(": set sortOrder");
+			
+			_sortOrder = value;
+		}
+		
+		/**
 		 * Current section of application
 		 */
 		public function get currentScreen():String
@@ -154,5 +174,21 @@ package com.ania.apps.reddvin.model
 
 			_loggedIn = value;
 		}
+
+		/**
+		 *	Check if application is fully initialized 
+		 */
+		public function get initialized():Boolean
+		{
+			return _initialized;
+		}
+
+		public function set initialized(value:Boolean):void
+		{
+			logger.debug(": set initialized");
+
+			_initialized = value;
+		}
+
 	}
 }

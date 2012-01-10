@@ -21,6 +21,7 @@ package com.ania.apps.reddvin.context.bootstraps
             // request signals
 //            signalCommandMap.mapSignalClass(CheckLoginStatusSignal, CheckLoginStatusCommand);
             signalCommandMap.mapSignalClass(RefreshSignal, RefreshCommand);
+            signalCommandMap.mapSignalClass(ChangeSortSignal, ChangeSortCommand);
 //            signalCommandMap.mapSignalClass(ChangeScreenSignal, ChangeScreenCommand);
 //
 			signalCommandMap.mapSignalClass(GetSectionSignal, GetSectionCommand);

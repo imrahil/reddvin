@@ -85,7 +85,7 @@ package com.ania.apps.reddvin.services
 		 * @param cookie
 		 * 
 		 */
-		public function getSection(path:String="", cookie:String = ""):void
+		public function getSection(path:String="", sortOrder:String = "", cookie:String = ""):void
 		{
 			throw new Error("Override this method!");
 		}

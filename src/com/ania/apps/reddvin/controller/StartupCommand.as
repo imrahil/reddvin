@@ -11,6 +11,7 @@ package com.ania.apps.reddvin.controller
 	import com.ania.apps.reddvin.constants.ApplicationConstants;
 	import com.ania.apps.reddvin.model.RedditModel;
 	import com.ania.apps.reddvin.model.vo.SessionVO;
+	import com.ania.apps.reddvin.signals.RefreshSignal;
 	import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
 	import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
 	import com.ania.apps.reddvin.utils.LogUtil;
@@ -34,7 +35,10 @@ package com.ania.apps.reddvin.controller
 	
 		[Inject]
 		public var loginStatusSignal:LoginStatusSignal;
-		
+	
+		[Inject]
+		public var refreshSignal:RefreshSignal;        
+
 		/** variables **/
 		private var logger:ILogger;
 		
@@ -77,6 +81,9 @@ package com.ania.apps.reddvin.controller
 
 				loginStatusSignal.dispatch(false);
 			}
+			
+			redditModel.initialized = true;
+			refreshSignal.dispatch();
 		}
 	}
 }

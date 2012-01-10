@@ -36,24 +36,30 @@ package com.ania.apps.reddvin.services
 		/**
 		 * GET SECTION 
 		 */
-		override public function getSection(path:String = "", cookie:String = ""):void
+		override public function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void
 		{
-			logger.debug(": getSection - path: " + path);
+			logger.debug(": getSection - path: " + path + ", sortOrder: " + sortOrder);
 			
 			var loader:URLLoader = new URLLoader();
 			var urlRequest:URLRequest = new URLRequest();
 			urlRequest.userAgent = userAgent;
 			urlRequest.manageCookies = false;
 		
-			var url:String;
+			var url:String = ApplicationConstants.REDDIT_API_ENDPOINT; 
+
+			// if path is not empty it means that we loading subreddit
 			if (path != "")
 			{
-				url = ApplicationConstants.REDDIT_API_ENDPOINT + "/r/" + path + ApplicationConstants.REDDIT_API_EXTENSION;;
+				url += "/r/" + path;
 			}
-			else
+			
+			// if sort order is not empty it means that we should add sort to url :)
+			if (sortOrder != "")
 			{
-				url = ApplicationConstants.REDDIT_API_ENDPOINT + "/" + path + ApplicationConstants.REDDIT_API_EXTENSION;;
+				url += "/" + sortOrder;
 			}
+			
+			url += "/" + ApplicationConstants.REDDIT_API_EXTENSION;
 
 			urlRequest.url = url;
 

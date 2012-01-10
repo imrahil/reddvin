@@ -10,6 +10,7 @@ package com.ania.apps.reddvin.controller
 {
 	import com.ania.apps.reddvin.model.RedditModel;
 	import com.ania.apps.reddvin.services.IRedditService;
+	import com.ania.apps.reddvin.signals.RefreshSignal;
 	
 	import org.robotlegs.mvcs.SignalCommand;
 	
@@ -24,7 +25,7 @@ package com.ania.apps.reddvin.controller
 		public var redditModel:RedditModel;
 
 		[Inject]
-		public var redditService:IRedditService;
+		public var refreshSignal:RefreshSignal;        
 		
 		/**
 		 * Method handle the logic for <code>GetSectionCommand</code>
@@ -33,14 +34,7 @@ package com.ania.apps.reddvin.controller
 		{
 			redditModel.selectedSubreddit = sectionName;
 			
-			if (redditModel.loggedIn)
-			{
-				redditService.getSection(redditModel.selectedSubreddit, redditModel.session.cookie);
-			}
-			else
-			{
-				redditService.getSection(redditModel.selectedSubreddit);
-			}
+			refreshSignal.dispatch();
 		}
 	}
 }

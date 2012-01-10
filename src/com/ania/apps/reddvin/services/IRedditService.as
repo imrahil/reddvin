@@ -13,7 +13,7 @@ package com.ania.apps.reddvin.services
 
 	public interface IRedditService
 	{
-		function getSection(path:String = "", cookie:String = ""):void;
+		function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void;
 		function getReddit(id:String, cookie:String = ""):void;
 		
 		function login(userVO:UserVO):void;

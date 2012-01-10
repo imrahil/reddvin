@@ -7,6 +7,8 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.view.mediators
 {
+    import com.ania.apps.reddvin.controller.ChangeSortCommand;
+    import com.ania.apps.reddvin.signals.ChangeSortSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayPopupMenuSignal;
@@ -47,8 +49,10 @@ package com.ania.apps.reddvin.view.mediators
 		[Inject]
 		public var refreshSignal:RefreshSignal;        
 		
+		[Inject]
+		public var changeSortSignal:ChangeSortSignal;        
+		
 	
-
 //		[Inject]
 //		public var getItem:GetItemSignal;
         
@@ -119,8 +123,7 @@ package com.ania.apps.reddvin.view.mediators
 		 */
 		private function onSortChanged(sortOrder:String):void
 		{
-			// TODO - add call to change/refresh section
-			logger.debug("Sort: " + sortOrder);
+			changeSortSignal.dispatch(sortOrder);
 		}
 		
 //		private function onMouseUp(event:MouseEvent):void
