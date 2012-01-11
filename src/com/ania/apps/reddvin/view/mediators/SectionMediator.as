@@ -127,11 +127,17 @@ package com.ania.apps.reddvin.view.mediators
             changeSortSignal.dispatch(sortOrder);
         }
 
+        /**
+         * Icon click handler
+         */
         private function onIconClicked():void
         {
             showLink = true;
         }
 
+        /**
+         * List item change handler
+         */
         private function onListItemClicked():void
         {
             logger.debug(":onListItemClickedk");
@@ -159,7 +165,6 @@ package com.ania.apps.reddvin.view.mediators
             logger.debug(": onSectionChanged");
 
             view.busyIndicator.visible = false;
-            ;
 
             view.sectionList.dataProvider = items;
         }
