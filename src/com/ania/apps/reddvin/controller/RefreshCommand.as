@@ -59,11 +59,11 @@ package com.ania.apps.reddvin.controller
 	
 				switch (redditModel.currentScreen)
 				{
-					case ApplicationConstants.SECTION_SCREEN:
+					case ApplicationConstants.SECTION_VIEW:
 						updateSection();
 					break;
 					
-					case ApplicationConstants.ITEM_SCREEN:
+					case ApplicationConstants.ITEM_VIEW:
 						updateItem();
 						updateSection();
 					break;

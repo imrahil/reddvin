@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="com.ania.apps.reddvin.view.components.*" title="{data.title}"
+        viewActivate="stageWebViewContainer.load()">
+
+    <fx:Script>
+        <![CDATA[
+        import org.osflash.signals.Signal;
+
+        public var backBtnClicked:Signal = new Signal();
+
+        public var upVoteClicked:Signal = new Signal();
+        public var downVoteClicked:Signal = new Signal();
+        public var showCommentsClicked:Signal = new Signal();
+
+        ]]>
+    </fx:Script>
+
+    <s:actionContent>
+        <s:Button icon="@Embed('/assets/images/uparrow.png')" includeIn="loggedIn" click="upVoteClicked.dispatch()" />
+        <s:Button icon="@Embed('/assets/images/downarrow.png')" includeIn="loggedIn" click="downVoteClicked.dispatch()" />
+        <s:Button icon="@Embed('/assets/images/comment.png')" click="showCommentsClicked.dispatch()" />
+    </s:actionContent>
+
+    <s:navigationContent>
+        <s:Button label="Back" click="backBtnClicked.dispatch()" />
+    </s:navigationContent>
+
+    <s:states>
+        <s:State name="loggedIn" />
+        <s:State name="loggedOut" />
+    </s:states>
+
+    <components:WebView id="stageWebViewContainer" source="{data.url}" width="100%" height="100%" autoLoad="false" />
+</s:View>

@@ -7,22 +7,24 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.view.mediators
 {
-    import com.ania.apps.reddvin.controller.ChangeSortCommand;
+    import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.signals.ChangeSortSignal;
+    import com.ania.apps.reddvin.signals.GetItemSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayPopupMenuSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayUrlSignal;
     import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
     import com.ania.apps.reddvin.view.SectionView;
-    
+
     import mx.collections.ArrayList;
     import mx.logging.ILogger;
-    
+
     import org.robotlegs.mvcs.Mediator;
-    
+
     import spark.components.Button;
-    
+
     public class SectionMediator extends Mediator
     {
         /**
@@ -43,6 +45,9 @@ package com.ania.apps.reddvin.view.mediators
 		[Inject]
 		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
 
+        [Inject]
+        public var displayUrl:DisplayUrlSignal;
+
         /**
          * SIGNAL -> COMMAND
          */
@@ -53,21 +58,14 @@ package com.ania.apps.reddvin.view.mediators
 		public var changeSortSignal:ChangeSortSignal;        
 		
 	
-//		[Inject]
-//		public var getItem:GetItemSignal;
+		[Inject]
+		public var getItem:GetItemSignal;
         
-//		[Inject]
-//		public var displayUrl:DisplayUrlSignal;
- 
-//		[Inject]
-//		public var voteSignal:VoteSignal;
 
-		
         /** variables **/
 		private var logger:ILogger;
 		private var showLink:Boolean = false;
-		private var placeVote:Boolean = false;
-	
+
 		/** 
 		 * CONSTRUCTOR 
 		 */		
@@ -86,20 +84,25 @@ package com.ania.apps.reddvin.view.mediators
         override public function onRegister():void
         {
 			logger.debug(": onRegister");
-			
-			view.menuButtonClicked.add(onMenuButtonClicked);
-			view.sortChanged.add(onSortChanged);
-			
-//			eventMap.mapListener(view.sectionList, MouseEvent.MOUSE_UP, onMouseUp); 
-//			eventMap.mapListener(view.sectionList, ListEvent.ITEM_CLICKED, onItemClick); 
-			sectionChanged.add(onSectionChanged);
 
+            // view listeners
+			view.menuButtonClickSignal.add(onMenuButtonClicked);
+			view.sortChangeSignal.add(onSortChanged);
+
+            view.iconClickSignal.add(onIconClicked);
+            view.listItemClickSignal.add(onListItemClicked);
+
+            // signals listeners
+			sectionChanged.add(onSectionChanged);
 			displayActivityIndicator.add(displayBusyIndicator);
 	
 			logger.debug(": sending refresh signal");
 			refreshSignal.dispatch();
 		}
-		
+
+		/**
+		 * Remove all listeners from sectionChange signal when removing from stage 
+		 */
 		override public function onRemove():void
 		{
 			sectionChanged.removeAll();	
@@ -110,7 +113,6 @@ package com.ania.apps.reddvin.view.mediators
 		/**
 		 * Menu button handler - in portrait mode only 
 		 * @param owner
-		 * 
 		 */
 		private function onMenuButtonClicked(owner:Button):void
 		{
@@ -118,66 +120,39 @@ package com.ania.apps.reddvin.view.mediators
 		}
 		
 		/**
-		 * Sort button handler 
-		 * 
+		 * Sort button change handler 
 		 */
 		private function onSortChanged(sortOrder:String):void
 		{
 			changeSortSignal.dispatch(sortOrder);
 		}
-		
-//		private function onMouseUp(event:MouseEvent):void
-//		{
-//			var temp:* = event.target;
-//			
-//			if (temp is ThumbnailImageContainer || temp is ThumbnailImage)
-//			{
-//				showLink = true;
-//				view.sectionList.dispatchEvent(event);
-//			}
-//			
-//			if (temp is VoteAreaBtn)
-//			{
-//				placeVote = true;
-//				view.sectionList.dispatchEvent(event);
-//			}
-//		}
 
-//		private function onItemClick(event:ListEvent):void
-//		{
-//			logger.debug(": onItemClick");
-//
-//			if (event.currentTarget)
-//			{
-//				var clickedList:List = event.currentTarget as List;
-//				
-//				if (clickedList.selectedItem)
-//				{
-//					var item:RedditVO = clickedList.selectedItem as RedditVO;
-//
-//					if (showLink && !item.is_self)
-//					{
-//						showLink = false;
-//						displayUrl.dispatch(item.url, item.title);
-//					}
-//					else if (placeVote)
-//					{
-//						placeVote = false;
-//						
-//						var voteVO:VoteVO = new VoteVO();
-//						voteVO.itemId = item.name;
-//						voteVO.direction = "1";
-//						voteSignal.dispatch(voteVO);
-//					}
-//					else
-//					{
-//						showLink = false;
-//						getItem.dispatch(item);
-//						displayActivityIndicator.dispatch(true);
-//					}
-//				}
-//			}
-//		}
+        private function onIconClicked():void
+        {
+            showLink = true;
+        }
+
+		private function onListItemClicked():void
+		{
+			logger.debug(":onListItemClickedk");
+
+            if (view.sectionList.selectedItem)
+            {
+                var item:RedditVO = view.sectionList.selectedItem as RedditVO;
+
+                if (showLink && !item.is_self)
+                {
+                    showLink = false;
+                    displayUrl.dispatch(true, item.url, item.title);
+                }
+                else
+                {
+                    showLink = false;
+                    displayActivityIndicator.dispatch(true);
+                    getItem.dispatch(item);
+                }
+            }
+		}
 		
 		private function onSectionChanged(items:ArrayList):void 
 		{

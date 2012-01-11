@@ -30,34 +30,34 @@
 	</s:layout>
 
 	<s:actionContent.landscape>
-		<s:Button icon="@Embed('/assets/images/paperplus32.png')"/>
+		<s:Button icon="@Embed('/assets/images/paperplus.png')"/>
 	</s:actionContent.landscape>
 
 	<s:actionContent.portrait>
-		<s:Button icon="@Embed('/assets/images/stop32.png')" click="closePopupBtnClickSignal.dispatch()" height="40" chromeColor="#000000"/>
+		<s:Button icon="@Embed('/assets/images/stop.png')" click="closePopupBtnClickSignal.dispatch()" height="40" chromeColor="#000000"/>
 	</s:actionContent.portrait>
 
 	<s:VGroup width="100%" height="100%" paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
-		<s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload32.png')" iconPlacement="right" includeIn="loggedOut"
+		<s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload.png')" iconPlacement="right" includeIn="loggedOut"
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
 				  click="loginBtnClickSignal.dispatch()"/>
 		
-		<s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download32.png')" iconPlacement="right" includeIn="loggedIn"
+		<s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download.png')" iconPlacement="right" includeIn="loggedIn"
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
 				  click="logoutBtnClickSignal.dispatch()"/>
 		
-		<s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange32.png')" iconPlacement="right" 
+		<s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange.png')" iconPlacement="right" 
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
 				  click="refreshBtnClickSignal.dispatch()"/>
 		
-		<s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/note32.png')" iconPlacement="right"
+		<s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/linedpaper.png')" iconPlacement="right"
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"/>
 		
-		<s:Button label="Account" width="100%" icon="@Embed('/assets/images/user32.png')" iconPlacement="right" includeIn="loggedIn"
+		<s:Button label="Account" width="100%" icon="@Embed('/assets/images/user.png')" iconPlacement="right" includeIn="loggedIn"
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
 				  click="accountBtnClickSignal.dispatch()"/>
 		
-		<s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner32.png')" iconPlacement="right" includeIn="loggedIn"
+		<s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner.png')" iconPlacement="right" includeIn="loggedIn"
 				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
 				  click="settingsBtnClickSignal.dispatch()"/>
 	</s:VGroup>

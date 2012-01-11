@@ -8,7 +8,7 @@
     <copyright>Copyright © 2012 Anna Dabrowska</copyright>
 
     <initialWindow>
-        <content>[This value will be overwritten by Flash Builder in the output app.xml]</content>
+        <content>Reddvin.swf</content>
         <aspectRatio>landscape</aspectRatio>
         <autoOrients>true</autoOrients>
         <fullScreen>false</fullScreen>

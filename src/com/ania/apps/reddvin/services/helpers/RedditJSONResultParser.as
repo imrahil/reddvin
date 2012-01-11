@@ -58,29 +58,21 @@ package com.ania.apps.reddvin.services.helpers
 
 		public function parseSingleItem(results:Object):RedditVO
 		{
-//			logger.debug(": parseSingleItem");
-//			
-//			var resultObject:Object;
-//			
-//			try {
-//				resultObject = JSON.parse(results as String);
-//			}
-//			catch (e:Error)
-//			{
-//				logger.error("JSON decode failed - " + e.message);
-//			}
-//			
-//			if (resultObject.length > 0)
-//			{
-//				var modhash:String = resultObject[0].data.modhash;
-//				return createRedditWithComments(resultObject[0].data.children[0].data, 
-//												resultObject[0].data.children[0].kind,
-//												resultObject[1].data.children, modhash); 
-//			}
-//			else
-//			{
+			logger.debug(": parseSingleItem");
+
+			var resultObject:Object = JSON.parse(results as String)
+
+			if (resultObject.length > 0)
+			{
+				var modhash:String = resultObject[0].data.modhash;
+				return createRedditWithComments(resultObject[0].data.children[0].data,
+												resultObject[0].data.children[0].kind,
+												resultObject[1].data.children, modhash);
+			}
+			else
+			{
 				return null;
-//			}
+			}
 		}
 		
 		public function checkLoginResult(result:String):String

@@ -42,7 +42,6 @@
 	</s:VGroup>
 	
 	<s:Group left="0" right="0" top="0" bottom="0">
-		<s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#666666" rotationInterval="50" visible="false"/>
+        <s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#3E3E3E" width="60" height="60" rotationInterval="50" visible="false"/>
 	</s:Group>
-
 </s:View>

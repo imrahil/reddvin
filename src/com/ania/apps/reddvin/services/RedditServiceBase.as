@@ -7,12 +7,15 @@ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
 */
 package com.ania.apps.reddvin.services
 {
-	import com.ania.apps.reddvin.constants.ApplicationConstants;
-	import com.ania.apps.reddvin.model.vo.SessionVO;
+    import com.ania.apps.reddvin.constants.ApplicationConstants;
+    import com.ania.apps.reddvin.constants.ApplicationConstants;
+    import com.ania.apps.reddvin.model.vo.RedditVO;
+    import com.ania.apps.reddvin.model.vo.SessionVO;
 	import com.ania.apps.reddvin.model.vo.UserVO;
 	import com.ania.apps.reddvin.model.vo.VoteVO;
 	import com.ania.apps.reddvin.services.helpers.ISearchResultParser;
-	import com.ania.apps.reddvin.signals.LoginSuccessfulSignal;
+    import com.ania.apps.reddvin.signals.ItemLoadedSignal;
+    import com.ania.apps.reddvin.signals.LoginSuccessfulSignal;
 	import com.ania.apps.reddvin.signals.RefreshSignal;
 	import com.ania.apps.reddvin.signals.SectionLoadedSignal;
 	import com.ania.apps.reddvin.signals.signaltons.ErrorSignal;
@@ -32,8 +35,6 @@ package com.ania.apps.reddvin.services
 	
 	public class RedditServiceBase extends Actor implements IRedditService
 	{
-		private const REDDIT_USER_AGENT:String = "Reddit For Blackberry Playbook v. "; 
-
 		protected var _parser:ISearchResultParser;
 		
 		protected var userAgent:String;
@@ -47,8 +48,8 @@ package com.ania.apps.reddvin.services
 		[Inject]
 		public var sectionLoaded:SectionLoadedSignal;
 		
-//		[Inject]
-//		public var itemLoaded:ItemLoadedSignal;
+		[Inject]
+		public var itemLoaded:ItemLoadedSignal;
 		
 		[Inject]
 		public var loginSuccessful:LoginSuccessfulSignal;
@@ -76,7 +77,7 @@ package com.ania.apps.reddvin.services
 			var app_xml:XML = NativeApplication.nativeApplication.applicationDescriptor;
 			var ns:Namespace = app_xml.namespace();
 			var versionNumber:String = app_xml.ns::versionNumber;
-			userAgent = REDDIT_USER_AGENT + versionNumber;
+			userAgent = ApplicationConstants.REDDIT_USER_AGENT + versionNumber;
 		}
 		
 		/**
@@ -156,19 +157,19 @@ package com.ania.apps.reddvin.services
 			sectionLoaded.dispatch(results);
 		}
 
-//		protected function handleRedditLoadComplete(event:Event):void
-//		{
-//			logger.debug(": handleRedditLoadComplete");
-//
-//			var loader:URLLoader = event.currentTarget as URLLoader; 
-//			
-//			loader.removeEventListener(Event.COMPLETE, handleRedditLoadComplete);
-//			removeLoaderListeners(loader);
-//
-//			var resultItem:RedditVO = _parser.parseSingleItem(loader.data);
-//
-//			itemLoaded.dispatch(resultItem);
-//		}
+		protected function handleRedditLoadComplete(event:Event):void
+		{
+			logger.debug(": handleRedditLoadComplete");
+
+			var loader:URLLoader = event.currentTarget as URLLoader;
+
+			loader.removeEventListener(Event.COMPLETE, handleRedditLoadComplete);
+			removeLoaderListeners(loader);
+
+			var resultItem:RedditVO = _parser.parseSingleItem(loader.data);
+
+			itemLoaded.dispatch(resultItem);
+		}
 		
 		protected function handleLoginComplete(event:Event):void
 		{
