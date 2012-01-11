@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Front page">
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark" title="Front page">
 
-	<fx:Script>
+    <fx:Script>
         <![CDATA[
         import com.ania.apps.reddvin.constants.ApplicationConstants;
         import com.ania.apps.reddvin.view.components.SectionIconItemRenderer;
@@ -37,38 +37,43 @@
         }
         ]]>
     </fx:Script>
-	
-	<s:states>
-		<s:State name="portrait"/>
-		<s:State name="landscape"/>
-	</s:states>
-	
-	<s:navigationContent.portrait>
-		<s:Button id="menuButton" icon="@Embed('/assets/images/spanner.png')" click="menuButtonClickSignal.dispatch(menuButton)"/>
-	</s:navigationContent.portrait>
-	
-	<s:actionContent>
-		<s:CalloutButton id="calloutBtn" label="sort: what's hot" verticalPosition="after" close="sortChangeSignal.dispatch(sortList.selectedItem)">
-			<s:calloutLayout>
-				<s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10" horizontalAlign="center" gap="5"/>
-			</s:calloutLayout>
-			<s:calloutContent>
-				<s:List id="sortList" dataProvider="{ApplicationConstants.SORT_ORDER}" selectedIndex="0" width="100%" height="100%" change="sortChangeHandler()">
-					<s:layout>
-						<s:VerticalLayout requestedRowCount="4" gap="0" horizontalAlign="center" />
-					</s:layout>
-				</s:List>
-				<s:Button label="Cancel" click="calloutBtn.callout.close()" />
-			</s:calloutContent>
-			
-		</s:CalloutButton>
-	</s:actionContent>
 
-	<s:List id="sectionList" width="100%" height="100%" labelField="title" 
-			itemRenderer="com.ania.apps.reddvin.view.components.SectionIconItemRenderer" 
-			mouseUp="sectionListIconClickHandler(event)" change="sectionListChangeHandler(event)" />
-	
-	<s:Group left="0" right="0" top="0" bottom="0">
-		<s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#3E3E3E" width="60" height="60" rotationInterval="50" visible="false"/>
-	</s:Group>
+    <s:states>
+        <s:State name="portrait"/>
+        <s:State name="landscape"/>
+    </s:states>
+
+    <s:navigationContent.portrait>
+        <s:Button id="menuButton" icon="@Embed('/assets/images/spanner.png')"
+                  click="menuButtonClickSignal.dispatch(menuButton)"/>
+    </s:navigationContent.portrait>
+
+    <s:actionContent>
+        <s:CalloutButton id="calloutBtn" label="sort: what's hot" verticalPosition="after"
+                         close="sortChangeSignal.dispatch(sortList.selectedItem)">
+            <s:calloutLayout>
+                <s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
+                                  horizontalAlign="center" gap="5"/>
+            </s:calloutLayout>
+            <s:calloutContent>
+                <s:List id="sortList" dataProvider="{ApplicationConstants.SORT_ORDER}" selectedIndex="0" width="100%"
+                        height="100%" change="sortChangeHandler()">
+                    <s:layout>
+                        <s:VerticalLayout requestedRowCount="4" gap="0" horizontalAlign="center"/>
+                    </s:layout>
+                </s:List>
+                <s:Button label="Cancel" click="calloutBtn.callout.close()"/>
+            </s:calloutContent>
+
+        </s:CalloutButton>
+    </s:actionContent>
+
+    <s:List id="sectionList" width="100%" height="100%" labelField="title"
+            itemRenderer="com.ania.apps.reddvin.view.components.SectionIconItemRenderer"
+            mouseUp="sectionListIconClickHandler(event)" change="sectionListChangeHandler(event)"/>
+
+    <s:Group left="0" right="0" top="0" bottom="0">
+        <s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#3E3E3E" width="60"
+                         height="60" rotationInterval="50" visible="false"/>
+    </s:Group>
 </s:View>

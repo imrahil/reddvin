@@ -1,7 +1,7 @@
 /*
  Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
  @author   Anna Dabrowska
- @contact  dabrowskaanna@wp.pl
+ @contact  ania.blackberry@gmail.com
  @project  Reddvin
  @internal
  */

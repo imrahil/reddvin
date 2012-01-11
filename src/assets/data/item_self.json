@@ -1,112 +1,118 @@
-[{
-    "kind": "Listing", 
-    "data": {
-        "modhash": "gynhik8z5h619f3e9463d4d10e8d347ddd6420fcf158d87cd7", 
-        "children": [{
-            "kind": "t3", 
-            "data": {
-                "domain": "self.worldnews", 
-                "media_embed": {}, 
-                "levenshtein": null, 
-                "subreddit": "worldnews", 
-                "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;This isn't actually news, but I find it annoying that /r/worldnews is usually full of news that isn't true or by people who do not have coverage in the area's they are reporting and instead are responding to rumors. For example the number one post right now is about Gaddafi agreeing to step down given certain conditions as seen here:\n&lt;a href=\"http://www.ynetnews.com/articles/0,7340,L-4038635,00.html\" &gt;http://www.ynetnews.com/articles/0,7340,L-4038635,00.html&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;It's an Israeli newspaper with little to no coverage of what is going on in Libya, yet its the at the top of /r/worldnews..... come on guys. If you're going to post something, especially something that important, google the headline. If you only find 2-3 articles and none of them have any real inside coverage of what is going on, don't post it or don't up vote it. We can at least try not to subject the reddit community to the same type of misinformation that Fox subjects the rest of the world to.&lt;/p&gt;&lt;/div&gt;&lt;!-- SC_ON --&gt;", 
-                "selftext": "This isn't actually news, but I find it annoying that /r/worldnews is usually full of news that isn't true or by people who do not have coverage in the area's they are reporting and instead are responding to rumors. For example the number one post right now is about Gaddafi agreeing to step down given certain conditions as seen here:\nhttp://www.ynetnews.com/articles/0,7340,L-4038635,00.html\n\nIt's an Israeli newspaper with little to no coverage of what is going on in Libya, yet its the at the top of /r/worldnews..... come on guys. If you're going to post something, especially something that important, google the headline. If you only find 2-3 articles and none of them have any real inside coverage of what is going on, don't post it or don't up vote it. We can at least try not to subject the reddit community to the same type of misinformation that Fox subjects the rest of the world to.", 
-                "likes": null, 
-                "saved": false, 
-                "id": "fz3z1", 
-                "clicked": false, 
-                "author": "omegacfx", 
-                "media": null, 
-                "score": 1137, 
-                "over_18": false, 
-                "hidden": false, 
-                "thumbnail": "", 
-                "subreddit_id": "t5_2qh13", 
-                "downs": 1501, 
-                "is_self": true, 
-                "permalink": "/r/worldnews/comments/fz3z1/please_research_before_posting/", 
-                "name": "t3_fz3z1", 
-                "created": 1299542037.0, 
-                "url": "http://www.reddit.com/r/worldnews/comments/fz3z1/please_research_before_posting/", 
-                "title": "Self 1 - PLEASE research before posting", 
-                "created_utc": 1299516837.0, 
-                "num_comments": 209, 
-                "ups": 2638
-            }
-        }], 
-        "after": null, 
-        "before": null
+[
+    {
+        "kind": "Listing",
+        "data": {
+            "modhash": "gynhik8z5h619f3e9463d4d10e8d347ddd6420fcf158d87cd7",
+            "children": [
+                {
+                    "kind": "t3",
+                    "data": {
+                        "domain": "self.worldnews",
+                        "media_embed": {},
+                        "levenshtein": null,
+                        "subreddit": "worldnews",
+                        "selftext_html": "&lt;!-- SC_OFF --&gt;&lt;div class=\"md\"&gt;&lt;p&gt;This isn't actually news, but I find it annoying that /r/worldnews is usually full of news that isn't true or by people who do not have coverage in the area's they are reporting and instead are responding to rumors. For example the number one post right now is about Gaddafi agreeing to step down given certain conditions as seen here:\n&lt;a href=\"http://www.ynetnews.com/articles/0,7340,L-4038635,00.html\" &gt;http://www.ynetnews.com/articles/0,7340,L-4038635,00.html&lt;/a&gt;&lt;/p&gt;\n\n&lt;p&gt;It's an Israeli newspaper with little to no coverage of what is going on in Libya, yet its the at the top of /r/worldnews..... come on guys. If you're going to post something, especially something that important, google the headline. If you only find 2-3 articles and none of them have any real inside coverage of what is going on, don't post it or don't up vote it. We can at least try not to subject the reddit community to the same type of misinformation that Fox subjects the rest of the world to.&lt;/p&gt;&lt;/div&gt;&lt;!-- SC_ON --&gt;",
+                        "selftext": "This isn't actually news, but I find it annoying that /r/worldnews is usually full of news that isn't true or by people who do not have coverage in the area's they are reporting and instead are responding to rumors. For example the number one post right now is about Gaddafi agreeing to step down given certain conditions as seen here:\nhttp://www.ynetnews.com/articles/0,7340,L-4038635,00.html\n\nIt's an Israeli newspaper with little to no coverage of what is going on in Libya, yet its the at the top of /r/worldnews..... come on guys. If you're going to post something, especially something that important, google the headline. If you only find 2-3 articles and none of them have any real inside coverage of what is going on, don't post it or don't up vote it. We can at least try not to subject the reddit community to the same type of misinformation that Fox subjects the rest of the world to.",
+                        "likes": null,
+                        "saved": false,
+                        "id": "fz3z1",
+                        "clicked": false,
+                        "author": "omegacfx",
+                        "media": null,
+                        "score": 1137,
+                        "over_18": false,
+                        "hidden": false,
+                        "thumbnail": "",
+                        "subreddit_id": "t5_2qh13",
+                        "downs": 1501,
+                        "is_self": true,
+                        "permalink": "/r/worldnews/comments/fz3z1/please_research_before_posting/",
+                        "name": "t3_fz3z1",
+                        "created": 1299542037.0,
+                        "url": "http://www.reddit.com/r/worldnews/comments/fz3z1/please_research_before_posting/",
+                        "title": "Self 1 - PLEASE research before posting",
+                        "created_utc": 1299516837.0,
+                        "num_comments": 209,
+                        "ups": 2638
+                    }
+                }
+            ],
+            "after": null,
+            "before": null
+        }
+    },
+    {
+        "kind": "Listing",
+        "data": {
+            "modhash": "gynhik8z5h619f3e9463d4d10e8d347ddd6420fcf158d87cd7",
+            "children":
+                    [
+                        {
+                            "kind": "t1",
+                            "data": {
+                                "body": "LOL, that perked me up.  Thanks.  ",
+                                "subreddit_id": "t5_2qh13",
+                                "name": "t1_c1jqipy",
+                                "author": "corinroyal",
+                                "downs": 5,
+                                "created": 1299553051.0,
+                                "created_utc": 1299527851.0,
+                                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;",
+                                "levenshtein": null,
+                                "link_id": "t3_fz3z1",
+                                "parent_id": "t1_c1jq6yo",
+                                "likes": null,
+                                "replies": "",
+                                "id": "c1jqipy",
+                                "subreddit": "worldnews",
+                                "ups": 8
+                            }
+                        },
+                        {
+                            "kind": "t1",
+                            "data": {
+                                "body": "LOL1, that perked me up.  Thanks.  ",
+                                "subreddit_id": "t5_2qh13",
+                                "name": "t1_c1jqipy",
+                                "author": "corinroyal",
+                                "downs": 5,
+                                "created": 1299553051.0,
+                                "created_utc": 1299527851.0,
+                                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;",
+                                "levenshtein": null,
+                                "link_id": "t3_fz3z1",
+                                "parent_id": "t1_c1jq6yo",
+                                "likes": null,
+                                "replies": "",
+                                "id": "c1jqipy",
+                                "subreddit": "worldnews",
+                                "ups": 8
+                            }
+                        },
+                        {
+                            "kind": "t1",
+                            "data": {
+                                "body": "LOL2, that perked me up.  Thanks.  ",
+                                "subreddit_id": "t5_2qh13",
+                                "name": "t1_c1jqipy",
+                                "author": "corinroyal",
+                                "downs": 5,
+                                "created": 1299553051.0,
+                                "created_utc": 1299527851.0,
+                                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;",
+                                "levenshtein": null,
+                                "link_id": "t3_fz3z1",
+                                "parent_id": "t1_c1jq6yo",
+                                "likes": null,
+                                "replies": "",
+                                "id": "c1jqipy",
+                                "subreddit": "worldnews",
+                                "ups": 8
+                            }
+                        }
+                    ],
+            "after": null,
+            "before": null
+        }
     }
-}, 
-{
-    "kind": "Listing", 
-    "data": {
-        "modhash": "gynhik8z5h619f3e9463d4d10e8d347ddd6420fcf158d87cd7", 
-        "children": 
-        [{
-            "kind": "t1", 
-            "data": {
-                "body": "LOL, that perked me up.  Thanks.  ", 
-                "subreddit_id": "t5_2qh13", 
-                "name": "t1_c1jqipy",
-                "author": "corinroyal",
-                "downs": 5,
-                "created": 1299553051.0, 
-                "created_utc": 1299527851.0, 
-                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
-                "levenshtein": null, 
-                "link_id": "t3_fz3z1", 
-                "parent_id": "t1_c1jq6yo", 
-                "likes": null, 
-                "replies": "", 
-                "id": "c1jqipy", 
-                "subreddit": "worldnews", 
-                "ups": 8
-            }
-        },
-        {
-            "kind": "t1", 
-            "data": {
-                "body": "LOL1, that perked me up.  Thanks.  ", 
-                "subreddit_id": "t5_2qh13", 
-                "name": "t1_c1jqipy",
-                "author": "corinroyal",
-                "downs": 5,
-                "created": 1299553051.0, 
-                "created_utc": 1299527851.0, 
-                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
-                "levenshtein": null, 
-                "link_id": "t3_fz3z1", 
-                "parent_id": "t1_c1jq6yo", 
-                "likes": null, 
-                "replies": "", 
-                "id": "c1jqipy", 
-                "subreddit": "worldnews", 
-                "ups": 8
-            }
-        },
-        {
-            "kind": "t1", 
-            "data": {
-                "body": "LOL2, that perked me up.  Thanks.  ", 
-                "subreddit_id": "t5_2qh13", 
-                "name": "t1_c1jqipy",
-                "author": "corinroyal",
-                "downs": 5,
-                "created": 1299553051.0, 
-                "created_utc": 1299527851.0, 
-                "body_html": "&lt;div class=\"md\"&gt;&lt;p&gt;LOL, that perked me up.  Thanks.&lt;/p&gt;&lt;/div&gt;", 
-                "levenshtein": null, 
-                "link_id": "t3_fz3z1", 
-                "parent_id": "t1_c1jq6yo", 
-                "likes": null, 
-                "replies": "", 
-                "id": "c1jqipy", 
-                "subreddit": "worldnews", 
-                "ups": 8
-            }
-        }], 
-        "after": null, 
-        "before": null
-    }
-}]
+]

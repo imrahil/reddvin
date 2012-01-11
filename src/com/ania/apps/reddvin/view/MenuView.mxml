@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
-		xmlns:s="library://ns.adobe.com/flex/spark" title="Reddvin v{ApplicationConstants.REDDVIN_APP_VERSION}" currentState="landscapeLoggedOut">
-	
-	<fx:Script>
-		<![CDATA[
-			import com.ania.apps.reddvin.constants.ApplicationConstants;
-			
-			import org.osflash.signals.Signal;
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:s="library://ns.adobe.com/flex/spark" title="Reddvin v{ApplicationConstants.REDDVIN_APP_VERSION}"
+        currentState="landscapeLoggedOut">
 
-			public var loginBtnClickSignal:Signal = new Signal();
-			public var logoutBtnClickSignal:Signal = new Signal();
-			public var refreshBtnClickSignal:Signal = new Signal();
-			public var accountBtnClickSignal:Signal = new Signal();
-			public var settingsBtnClickSignal:Signal = new Signal();
-			
-			public var closePopupBtnClickSignal:Signal = new Signal();
-		]]>
-	</fx:Script>
-	
-	<s:states>
-		<s:State name="portraitLoggedIn" stateGroups="portrait, loggedIn"/>
-		<s:State name="portraitLoggedOut" stateGroups="portrait, loggedOut"/>
-		<s:State name="landscapeLoggedIn" stateGroups="landscape, loggedIn"/>
-		<s:State name="landscapeLoggedOut" stateGroups="landscape, loggedOut"/>
-	</s:states>
-	
-	<s:layout>
-		<s:VerticalLayout/>
-	</s:layout>
+    <fx:Script>
+        <![CDATA[
+        import com.ania.apps.reddvin.constants.ApplicationConstants;
 
-	<s:actionContent.landscape>
-		<s:Button icon="@Embed('/assets/images/paperplus.png')"/>
-	</s:actionContent.landscape>
+        import org.osflash.signals.Signal;
 
-	<s:actionContent.portrait>
-		<s:Button icon="@Embed('/assets/images/stop.png')" click="closePopupBtnClickSignal.dispatch()" height="40" chromeColor="#000000"/>
-	</s:actionContent.portrait>
+        public var loginBtnClickSignal:Signal = new Signal();
+        public var logoutBtnClickSignal:Signal = new Signal();
+        public var refreshBtnClickSignal:Signal = new Signal();
+        public var accountBtnClickSignal:Signal = new Signal();
+        public var settingsBtnClickSignal:Signal = new Signal();
 
-	<s:VGroup width="100%" height="100%" paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
-		<s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload.png')" iconPlacement="right" includeIn="loggedOut"
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
-				  click="loginBtnClickSignal.dispatch()"/>
-		
-		<s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download.png')" iconPlacement="right" includeIn="loggedIn"
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
-				  click="logoutBtnClickSignal.dispatch()"/>
-		
-		<s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange.png')" iconPlacement="right" 
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
-				  click="refreshBtnClickSignal.dispatch()"/>
-		
-		<s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/linedpaper.png')" iconPlacement="right"
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"/>
-		
-		<s:Button label="Account" width="100%" icon="@Embed('/assets/images/user.png')" iconPlacement="right" includeIn="loggedIn"
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
-				  click="accountBtnClickSignal.dispatch()"/>
-		
-		<s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner.png')" iconPlacement="right" includeIn="loggedIn"
-				  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
-				  click="settingsBtnClickSignal.dispatch()"/>
-	</s:VGroup>
+        public var closePopupBtnClickSignal:Signal = new Signal();
+        ]]>
+    </fx:Script>
+
+    <s:states>
+        <s:State name="portraitLoggedIn" stateGroups="portrait, loggedIn"/>
+        <s:State name="portraitLoggedOut" stateGroups="portrait, loggedOut"/>
+        <s:State name="landscapeLoggedIn" stateGroups="landscape, loggedIn"/>
+        <s:State name="landscapeLoggedOut" stateGroups="landscape, loggedOut"/>
+    </s:states>
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+
+    <s:actionContent.landscape>
+        <s:Button icon="@Embed('/assets/images/paperplus.png')"/>
+    </s:actionContent.landscape>
+
+    <s:actionContent.portrait>
+        <s:Button icon="@Embed('/assets/images/stop.png')" click="closePopupBtnClickSignal.dispatch()" height="40"
+                  chromeColor="#000000"/>
+    </s:actionContent.portrait>
+
+    <s:VGroup width="100%" height="100%" paddingLeft="15" paddingRight="15" paddingTop="15" paddingBottom="15">
+        <s:Button label="Login" width="100%" icon="@Embed('/assets/images/upload.png')" iconPlacement="right"
+                  includeIn="loggedOut"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="loginBtnClickSignal.dispatch()"/>
+
+        <s:Button label="Logout" width="100%" icon="@Embed('/assets/images/download.png')" iconPlacement="right"
+                  includeIn="loggedIn"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="logoutBtnClickSignal.dispatch()"/>
+
+        <s:Button label="Refresh" width="100%" icon="@Embed('/assets/images/exchange.png')" iconPlacement="right"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="refreshBtnClickSignal.dispatch()"/>
+
+        <s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/linedpaper.png')" iconPlacement="right"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"/>
+
+        <s:Button label="Account" width="100%" icon="@Embed('/assets/images/user.png')" iconPlacement="right"
+                  includeIn="loggedIn"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="accountBtnClickSignal.dispatch()"/>
+
+        <s:Button label="Settings" width="100%" icon="@Embed('/assets/images/spanner.png')" iconPlacement="right"
+                  includeIn="loggedIn"
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="settingsBtnClickSignal.dispatch()"/>
+    </s:VGroup>
 </s:View>

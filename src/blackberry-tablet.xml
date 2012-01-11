@@ -4,7 +4,9 @@
         <systemChrome>none</systemChrome>
         <transparent>false</transparent>
     </initialWindow>
-    <icon><image>reddvin-icon.png</image></icon>
+    <icon>
+        <image>reddvin-icon.png</image>
+    </icon>
     <splashscreen>reddvin-splash.png</splashscreen>
 
     <permission>access_internet</permission>

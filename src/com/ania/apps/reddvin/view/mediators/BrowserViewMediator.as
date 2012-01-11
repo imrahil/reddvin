@@ -33,20 +33,20 @@ package com.ania.apps.reddvin.view.mediators
         /** variables **/
         private var logger:ILogger;
 
-        /** 
-         * CONSTRUCTOR 
+        /**
+         * CONSTRUCTOR
          */
         public function BrowserViewMediator()
         {
             super();
-            
+
             logger = LogUtil.getLogger(this);
             logger.debug(": constructor");
         }
-        
-        /** 
-         * onRegister 
-         * Override the invoked of the <code>IMediator</code> and allow you to place your own initialization. 
+
+        /**
+         * onRegister
+         * Override the invoked of the <code>IMediator</code> and allow you to place your own initialization.
          */
         override public function onRegister():void
         {

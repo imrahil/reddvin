@@ -1,207 +1,240 @@
-[ { "data" : { "after" : null,
-        "before" : null,
-        "children" : [ { "data" : { "author" : "lorderunion",
-                  "clicked" : false,
-                  "created" : 1301274110.0,
-                  "created_utc" : 1301274110.0,
-                  "domain" : "self.baconreader",
-                  "downs" : 4,
-                  "hidden" : false,
-                  "id" : "gcsic",
-                  "is_self" : true,
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "media" : null,
-                  "media_embed" : {  },
-                  "name" : "t3_gcsic",
-                  "num_comments" : 8,
-                  "over_18" : false,
-                  "permalink" : "/r/baconreader/comments/gcsic/there_going_to_be_a_tabletoptimized_version/",
-                  "saved" : false,
-                  "score" : 18,
-                  "selftext" : "Just bought a Xoom and the existing Reddit options out there are kind of slim. baconreader looks incredible. And I want it.",
-                  "selftext_html" : "<!-- SC_OFF --><div class=\"md\"><p>Just bought a Xoom and the existing Reddit options out there are kind of slim. baconreader looks incredible. And I want it.</p></div><!-- SC_ON -->",
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "thumbnail" : "/static/self_default2.png",
-                  "title" : "There going to be a tablet-optimized version?",
-                  "ups" : 22,
-                  "url" : "http://www.reddit.com/r/baconreader/comments/gcsic/there_going_to_be_a_tabletoptimized_version/"
-                },
-              "kind" : "t3"
-            } ],
-        "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
-      },
-    "kind" : "Listing"
-  },
-  { "data" : { "after" : null,
-        "before" : null,
-        "children" : [ { "data" : { "author" : "rphillipps16",
-                  "body" : "I have a Nook. Please make one",
-                  "body_html" : "<div class=\"md\"><p>I have a Nook. Please make one</p></div>",
-                  "created" : 1301281103.0,
-                  "created_utc" : 1301281103.0,
-                  "downs" : 0,
-                  "id" : "c1mmymd",
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "link_id" : "t3_gcsic",
-                  "name" : "t1_c1mmymd",
-                  "parent_id" : "t3_gcsic",
-                  "replies" : "",
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "ups" : 4
-                },
-              "kind" : "t1"
-            },
-            { "data" : { "author" : "jthom203",
-                  "body" : "I also have a xoom, and would  really like to see this.\n",
-                  "body_html" : "<div class=\"md\"><p>I also have a xoom, and would  really like to see this.</p></div>",
-                  "created" : 1301321397.0,
-                  "created_utc" : 1301321397.0,
-                  "downs" : 0,
-                  "id" : "c1mounf",
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "link_id" : "t3_gcsic",
-                  "name" : "t1_c1mounf",
-                  "parent_id" : "t3_gcsic",
-                  "replies" : "",
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "ups" : 1
-                },
-              "kind" : "t1"
-            },
-            { "data" : { "author" : "GreyFoxSolid",
-                  "body" : "I gave a xoom also, and would like baconreader on it.",
-                  "body_html" : "<div class=\"md\"><p>I gave a xoom also, and would like baconreader on it.</p></div>",
-                  "created" : 1301355114.0,
-                  "created_utc" : 1301355114.0,
-                  "downs" : 0,
-                  "id" : "c1mroj1",
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "link_id" : "t3_gcsic",
-                  "name" : "t1_c1mroj1",
-                  "parent_id" : "t3_gcsic",
-                  "replies" : "",
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "ups" : 1
-                },
-              "kind" : "t1"
-            },
-            { "data" : { "author" : "lib3rty4us",
-                  "body" : "a other xoom owner, I would pay for a a tablet optimized version. if any other xoom owners see this check out f5 its a tablet reddit app",
-                  "body_html" : "<div class=\"md\"><p>a other xoom owner, I would pay for a a tablet optimized version. if any other xoom owners see this check out f5 its a tablet reddit app</p></div>",
-                  "created" : 1301356173.0,
-                  "created_utc" : 1301356173.0,
-                  "downs" : 0,
-                  "id" : "c1mrruw",
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "link_id" : "t3_gcsic",
-                  "name" : "t1_c1mrruw",
-                  "parent_id" : "t3_gcsic",
-                  "replies" : { "data" : { "after" : null,
-                          "before" : null,
-                          "children" : [ { "data" : { "author" : "lorderunion",
-                                    "body" : "I want to like f5, but the theme scalds my eyes. Growing tired of every android app developer thinking that we all want black on black themes and only that.",
-                                    "body_html" : "<div class=\"md\"><p>I want to like f5, but the theme scalds my eyes. Growing tired of every android app developer thinking that we all want black on black themes and only that.</p></div>",
-                                    "created" : 1301374566.0,
-                                    "created_utc" : 1301374566.0,
-                                    "downs" : 0,
-                                    "id" : "c1mt9cp",
-                                    "levenshtein" : null,
-                                    "likes" : null,
-                                    "link_id" : "t3_gcsic",
-                                    "name" : "t1_c1mt9cp",
-                                    "parent_id" : "t1_c1mrruw",
-                                    "replies" : { "data" : { "after" : null,
-                                            "before" : null,
-                                            "children" : [ { "data" : { "author" : "Zenlawl",
-                                                      "body" : "Tried it out earlier and thought the exact same :/",
-                                                      "body_html" : "<div class=\"md\"><p>Tried it out earlier and thought the exact same :/</p></div>",
-                                                      "created" : 1301438753.0,
-                                                      "created_utc" : 1301438753.0,
-                                                      "downs" : 0,
-                                                      "id" : "c1mxkrl",
-                                                      "levenshtein" : null,
-                                                      "likes" : null,
-                                                      "link_id" : "t3_gcsic",
-                                                      "name" : "t1_c1mxkrl",
-                                                      "parent_id" : "t1_c1mt9cp",
-                                                      "replies" : "",
-                                                      "subreddit" : "baconreader",
-                                                      "subreddit_id" : "t5_2sbiz",
-                                                      "ups" : 1
-                                                    },
-                                                  "kind" : "t1"
-                                                } ],
-                                            "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
-                                          },
-                                        "kind" : "Listing"
-                                      },
-                                    "subreddit" : "baconreader",
-                                    "subreddit_id" : "t5_2sbiz",
-                                    "ups" : 3
-                                  },
-                                "kind" : "t1"
-                              },
-                              { "data" : { "author" : "jthom203",
-                                    "body" : "I have been using f5 today. I really like it.",
-                                    "body_html" : "<div class=\"md\"><p>I have been using f5 today. I really like it.</p></div>",
-                                    "created" : 1301359286.0,
-                                    "created_utc" : 1301359286.0,
-                                    "downs" : 0,
-                                    "id" : "c1ms1j7",
-                                    "levenshtein" : null,
-                                    "likes" : null,
-                                    "link_id" : "t3_gcsic",
-                                    "name" : "t1_c1ms1j7",
-                                    "parent_id" : "t1_c1mrruw",
-                                    "replies" : "",
-                                    "subreddit" : "baconreader",
-                                    "subreddit_id" : "t5_2sbiz",
-                                    "ups" : 2
-                                  },
-                                "kind" : "t1"
-                              }
-                            ],
-                          "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
-                        },
-                      "kind" : "Listing"
+[
+    {
+        "data" : {
+            "after" : null,
+            "before" : null,
+            "children" : [
+                {
+                    "data" : {
+                        "author" : "lorderunion",
+                        "clicked" : false,
+                        "created" : 1301274110.0,
+                        "created_utc" : 1301274110.0,
+                        "domain" : "self.baconreader",
+                        "downs" : 4,
+                        "hidden" : false,
+                        "id" : "gcsic",
+                        "is_self" : true,
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "media" : null,
+                        "media_embed" : {  },
+                        "name" : "t3_gcsic",
+                        "num_comments" : 8,
+                        "over_18" : false,
+                        "permalink" : "/r/baconreader/comments/gcsic/there_going_to_be_a_tabletoptimized_version/",
+                        "saved" : false,
+                        "score" : 18,
+                        "selftext" : "Just bought a Xoom and the existing Reddit options out there are kind of slim. baconreader looks incredible. And I want it.",
+                        "selftext_html" : "<!-- SC_OFF --><div class=\"md\"><p>Just bought a Xoom and the existing Reddit options out there are kind of slim. baconreader looks incredible. And I want it.</p></div><!-- SC_ON -->",
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "thumbnail" : "/static/self_default2.png",
+                        "title" : "There going to be a tablet-optimized version?",
+                        "ups" : 22,
+                        "url" : "http://www.reddit.com/r/baconreader/comments/gcsic/there_going_to_be_a_tabletoptimized_version/"
                     },
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "ups" : 3
+                    "kind" : "t3"
+                }
+            ],
+            "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
+        },
+        "kind" : "Listing"
+    },
+    {
+        "data" : {
+            "after" : null,
+            "before" : null,
+            "children" : [
+                {
+                    "data" : {
+                        "author" : "rphillipps16",
+                        "body" : "I have a Nook. Please make one",
+                        "body_html" : "<div class=\"md\"><p>I have a Nook. Please make one</p></div>",
+                        "created" : 1301281103.0,
+                        "created_utc" : 1301281103.0,
+                        "downs" : 0,
+                        "id" : "c1mmymd",
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "link_id" : "t3_gcsic",
+                        "name" : "t1_c1mmymd",
+                        "parent_id" : "t3_gcsic",
+                        "replies" : "",
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "ups" : 4
+                    },
+                    "kind" : "t1"
                 },
-              "kind" : "t1"
-            },
-            { "data" : { "author" : "HideYoKids",
-                  "body" : "I preordered mine last week and completely agree but let the man breath! Im sure he is already working his ass off .",
-                  "body_html" : "<div class=\"md\"><p>I preordered mine last week and completely agree but let the man breath! Im sure he is already working his ass off .</p></div>",
-                  "created" : 1301356629.0,
-                  "created_utc" : 1301356629.0,
-                  "downs" : 0,
-                  "id" : "c1mrtcq",
-                  "levenshtein" : null,
-                  "likes" : null,
-                  "link_id" : "t3_gcsic",
-                  "name" : "t1_c1mrtcq",
-                  "parent_id" : "t3_gcsic",
-                  "replies" : "",
-                  "subreddit" : "baconreader",
-                  "subreddit_id" : "t5_2sbiz",
-                  "ups" : 1
+                {
+                    "data" : {
+                        "author" : "jthom203",
+                        "body" : "I also have a xoom, and would  really like to see this.\n",
+                        "body_html" : "<div class=\"md\"><p>I also have a xoom, and would  really like to see this.</p></div>",
+                        "created" : 1301321397.0,
+                        "created_utc" : 1301321397.0,
+                        "downs" : 0,
+                        "id" : "c1mounf",
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "link_id" : "t3_gcsic",
+                        "name" : "t1_c1mounf",
+                        "parent_id" : "t3_gcsic",
+                        "replies" : "",
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "ups" : 1
+                    },
+                    "kind" : "t1"
                 },
-              "kind" : "t1"
-            }
-          ],
-        "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
-      },
-    "kind" : "Listing"
-  }
+                {
+                    "data" : {
+                        "author" : "GreyFoxSolid",
+                        "body" : "I gave a xoom also, and would like baconreader on it.",
+                        "body_html" : "<div class=\"md\"><p>I gave a xoom also, and would like baconreader on it.</p></div>",
+                        "created" : 1301355114.0,
+                        "created_utc" : 1301355114.0,
+                        "downs" : 0,
+                        "id" : "c1mroj1",
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "link_id" : "t3_gcsic",
+                        "name" : "t1_c1mroj1",
+                        "parent_id" : "t3_gcsic",
+                        "replies" : "",
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "ups" : 1
+                    },
+                    "kind" : "t1"
+                },
+                {
+                    "data" : {
+                        "author" : "lib3rty4us",
+                        "body" : "a other xoom owner, I would pay for a a tablet optimized version. if any other xoom owners see this check out f5 its a tablet reddit app",
+                        "body_html" : "<div class=\"md\"><p>a other xoom owner, I would pay for a a tablet optimized version. if any other xoom owners see this check out f5 its a tablet reddit app</p></div>",
+                        "created" : 1301356173.0,
+                        "created_utc" : 1301356173.0,
+                        "downs" : 0,
+                        "id" : "c1mrruw",
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "link_id" : "t3_gcsic",
+                        "name" : "t1_c1mrruw",
+                        "parent_id" : "t3_gcsic",
+                        "replies" : {
+                            "data" : {
+                                "after" : null,
+                                "before" : null,
+                                "children" : [
+                                    {
+                                        "data" : {
+                                            "author" : "lorderunion",
+                                            "body" : "I want to like f5, but the theme scalds my eyes. Growing tired of every android app developer thinking that we all want black on black themes and only that.",
+                                            "body_html" : "<div class=\"md\"><p>I want to like f5, but the theme scalds my eyes. Growing tired of every android app developer thinking that we all want black on black themes and only that.</p></div>",
+                                            "created" : 1301374566.0,
+                                            "created_utc" : 1301374566.0,
+                                            "downs" : 0,
+                                            "id" : "c1mt9cp",
+                                            "levenshtein" : null,
+                                            "likes" : null,
+                                            "link_id" : "t3_gcsic",
+                                            "name" : "t1_c1mt9cp",
+                                            "parent_id" : "t1_c1mrruw",
+                                            "replies" : {
+                                                "data" : {
+                                                    "after" : null,
+                                                    "before" : null,
+                                                    "children" : [
+                                                        {
+                                                            "data" : {
+                                                                "author" : "Zenlawl",
+                                                                "body" : "Tried it out earlier and thought the exact same :/",
+                                                                "body_html" : "<div class=\"md\"><p>Tried it out earlier and thought the exact same :/</p></div>",
+                                                                "created" : 1301438753.0,
+                                                                "created_utc" : 1301438753.0,
+                                                                "downs" : 0,
+                                                                "id" : "c1mxkrl",
+                                                                "levenshtein" : null,
+                                                                "likes" : null,
+                                                                "link_id" : "t3_gcsic",
+                                                                "name" : "t1_c1mxkrl",
+                                                                "parent_id" : "t1_c1mt9cp",
+                                                                "replies" : "",
+                                                                "subreddit" : "baconreader",
+                                                                "subreddit_id" : "t5_2sbiz",
+                                                                "ups" : 1
+                                                            },
+                                                            "kind" : "t1"
+                                                        }
+                                                    ],
+                                                    "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
+                                                },
+                                                "kind" : "Listing"
+                                            },
+                                            "subreddit" : "baconreader",
+                                            "subreddit_id" : "t5_2sbiz",
+                                            "ups" : 3
+                                        },
+                                        "kind" : "t1"
+                                    },
+                                    {
+                                        "data" : {
+                                            "author" : "jthom203",
+                                            "body" : "I have been using f5 today. I really like it.",
+                                            "body_html" : "<div class=\"md\"><p>I have been using f5 today. I really like it.</p></div>",
+                                            "created" : 1301359286.0,
+                                            "created_utc" : 1301359286.0,
+                                            "downs" : 0,
+                                            "id" : "c1ms1j7",
+                                            "levenshtein" : null,
+                                            "likes" : null,
+                                            "link_id" : "t3_gcsic",
+                                            "name" : "t1_c1ms1j7",
+                                            "parent_id" : "t1_c1mrruw",
+                                            "replies" : "",
+                                            "subreddit" : "baconreader",
+                                            "subreddit_id" : "t5_2sbiz",
+                                            "ups" : 2
+                                        },
+                                        "kind" : "t1"
+                                    }
+                                ],
+                                "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
+                            },
+                            "kind" : "Listing"
+                        },
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "ups" : 3
+                    },
+                    "kind" : "t1"
+                },
+                {
+                    "data" : {
+                        "author" : "HideYoKids",
+                        "body" : "I preordered mine last week and completely agree but let the man breath! Im sure he is already working his ass off .",
+                        "body_html" : "<div class=\"md\"><p>I preordered mine last week and completely agree but let the man breath! Im sure he is already working his ass off .</p></div>",
+                        "created" : 1301356629.0,
+                        "created_utc" : 1301356629.0,
+                        "downs" : 0,
+                        "id" : "c1mrtcq",
+                        "levenshtein" : null,
+                        "likes" : null,
+                        "link_id" : "t3_gcsic",
+                        "name" : "t1_c1mrtcq",
+                        "parent_id" : "t3_gcsic",
+                        "replies" : "",
+                        "subreddit" : "baconreader",
+                        "subreddit_id" : "t5_2sbiz",
+                        "ups" : 1
+                    },
+                    "kind" : "t1"
+                }
+            ],
+            "modhash" : "q46jqe1xbra6a1d88e17f1cf30d9d61f0a265715c9d178d54a"
+        },
+        "kind" : "Listing"
+    }
 ]

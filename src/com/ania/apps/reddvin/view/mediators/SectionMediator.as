@@ -1,10 +1,10 @@
 /*
-Copyright (c) 2012 Anna Dabrowska, All Rights Reserved 
-@author   Anna Dabrowska
-@contact  dabrowskaanna@wp.pl
-@project  Reddvin
-@internal 
-*/
+ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
+ @author   Anna Dabrowska
+ @contact  ania.blackberry@gmail.com
+ @project  Reddvin
+ @internal
+ */
 package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.model.vo.RedditVO;
@@ -31,19 +31,19 @@ package com.ania.apps.reddvin.view.mediators
          * VIEW
          */
         [Inject]
-        public var view:SectionView;		
-        
+        public var view:SectionView;
+
         /**
          * SIGNALTONS
          */
-		[Inject]
-		public var sectionChanged:SectionChangedSignal;        
-  
-		[Inject]
-		public var displayPopupMenuSignal:DisplayPopupMenuSignal;
+        [Inject]
+        public var sectionChanged:SectionChangedSignal;
 
-		[Inject]
-		public var displayActivityIndicator:DisplayActivityIndicatorSignal;        
+        [Inject]
+        public var displayPopupMenuSignal:DisplayPopupMenuSignal;
+
+        [Inject]
+        public var displayActivityIndicator:DisplayActivityIndicatorSignal;
 
         [Inject]
         public var displayUrl:DisplayUrlSignal;
@@ -51,90 +51,90 @@ package com.ania.apps.reddvin.view.mediators
         /**
          * SIGNAL -> COMMAND
          */
-		[Inject]
-		public var refreshSignal:RefreshSignal;        
-		
-		[Inject]
-		public var changeSortSignal:ChangeSortSignal;        
-		
-	
-		[Inject]
-		public var getItem:GetItemSignal;
-        
+        [Inject]
+        public var refreshSignal:RefreshSignal;
+
+        [Inject]
+        public var changeSortSignal:ChangeSortSignal;
+
+
+        [Inject]
+        public var getItem:GetItemSignal;
+
 
         /** variables **/
-		private var logger:ILogger;
-		private var showLink:Boolean = false;
+        private var logger:ILogger;
+        private var showLink:Boolean = false;
 
-		/** 
-		 * CONSTRUCTOR 
-		 */		
-		public function SectionMediator()
-		{
-			super();
-			
-			logger = LogUtil.getLogger(this);
-			logger.debug(": constructor");
-		}
+        /**
+         * CONSTRUCTOR
+         */
+        public function SectionMediator()
+        {
+            super();
 
-		/** 
-         * onRegister 
-         * Override the invoked of the <code>IMediator</code> and allow you to place your own initialization. 
-         */		
+            logger = LogUtil.getLogger(this);
+            logger.debug(": constructor");
+        }
+
+        /**
+         * onRegister
+         * Override the invoked of the <code>IMediator</code> and allow you to place your own initialization.
+         */
         override public function onRegister():void
         {
-			logger.debug(": onRegister");
+            logger.debug(": onRegister");
 
             // view listeners
-			view.menuButtonClickSignal.add(onMenuButtonClicked);
-			view.sortChangeSignal.add(onSortChanged);
+            view.menuButtonClickSignal.add(onMenuButtonClicked);
+            view.sortChangeSignal.add(onSortChanged);
 
             view.iconClickSignal.add(onIconClicked);
             view.listItemClickSignal.add(onListItemClicked);
 
             // signals listeners
-			sectionChanged.add(onSectionChanged);
-			displayActivityIndicator.add(displayBusyIndicator);
-	
-			logger.debug(": sending refresh signal");
-			refreshSignal.dispatch();
-		}
+            sectionChanged.add(onSectionChanged);
+            displayActivityIndicator.add(displayBusyIndicator);
 
-		/**
-		 * Remove all listeners from sectionChange signal when removing from stage 
-		 */
-		override public function onRemove():void
-		{
-			sectionChanged.removeAll();	
-		}
-		
-        /** methods **/		
+            logger.debug(": sending refresh signal");
+            refreshSignal.dispatch();
+        }
 
-		/**
-		 * Menu button handler - in portrait mode only 
-		 * @param owner
-		 */
-		private function onMenuButtonClicked(owner:Button):void
-		{
-			displayPopupMenuSignal.dispatch(owner);
-		}
-		
-		/**
-		 * Sort button change handler 
-		 */
-		private function onSortChanged(sortOrder:String):void
-		{
-			changeSortSignal.dispatch(sortOrder);
-		}
+        /**
+         * Remove all listeners from sectionChange signal when removing from stage
+         */
+        override public function onRemove():void
+        {
+            sectionChanged.removeAll();
+        }
+
+        /** methods **/
+
+        /**
+         * Menu button handler - in portrait mode only
+         * @param owner
+         */
+        private function onMenuButtonClicked(owner:Button):void
+        {
+            displayPopupMenuSignal.dispatch(owner);
+        }
+
+        /**
+         * Sort button change handler
+         */
+        private function onSortChanged(sortOrder:String):void
+        {
+            changeSortSignal.dispatch(sortOrder);
+        }
 
         private function onIconClicked():void
         {
             showLink = true;
         }
 
-		private function onListItemClicked():void
-		{
-			logger.debug(":onListItemClickedk");
+        private function onListItemClicked():void
+        {
+            logger.debug(":onListItemClickedk");
 
             if (view.sectionList.selectedItem)
             {
@@ -152,20 +152,21 @@ package com.ania.apps.reddvin.view.mediators
                     getItem.dispatch(item);
                 }
             }
-		}
-		
-		private function onSectionChanged(items:ArrayList):void 
-		{
-			logger.debug(": onSectionChanged");
+        }
 
-			view.busyIndicator.visible = false;;      
+        private function onSectionChanged(items:ArrayList):void
+        {
+            logger.debug(": onSectionChanged");
 
-			view.sectionList.dataProvider = items;
-		}
-		
-		private function displayBusyIndicator(state:Boolean):void
-		{
-			view.busyIndicator.visible = state;
-		}
+            view.busyIndicator.visible = false;
+            ;
+
+            view.sectionList.dataProvider = items;
+        }
+
+        private function displayBusyIndicator(state:Boolean):void
+        {
+            view.busyIndicator.visible = state;
+        }
     }
 }

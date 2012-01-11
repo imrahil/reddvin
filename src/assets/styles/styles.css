@@ -1,31 +1,28 @@
 /* CSS file */
 @namespace s "library://ns.adobe.com/flex/spark";
 
-s|ActionBar
-{
-	chromeColor: #EEEEEE;
+s|ActionBar {
+    chromeColor: #EEEEEE;
 }
 
-s|ActionBar #titleDisplay, s|ActionBar s|Button
-{
-	color: #343434;
-	textShadowAlpha: 0;
+s|ActionBar #titleDisplay, s|ActionBar s|Button {
+    color: #343434;
+    textShadowAlpha: 0;
 }
 
-s|Callout #titleDisplay 
-{
-	color: #FFFFFF;
+s|Callout #titleDisplay {
+    color: #FFFFFF;
 }
 
 .myItemStyle {
-	fontSize: 18;
-	paddingTop: 15;
-	verticalAlign: top;
-	verticalGap: 8;
-	messageStyleName: myItemMessageStyle;
+    fontSize: 18;
+    paddingTop: 15;
+    verticalAlign: top;
+    verticalGap: 8;
+    messageStyleName: myItemMessageStyle;
 }
 
 .myItemMessageStyle {
-	fontSize: 12;
-	color: #666666;
+    fontSize: 12;
+    color: #666666;
 }

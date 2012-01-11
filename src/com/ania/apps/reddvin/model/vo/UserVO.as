@@ -1,11 +1,10 @@
 /*
-Copyright (c) 2012 Anna Dabrowska, All Rights Reserved 
-@author   Anna Dabrowska
-@contact  dabrowskaanna@wp.pl
-@project  Reddvin
-@internal 
-*/
-
+ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
+ @author   Anna Dabrowska
+ @contact  ania.blackberry@gmail.com
+ @project  Reddvin
+ @internal
+ */
 package com.ania.apps.reddvin.model.vo
 {
     [Bindable]
@@ -14,14 +13,14 @@ package com.ania.apps.reddvin.model.vo
      * Defines the <code>UserVO<code> Value Object implementation
      *
      */
-	public class UserVO
-	{
-		public function UserVO() 
-		{
-		}
-		
-		public var username:String;
-		public var password:String;
-		public var rememberMe:Boolean;
-	}
+    public class UserVO
+    {
+        public function UserVO()
+        {
+        }
+
+        public var username:String;
+        public var password:String;
+        public var rememberMe:Boolean;
+    }
 }
