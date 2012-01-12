@@ -7,7 +7,6 @@
  */
 package com.ania.apps.reddvin.controller
 {
-    import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.services.IRedditService;
 
@@ -21,9 +20,6 @@ package com.ania.apps.reddvin.controller
 
         /** INJECTIONS **/
         [Inject]
-        public var redditModel:RedditModel;
-
-        [Inject]
         public var redditService:IRedditService;
 
         /**
@@ -33,14 +29,7 @@ package com.ania.apps.reddvin.controller
         {
             if (selectedItem)
             {
-                if (redditModel.loggedIn)
-                {
-                    redditService.getReddit(selectedItem.id, redditModel.session.cookie);
-                }
-                else
-                {
-                    redditService.getReddit(selectedItem.id);
-                }
+                redditService.getReddit(selectedItem.id);
             }
         }
     }

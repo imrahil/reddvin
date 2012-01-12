@@ -15,16 +15,16 @@ package com.ania.apps.reddvin.services
     {
         function login(userVO:UserVO):void;
 
-        function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void;
+        function getSection(path:String = "", sortOrder:String = ""):void;
 
-        function getReddit(id:String, cookie:String = ""):void;
+        function getReddit(id:String):void;
 
 
         function getUserInfo():void;
 
         function getUserSubreddits():void;
 
-        function vote(vote:VoteVO, cookie:String):void;
+        function vote(vote:VoteVO):void;
 
 
         // inject

@@ -10,6 +10,7 @@ package com.ania.apps.reddvin.controller
     import com.ania.apps.reddvin.constants.ApplicationConstants;
     import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.model.vo.SessionVO;
+    import com.ania.apps.reddvin.signals.GetUserInfoSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
     import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
@@ -23,14 +24,15 @@ package com.ania.apps.reddvin.controller
 
     public final class StartupCommand extends SignalCommand
     {
-        /** PARAMETERS **/
-
         /** INJECTIONS **/
         [Inject]
         public var redditModel:RedditModel;
 
         [Inject]
         public var displayActivityIndicator:DisplayActivityIndicatorSignal;
+
+        [Inject]
+        public var getUserInfoSignal:GetUserInfoSignal;
 
         [Inject]
         public var loginStatusSignal:LoginStatusSignal;
@@ -69,6 +71,9 @@ package com.ania.apps.reddvin.controller
                 redditModel.session.cookie = String(sessionSO.data.cookie);
 
                 redditModel.loggedIn = true;
+
+                // dispatch GetUserInfoSignal to retrieve user's details
+                getUserInfoSignal.dispatch();
 
                 loginStatusSignal.dispatch(true);
             }

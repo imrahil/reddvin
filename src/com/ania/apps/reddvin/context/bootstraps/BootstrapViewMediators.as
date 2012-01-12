@@ -23,6 +23,8 @@ package com.ania.apps.reddvin.context.bootstraps
 
             mediatorMap.mapView(LoginForm, LoginFormMediator);
             mediatorMap.mapView(BrowserView, BrowserViewMediator);
+            mediatorMap.mapView(UserInfoView, UserInfoMediator);
+            mediatorMap.mapView(SubredditsView, SubredditsMediator);
 
 //            mediatorMap.mapView(SingleItemView, SingleItemMediator);
         }

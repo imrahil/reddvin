@@ -9,7 +9,7 @@ package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.model.vo.UserVO;
     import com.ania.apps.reddvin.signals.LoginSignal;
-    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
     import com.ania.apps.reddvin.view.LoginForm;
 
@@ -35,7 +35,7 @@ package com.ania.apps.reddvin.view.mediators
          * SIGNALTONS
          */
         [Inject]
-        public var displayLoginForm:DisplayLoginForm;
+        public var displayLoginForm:DisplayLoginFormSignal;
 
 
         /** variables **/

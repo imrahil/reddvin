@@ -7,12 +7,12 @@
  */
 package com.ania.apps.reddvin.model.vo
 {
-    [Bindable]
     /**
      *
      * Defines the <code>RedditVO<code> Value Object implementation
      *
      */
+    [Bindable]
     public class RedditVO extends BaseVO
     {
         public function RedditVO()

@@ -9,7 +9,8 @@ package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.signals.LogoutSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
-    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.HidePopupMenuSignal;
     import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
     import com.ania.apps.reddvin.signals.signaltons.ResizeSignal;
@@ -47,7 +48,10 @@ package com.ania.apps.reddvin.view.mediators
         public var loginStatusSignal:LoginStatusSignal;
 
         [Inject]
-        public var displayLoginForm:DisplayLoginForm;
+        public var displayLoginForm:DisplayLoginFormSignal;
+
+        [Inject]
+        public var displayUserInfoSignal:DisplayUserInfoSignal;
 
         [Inject]
         public var hidePopupMenuSignal:HidePopupMenuSignal;
@@ -122,7 +126,7 @@ package com.ania.apps.reddvin.view.mediators
 
         private function onAccountBtnClicked():void
         {
-            // TODO
+            displayUserInfoSignal.dispatch(true);
         }
 
         private function onSettingsBtnClicked():void

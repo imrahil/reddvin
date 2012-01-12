@@ -7,12 +7,12 @@
  */
 package com.ania.apps.reddvin.model.vo
 {
-    [Bindable]
     /**
      *
      * Defines the <code>UserVO<code> Value Object implementation
      *
      */
+    [Bindable]
     public class UserVO
     {
         public function UserVO()
@@ -22,5 +22,12 @@ package com.ania.apps.reddvin.model.vo
         public var username:String;
         public var password:String;
         public var rememberMe:Boolean;
+
+        public var has_mail:Boolean;
+        public var link_karma:int;
+        public var comment_karma:int;
+        public var is_gold:Boolean;
+        public var is_mod:Boolean;
+        public var has_mod_mail:Boolean;
     }
 }

@@ -22,8 +22,10 @@ package com.ania.apps.reddvin.context.bootstraps
 
             injector.mapSingleton(DisplayItemSignal);
             injector.mapSingleton(DisplayActivityIndicatorSignal);
-            injector.mapSingleton(DisplayLoginForm);
+            injector.mapSingleton(DisplayLoginFormSignal);
             injector.mapSingleton(DisplayUrlSignal);
+
+            injector.mapSingleton(DisplayUserInfoSignal);
 
             injector.mapSingleton(DisplayPopupMenuSignal);
             injector.mapSingleton(HidePopupMenuSignal);

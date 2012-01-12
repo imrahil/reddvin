@@ -7,6 +7,7 @@
  */
 package com.ania.apps.reddvin.model.vo
 {
+    [Bindable]
     public class BaseVO
     {
         public function BaseVO()

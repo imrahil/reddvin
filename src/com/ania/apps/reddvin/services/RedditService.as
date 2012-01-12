@@ -13,14 +13,11 @@ package com.ania.apps.reddvin.services
     import com.ania.apps.reddvin.utils.LogUtil;
 
     import flash.events.Event;
-    import flash.events.HTTPStatusEvent;
     import flash.net.URLLoader;
     import flash.net.URLRequest;
     import flash.net.URLRequestHeader;
     import flash.net.URLRequestMethod;
     import flash.net.URLVariables;
-
-    import mx.core.mx_internal;
 
     public class RedditService extends RedditServiceBase
     {
@@ -48,8 +45,7 @@ package com.ania.apps.reddvin.services
             urlRequest.userAgent = userAgent;
             urlRequest.manageCookies = false;
 
-            var url:String = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/login/" + userVO.username;
-            urlRequest.url = url;
+            urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/login/" + userVO.username;;
             urlRequest.method = URLRequestMethod.POST;
 
             var variables:URLVariables = new URLVariables();
@@ -67,7 +63,7 @@ package com.ania.apps.reddvin.services
         /**
          * GET SECTION
          */
-        override public function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void
+        override public function getSection(path:String = "", sortOrder:String = ""):void
         {
             logger.debug(": getSection - path: " + path + ", sortOrder: " + sortOrder);
 
@@ -96,11 +92,11 @@ package com.ania.apps.reddvin.services
 
             logger.debug(": url: " + url);
 
-            if (cookie != "")
+            if (redditModel.loggedIn && redditModel.session.cookie != "")
             {
-                logger.debug(": cookie: " + cookie);
+                logger.debug(": cookie: " + redditModel.session.cookie);
 
-                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + cookie);
+                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];
             }
 
@@ -113,7 +109,7 @@ package com.ania.apps.reddvin.services
         /**
          * GET REDDIT
          */
-        override public function getReddit(id:String, cookie:String = ""):void
+        override public function getReddit(id:String):void
         {
             logger.debug(" : getReddit");
 
@@ -124,11 +120,11 @@ package com.ania.apps.reddvin.services
 
             urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/comments/" + id + ApplicationConstants.REDDIT_API_EXTENSION + "?limit=" + ApplicationConstants.REDDIT_API_LIMIT;
 
-            if (cookie != "")
+            if (redditModel.loggedIn && redditModel.session.cookie != "")
             {
-                logger.debug(": cookie: " + cookie);
+                logger.debug(": cookie: " + redditModel.session.cookie);
 
-                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + cookie);
+                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];
             }
 
@@ -139,9 +135,73 @@ package com.ania.apps.reddvin.services
         }
 
         /**
+         * GET USER INFO
+         */
+        override public function getUserInfo():void
+        {
+            if (redditModel.loggedIn)
+            {
+                logger.debug(" : getUserInfo");
+
+                var loader:URLLoader = new URLLoader();
+                var urlRequest:URLRequest = new URLRequest();
+                urlRequest.userAgent = userAgent;
+                urlRequest.manageCookies = false;
+
+                urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/me" + ApplicationConstants.REDDIT_API_EXTENSION;
+
+                logger.debug(": cookie: " + redditModel.session.cookie);
+
+                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
+                urlRequest.requestHeaders = [cookieHeader];
+
+                loader.addEventListener(Event.COMPLETE, handleUserInfoLoadComplete);
+                addLoaderListeners(loader);
+
+                loader.load(urlRequest);
+            }
+            else
+            {
+                logger.error("Not authorized!")
+            }
+        }
+
+        /**
+         * GET USER SUBREDDITS
+         */
+        override public function getUserSubreddits():void
+        {
+            if (redditModel.loggedIn)
+            {
+                logger.debug(" : getUserSubreddits");
+
+                var loader:URLLoader = new URLLoader();
+                var urlRequest:URLRequest = new URLRequest();
+                urlRequest.userAgent = userAgent;
+                urlRequest.manageCookies = false;
+
+                urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/reddits/mine" + ApplicationConstants.REDDIT_API_EXTENSION;
+
+                logger.debug(": cookie: " + redditModel.session.cookie);
+
+                var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
+                urlRequest.requestHeaders = [cookieHeader];
+
+                loader.addEventListener(Event.COMPLETE, handleUserSubredditsLoadComplete);
+                addLoaderListeners(loader);
+
+                loader.load(urlRequest);
+            }
+            else
+            {
+                logger.error("Not authorized!")
+            }
+        }
+
+        /**
          * VOTE
          */
-        override public function vote(vote:VoteVO, cookie:String):void
+        override public function vote(vote:VoteVO):void
         {
 //			logger.debug(" : vote - itemId: " + vote.itemId + ", dir: " + vote.direction + ", modhash: " + vote.modhash);
 //

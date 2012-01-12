@@ -19,8 +19,6 @@ package com.ania.apps.reddvin.controller
 
     public final class RefreshCommand extends SignalCommand
     {
-        /** PARAMETERS **/
-
         /** INJECTIONS **/
         [Inject]
         public var redditModel:RedditModel;
@@ -72,28 +70,14 @@ package com.ania.apps.reddvin.controller
 
         private function updateSection():void
         {
-            if (redditModel.loggedIn)
-            {
-                redditService.getSection(redditModel.selectedSubreddit, redditModel.sortOrder, redditModel.session.cookie);
-            }
-            else
-            {
-                redditService.getSection(redditModel.selectedSubreddit, redditModel.sortOrder);
-            }
+            redditService.getSection(redditModel.selectedSubreddit, redditModel.sortOrder);
         }
 
         private function updateItem():void
         {
             if (redditModel.item)
             {
-                if (redditModel.loggedIn)
-                {
-                    redditService.getReddit(redditModel.item.id, redditModel.session.cookie);
-                }
-                else
-                {
-                    redditService.getReddit(redditModel.item.id);
-                }
+                redditService.getReddit(redditModel.item.id);
             }
         }
     }

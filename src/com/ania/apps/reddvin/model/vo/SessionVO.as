@@ -7,12 +7,12 @@
  */
 package com.ania.apps.reddvin.model.vo
 {
-    [Bindable]
     /**
      *
      * Defines the <code>SessionVO<code> Value Object implementation
      *
      */
+    [Bindable]
     public class SessionVO
     {
         public function SessionVO()

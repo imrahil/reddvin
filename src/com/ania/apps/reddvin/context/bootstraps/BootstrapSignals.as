@@ -25,6 +25,10 @@ package com.ania.apps.reddvin.context.bootstraps
 //
             signalCommandMap.mapSignalClass(GetSectionSignal, GetSectionCommand);
             signalCommandMap.mapSignalClass(GetItemSignal, GetItemCommand);
+
+            signalCommandMap.mapSignalClass(GetUserInfoSignal, GetUserInfoCommand);
+            signalCommandMap.mapSignalClass(GetUserSubredditsSignal, GetUserSubredditsCommand);
+
             signalCommandMap.mapSignalClass(LoginSignal, LoginCommand);
             signalCommandMap.mapSignalClass(LogoutSignal, LogoutCommand);
 //            signalCommandMap.mapSignalClass(VoteSignal, VoteCommand);

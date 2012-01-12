@@ -8,6 +8,7 @@
 package com.ania.apps.reddvin.services
 {
     import com.ania.apps.reddvin.constants.ApplicationConstants;
+    import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.model.vo.SessionVO;
     import com.ania.apps.reddvin.model.vo.UserVO;
@@ -42,6 +43,10 @@ package com.ania.apps.reddvin.services
         protected var userVO:UserVO;
 
         protected var logger:ILogger;
+
+        /** INJECTIONS **/
+        [Inject]
+        public var redditModel:RedditModel;
 
         /** NOTIFICATION SIGNALS */
         [Inject]
@@ -92,9 +97,8 @@ package com.ania.apps.reddvin.services
         /**
          * request for section (subreddit). Empty means front page.
          * @param path
-         * @param cookie
          */
-        public function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void
+        public function getSection(path:String = "", sortOrder:String = ""):void
         {
             throw new Error("Override this method!");
         }
@@ -102,9 +106,8 @@ package com.ania.apps.reddvin.services
         /**
          * request for one reddit specified by id
          * @param id
-         * @param cookie
          */
-        public function getReddit(id:String, cookie:String = ""):void
+        public function getReddit(id:String):void
         {
             throw new Error("Override this method!");
         }
@@ -130,10 +133,9 @@ package com.ania.apps.reddvin.services
         /**
          * Place vote
          * @param vote with direction
-         * @param cookie session data
          * http://www.reddit.com/api/vote
          */
-        public function vote(vote:VoteVO, cookie:String):void
+        public function vote(vote:VoteVO):void
         {
             throw new Error("Override this method!");
         }
@@ -198,6 +200,37 @@ package com.ania.apps.reddvin.services
             {
                 errorSignal.dispatch("username/password is wrong");
             }
+        }
+
+        protected function handleUserInfoLoadComplete(event:Event):void
+        {
+            logger.debug(": handleUserInfoLoadComplete");
+
+            var loader:URLLoader = event.currentTarget as URLLoader;
+
+            loader.removeEventListener(Event.COMPLETE, handleUserInfoLoadComplete);
+            removeLoaderListeners(loader);
+
+            if (!redditModel.session.userVO)
+            {
+                redditModel.session.userVO = new UserVO();
+            }
+
+            _parser.parseUserDetails(redditModel.session.userVO, loader.data as String);
+        }
+
+        protected function handleUserSubredditsLoadComplete(event:Event):void
+        {
+            logger.debug(": handleUserSubredditsLoadComplete");
+
+            var loader:URLLoader = event.currentTarget as URLLoader;
+
+            loader.removeEventListener(Event.COMPLETE, handleUserSubredditsLoadComplete);
+            removeLoaderListeners(loader);
+
+            var results:ArrayList = _parser.parseSearchResults(loader.data);
+
+//            sectionLoaded.dispatch(results);
         }
 
 //		protected function handleVoteComplete(event:Event):void

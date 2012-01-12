@@ -10,7 +10,8 @@ package com.ania.apps.reddvin.controller
     import com.ania.apps.reddvin.constants.ApplicationConstants;
     import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.model.vo.SessionVO;
-    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
+    import com.ania.apps.reddvin.signals.GetUserInfoSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
 
@@ -31,10 +32,13 @@ package com.ania.apps.reddvin.controller
         public var redditModel:RedditModel;
 
         [Inject]
+        public var getUserInfoSignal:GetUserInfoSignal;
+
+        [Inject]
         public var loginStatusSignal:LoginStatusSignal;
 
         [Inject]
-        public var displayLoginForm:DisplayLoginForm;
+        public var displayLoginForm:DisplayLoginFormSignal;
 
         /** variables **/
         private var logger:ILogger;
@@ -68,6 +72,9 @@ package com.ania.apps.reddvin.controller
                 sessionSO.data.cookie = sessionVO.cookie;
                 sessionSO.flush();
             }
+
+            // dispatch GetUserInfoSignal to retrieve user's details
+            getUserInfoSignal.dispatch();
 
             loginStatusSignal.dispatch(true);
             displayLoginForm.dispatch(false);

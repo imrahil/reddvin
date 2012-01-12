@@ -9,9 +9,9 @@ package com.ania.apps.reddvin.signals.signaltons
 {
     import org.osflash.signals.Signal;
 
-    public class DisplayLoginForm extends Signal
+    public class DisplayLoginFormSignal extends Signal
     {
-        public function DisplayLoginForm()
+        public function DisplayLoginFormSignal()
         {
             super(Boolean);
         }

@@ -18,8 +18,6 @@ package com.ania.apps.reddvin.services
     import flash.net.URLRequest;
     import flash.utils.Timer;
 
-    import mx.rpc.events.ResultEvent;
-
     public class RedditServiceMock extends RedditServiceBase
     {
         public function RedditServiceMock()
@@ -33,7 +31,7 @@ package com.ania.apps.reddvin.services
         /**
          * GET SECTION
          */
-        override public function getSection(path:String = "", sortOrder:String = "", cookie:String = ""):void
+        override public function getSection(path:String = "", sortOrder:String = ""):void
         {
             logger.debug(": getSection - path: " + path);
 
@@ -61,7 +59,7 @@ package com.ania.apps.reddvin.services
         {
             var timer:Timer = new Timer(1000, 1);
             timer.addEventListener(TimerEvent.TIMER_COMPLETE,
-                    function ():void
+                    function (event:TimerEvent):void
                     {
                         handleSectionLoadComplete(event);
                     });
@@ -71,7 +69,7 @@ package com.ania.apps.reddvin.services
         /**
          * GET REDDIT
          */
-        override public function getReddit(id:String, cookie:String = ""):void
+        override public function getReddit(id:String):void
         {
             logger.debug(" : getReddit");
 
@@ -140,16 +138,14 @@ package com.ania.apps.reddvin.services
         /**
          * VOTE
          */
-        override public function vote(vote:VoteVO, cookie:String):void
+        override public function vote(vote:VoteVO):void
         {
             logger.debug(" : vote - id: " + vote.itemId + ", dir: " + vote.direction);
 
             var loader:URLLoader = new URLLoader();
             var urlRequest:URLRequest = new URLRequest();
 
-            var url:String = "assets/data/item_self3.json";
-
-            urlRequest.url = url;
+            urlRequest.url = "assets/data/item_self3.json";
 
             loader.addEventListener(Event.COMPLETE, handleMockVoteLoadComplete);
             addLoaderListeners(loader);

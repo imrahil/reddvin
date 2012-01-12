@@ -8,14 +8,17 @@
 package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.signals.StartupSignal;
-    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginForm;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayPopupMenuSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUrlSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.HidePopupMenuSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
     import com.ania.apps.reddvin.view.BrowserView;
     import com.ania.apps.reddvin.view.LoginForm;
     import com.ania.apps.reddvin.view.MainView;
+    import com.ania.apps.reddvin.view.SubredditsView;
+    import com.ania.apps.reddvin.view.UserInfoView;
 
     import mx.logging.ILogger;
 
@@ -41,7 +44,10 @@ package com.ania.apps.reddvin.view.mediators
         public var hidePopupMenuSignal:HidePopupMenuSignal;
 
         [Inject]
-        public var displayLoginForm:DisplayLoginForm;
+        public var displayLoginForm:DisplayLoginFormSignal;
+
+        [Inject]
+        public var displayUserInfoSignal:DisplayUserInfoSignal;
 
         [Inject]
         public var displayUrlSignal:DisplayUrlSignal;
@@ -77,6 +83,8 @@ package com.ania.apps.reddvin.view.mediators
             displayLoginForm.add(onDisplayLoginForm);
             displayUrlSignal.add(onDisplayUrl);
 
+            displayUserInfoSignal.add(onDisplayUserInfo);
+
             startupSignal.dispatch();
         }
 
@@ -91,6 +99,10 @@ package com.ania.apps.reddvin.view.mediators
             view.hideViewNavigatorPopUp();
         }
 
+        /**
+         * Display login form
+         * @param show if true show view, if not hide it
+         */
         private function onDisplayLoginForm(show:Boolean):void
         {
             if (show)
@@ -115,6 +127,18 @@ package com.ania.apps.reddvin.view.mediators
             if (show)
             {
                 view.contentNavigator.pushView(BrowserView, {url: url, title: title});
+            }
+            else
+            {
+                view.contentNavigator.popView();
+            }
+        }
+
+        private function onDisplayUserInfo(show:Boolean):void
+        {
+            if (show)
+            {
+                view.contentNavigator.pushView(UserInfoView);
             }
             else
             {

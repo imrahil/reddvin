@@ -12,6 +12,8 @@ package com.ania.apps.reddvin.services.helpers
     import com.ania.apps.reddvin.model.vo.BaseVO;
     import com.ania.apps.reddvin.model.vo.CommentVO;
     import com.ania.apps.reddvin.model.vo.RedditVO;
+    import com.ania.apps.reddvin.model.vo.SubredditVO;
+    import com.ania.apps.reddvin.model.vo.UserVO;
     import com.ania.apps.reddvin.utils.DateUtil;
     import com.ania.apps.reddvin.utils.LogUtil;
 
@@ -33,12 +35,12 @@ package com.ania.apps.reddvin.services.helpers
             logger.debug(": constructor");
         }
 
-        public function parseSearchResults(results:Object):ArrayList
+        public function parseSearchResults(results:String):ArrayList
         {
             logger.debug(": parseSearchResults");
 
             var output:ArrayList = new ArrayList();
-            var resultObject:Object = JSON.parse(results as String);
+            var resultObject:Object = JSON.parse(results);
 
             if (resultObject && resultObject.data)
             {
@@ -56,11 +58,11 @@ package com.ania.apps.reddvin.services.helpers
             return output;
         }
 
-        public function parseSingleItem(results:Object):RedditVO
+        public function parseSingleItem(result:String):RedditVO
         {
             logger.debug(": parseSingleItem");
 
-            var resultObject:Object = JSON.parse(results as String)
+            var resultObject:Object = JSON.parse(result);
 
             if (resultObject.length > 0)
             {
@@ -73,6 +75,44 @@ package com.ania.apps.reddvin.services.helpers
             {
                 return null;
             }
+        }
+
+        public function parseUserDetails(currentUser:UserVO, result:String):void
+        {
+            logger.debug(": parseUserDetails");
+
+            var rawResultUser:Object = JSON.parse(result);
+
+            if (rawResultUser && rawResultUser.data)
+            {
+                currentUser.has_mail = rawResultUser.data.has_mail;
+                currentUser.link_karma = rawResultUser.data.link_karma;
+                currentUser.comment_karma = rawResultUser.data.comment_karma;
+                currentUser.is_gold = rawResultUser.data.is_gold;
+                currentUser.is_mod = rawResultUser.data.is_mod;
+                currentUser.has_mod_mail = rawResultUser.data.has_mod_mail;
+            }
+        }
+
+        public function parseUserSubreddits(results:String):ArrayList
+        {
+            logger.debug(": parseUserSubreddits");
+
+            var output:ArrayList = new ArrayList();
+            var resultObject:Object = JSON.parse(results);
+
+            if (resultObject && resultObject.data)
+            {
+                for each (var item:Object in resultObject.data.children)
+                {
+                    if (item && item.data)
+                    {
+                        output.addItem(createSubReddit(item.data));
+                    }
+                }
+            }
+
+            return output;
         }
 
         public function checkLoginResult(result:String):String
@@ -89,11 +129,14 @@ package com.ania.apps.reddvin.services.helpers
             {
                 return resultObject.json.data.cookie as String;
             }
-
-            return ApplicationConstants.LOGIN_ERROR;
         }
 
-        private function createBase(targetObject:BaseVO, rawItem:Object, kind:String, modhash:String):void
+
+        //
+        //  STATIC HELPERS
+        //
+
+        private static function createBase(targetObject:BaseVO, rawItem:Object, kind:String, modhash:String):void
         {
             targetObject.author = rawItem.author;
 
@@ -123,7 +166,7 @@ package com.ania.apps.reddvin.services.helpers
             targetObject.modhash = modhash;
         }
 
-        private function createReddit(rawItem:Object, kind:String, modhash:String):RedditVO
+        private static function createReddit(rawItem:Object, kind:String, modhash:String):RedditVO
         {
             var redditVO:RedditVO = new RedditVO();
             createBase(redditVO, rawItem, kind, modhash);
@@ -149,7 +192,7 @@ package com.ania.apps.reddvin.services.helpers
             return redditVO;
         }
 
-        private function createRedditWithComments(rawItem:Object, kind:String, comments:Array, modhash:String):RedditVO
+        private static function createRedditWithComments(rawItem:Object, kind:String, comments:Array, modhash:String):RedditVO
         {
             var redditVO:RedditVO = createReddit(rawItem, kind, modhash);
 
@@ -157,14 +200,14 @@ package com.ania.apps.reddvin.services.helpers
             for each (var rawComment:Object in comments)
             {
                 var newComment:CommentVO = new CommentVO();
-                createComment(newComment, rawComment.data, rawComment.kind, modhash)
+                createComment(newComment, rawComment.data, rawComment.kind, modhash);
                 redditVO.comments.push(newComment);
             }
 
             return redditVO;
         }
 
-        private function createComment(newCommentVO:CommentVO, rawComment:Object, kind:String, modhash:String):CommentVO
+        private static function createComment(newCommentVO:CommentVO, rawComment:Object, kind:String, modhash:String):CommentVO
         {
             createBase(newCommentVO, rawComment, kind, modhash);
 
@@ -196,6 +239,23 @@ package com.ania.apps.reddvin.services.helpers
             }
 
             return newCommentVO;
+        }
+
+        private static function createSubReddit(rawItem:Object):SubredditVO
+        {
+            var subReddit:SubredditVO = new SubredditVO();
+
+            subReddit.display_name = rawItem.display_name;
+            subReddit.name = rawItem.name;
+            subReddit.title = rawItem.title;
+            subReddit.url = rawItem.url;
+            subReddit.created = rawItem.created;
+            subReddit.created_utc = rawItem.created_utc;
+            subReddit.over18 = rawItem.over18;
+            subReddit.subscribers = rawItem.subscribers;
+            subReddit.description = rawItem.description;
+
+            return subReddit;
         }
     }
 }
