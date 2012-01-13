@@ -87,6 +87,8 @@ package com.ania.apps.reddvin.controller
             }
 
             redditModel.initialized = true;
+            redditModel.needReload = true;
+
             refreshSignal.dispatch();
         }
     }

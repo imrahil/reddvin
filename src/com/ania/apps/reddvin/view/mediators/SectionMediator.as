@@ -8,6 +8,7 @@
 package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.model.vo.RedditVO;
+    import com.ania.apps.reddvin.model.vo.SectionVO;
     import com.ania.apps.reddvin.signals.ChangeSortSignal;
     import com.ania.apps.reddvin.signals.GetItemSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
@@ -140,7 +141,7 @@ package com.ania.apps.reddvin.view.mediators
          */
         private function onListItemClicked():void
         {
-            logger.debug(":onListItemClickedk");
+            logger.debug(": onListItemClickedk");
 
             if (view.sectionList.selectedItem)
             {
@@ -166,7 +167,12 @@ package com.ania.apps.reddvin.view.mediators
 
             view.busyIndicator.visible = false;
 
-            view.sectionList.dataProvider = items;
+//            view.sectionList.dataProvider = items;
+
+            var section:SectionVO = new SectionVO();
+            section.sectionList = items;
+
+            view.data = section;
         }
 
         private function displayBusyIndicator(state:Boolean):void

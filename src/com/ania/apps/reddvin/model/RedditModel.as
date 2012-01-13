@@ -28,6 +28,8 @@ package com.ania.apps.reddvin.model
 
         private var _sortOrder:String = "";
 
+        private var _needReload:Boolean = false;
+
         private var _currentScreen:String = ApplicationConstants.SECTION_VIEW;
 
         private var _loggedIn:Boolean = false;
@@ -124,6 +126,19 @@ package com.ania.apps.reddvin.model
         }
 
         /**
+         * Refresh flag
+         */
+        public function get needReload():Boolean
+        {
+            return _needReload;
+        }
+
+        public function set needReload(value:Boolean):void
+        {
+            _needReload = value;
+        }
+
+        /**
          * Current section of application
          */
         public function get currentScreen():String
@@ -167,6 +182,5 @@ package com.ania.apps.reddvin.model
 
             _initialized = value;
         }
-
     }
 }

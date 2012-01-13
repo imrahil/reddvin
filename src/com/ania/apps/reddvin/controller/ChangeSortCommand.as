@@ -31,6 +31,7 @@ package com.ania.apps.reddvin.controller
         override public function execute():void
         {
             redditModel.sortOrder = sortOrder;
+            redditModel.needReload = true;
 
             refreshSignal.dispatch();
         }

@@ -50,8 +50,9 @@ package com.ania.apps.reddvin.controller
         {
             logger.debug(": execute");
 
-            if (redditModel.initialized)
+            if (redditModel.initialized && redditModel.needReload)
             {
+                redditModel.needReload = false;
                 displayActivityIndicator.dispatch(true);
 
                 switch (redditModel.currentScreen)
