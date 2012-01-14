@@ -11,6 +11,7 @@ package com.ania.apps.reddvin.controller
     import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.services.IRedditService;
     import com.ania.apps.reddvin.signals.signaltons.DisplayActivityIndicatorSignal;
+    import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
 
     import mx.logging.ILogger;
@@ -28,6 +29,9 @@ package com.ania.apps.reddvin.controller
 
         [Inject]
         public var displayActivityIndicator:DisplayActivityIndicatorSignal;
+
+        [Inject]
+        public var sectionChanged:SectionChangedSignal;
 
         /** variables **/
         private var logger:ILogger;
@@ -50,21 +54,28 @@ package com.ania.apps.reddvin.controller
         {
             logger.debug(": execute");
 
-            if (redditModel.initialized && redditModel.needReload)
+            if (redditModel.initialized)
             {
-                redditModel.needReload = false;
-                displayActivityIndicator.dispatch(true);
-
-                switch (redditModel.currentScreen)
+                if (redditModel.needReload)
                 {
-                    case ApplicationConstants.SECTION_VIEW:
-                        updateSection();
-                        break;
+                    redditModel.needReload = false;
+                    displayActivityIndicator.dispatch(true);
 
-                    case ApplicationConstants.ITEM_VIEW:
-                        updateItem();
-                        updateSection();
-                        break;
+                    switch (redditModel.currentScreen)
+                    {
+                        case ApplicationConstants.SECTION_VIEW:
+                            updateSection();
+                            break;
+
+                        case ApplicationConstants.ITEM_VIEW:
+                            updateItem();
+                            updateSection();
+                            break;
+                    }
+                }
+                else if (redditModel.items && redditModel.items)
+                {
+                    sectionChanged.dispatch(redditModel.items);
                 }
             }
         }

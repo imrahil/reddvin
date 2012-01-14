@@ -8,6 +8,7 @@
 package com.ania.apps.reddvin.context.bootstraps
 {
     import com.ania.apps.reddvin.controller.*;
+    import com.ania.apps.reddvin.controller.fetchdata.*;
     import com.ania.apps.reddvin.signals.*;
 
     import org.robotlegs.core.ISignalCommandMap;
@@ -20,6 +21,7 @@ package com.ania.apps.reddvin.context.bootstraps
 
             // request signals
             signalCommandMap.mapSignalClass(RefreshSignal, RefreshCommand);
+            signalCommandMap.mapSignalClass(ManualRefreshSignal, ManualRefreshCommand);
             signalCommandMap.mapSignalClass(ChangeSortSignal, ChangeSortCommand);
             signalCommandMap.mapSignalClass(ChangeScreenSignal, ChangeScreenCommand);
 //

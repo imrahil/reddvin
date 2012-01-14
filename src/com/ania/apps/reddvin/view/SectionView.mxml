@@ -1,35 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
-        xmlns:s="library://ns.adobe.com/flex/spark" title="Front page" 
-        viewActivate="viewActivateHandler(event)"
-        viewDeactivate="viewDeactivateHandler(event)">
+        xmlns:s="library://ns.adobe.com/flex/spark" title="Front page">
 
     <fx:Script>
         <![CDATA[
         import com.ania.apps.reddvin.constants.ApplicationConstants;
-        import com.ania.apps.reddvin.model.vo.SectionVO;
         import com.ania.apps.reddvin.view.components.SectionIconItemRenderer;
 
         import org.osflash.signals.Signal;
 
         import spark.events.IndexChangeEvent;
-        import spark.events.ViewNavigatorEvent;
 
         public var menuButtonClickSignal:Signal = new Signal(Button);
         public var sortChangeSignal:Signal = new Signal(String);
 
         public var iconClickSignal:Signal = new Signal();
         public var listItemClickSignal:Signal = new Signal();
-
-        [Bindable]
-        private var section:SectionVO;
-
-        override public function set data(value:Object):void
-        {
-            super.data = value;
-
-            section = value as SectionVO;
-        }
 
         protected function sectionListIconClickHandler(event:MouseEvent):void
         {
@@ -49,26 +35,6 @@
             calloutBtn.callout.close();
             calloutBtn.label = "sort: " + sortList.selectedItem;
         }
-
-        private function viewActivateHandler(event:ViewNavigatorEvent):void
-        {
-            if (section)
-            {
-                sectionList.dataGroup.verticalScrollPosition = section.sectionRect;
-                calloutBtn.label = "sort: " + ApplicationConstants.SORT_ORDER[section.sortIndex];
-                sortList.selectedIndex = section.sortIndex;
-            }
-            else
-            {
-                calloutBtn.label = "sort: " + ApplicationConstants.SORT_ORDER[0];
-            }
-        }
-
-        private function viewDeactivateHandler(event:ViewNavigatorEvent):void
-        {
-            section.sectionRect = sectionList.dataGroup.verticalScrollPosition;
-            section.sortIndex = sortList.selectedIndex;
-        }
         ]]>
     </fx:Script>
 
@@ -83,7 +49,7 @@
     </s:navigationContent.portrait>
 
     <s:actionContent>
-        <s:CalloutButton id="calloutBtn" width="170" verticalPosition="after"
+        <s:CalloutButton id="calloutBtn" width="170" label="sort: what's hot" verticalPosition="after"
                          close="sortChangeSignal.dispatch(sortList.selectedItem)">
             <s:calloutLayout>
                 <s:VerticalLayout paddingTop="10" paddingBottom="10" paddingLeft="10" paddingRight="10"
@@ -102,7 +68,7 @@
         </s:CalloutButton>
     </s:actionContent>
 
-    <s:List id="sectionList" width="100%" height="100%" labelField="title" dataProvider="{section.sectionList}"
+    <s:List id="sectionList" width="100%" height="100%" labelField="title"
             itemRenderer="com.ania.apps.reddvin.view.components.SectionIconItemRenderer"
             mouseUp="sectionListIconClickHandler(event)" change="sectionListChangeHandler(event)"/>
 

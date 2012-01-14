@@ -5,7 +5,7 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.controller
+package com.ania.apps.reddvin.controller.fetchdata
 {
     import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.services.IRedditService;

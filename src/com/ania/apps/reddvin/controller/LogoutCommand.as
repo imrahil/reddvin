@@ -62,6 +62,7 @@ package com.ania.apps.reddvin.controller
 
             loginStatusSignal.dispatch(false);
 
+            redditModel.needReload = true;
             refreshSignal.dispatch();
         }
     }

@@ -5,20 +5,15 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.controller
+package com.ania.apps.reddvin.controller 
 {
     import com.ania.apps.reddvin.model.RedditModel;
-    import com.ania.apps.reddvin.services.IRedditService;
     import com.ania.apps.reddvin.signals.RefreshSignal;
 
     import org.robotlegs.mvcs.SignalCommand;
 
-    public final class GetSectionCommand extends SignalCommand
+    public final class ManualRefreshCommand extends SignalCommand 
     {
-        /** PARAMETERS **/
-        [Inject]
-        public var sectionName:String;
-
         /** INJECTIONS **/
         [Inject]
         public var redditModel:RedditModel;
@@ -27,11 +22,11 @@ package com.ania.apps.reddvin.controller
         public var refreshSignal:RefreshSignal;
 
         /**
-         * Method handle the logic for <code>GetSectionCommand</code>
-         */
-        override public function execute():void
+         * Method handle the logic for <code>ManualRefreshCommand</code>
+         */        
+        override public function execute():void    
         {
-            redditModel.selectedSubreddit = sectionName;
+            redditModel.needReload = true;
 
             refreshSignal.dispatch();
         }

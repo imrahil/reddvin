@@ -166,13 +166,10 @@ package com.ania.apps.reddvin.view.mediators
             logger.debug(": onSectionChanged");
 
             view.busyIndicator.visible = false;
+            view.sectionList.dataProvider = items;
 
-//            view.sectionList.dataProvider = items;
-
-            var section:SectionVO = new SectionVO();
-            section.sectionList = items;
-
-            view.data = section;
+//            var section:SectionVO = new SectionVO();
+//            section.sectionList = items;
         }
 
         private function displayBusyIndicator(state:Boolean):void

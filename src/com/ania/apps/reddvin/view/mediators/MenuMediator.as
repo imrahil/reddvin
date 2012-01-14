@@ -8,6 +8,7 @@
 package com.ania.apps.reddvin.view.mediators
 {
     import com.ania.apps.reddvin.signals.LogoutSignal;
+    import com.ania.apps.reddvin.signals.ManualRefreshSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
@@ -37,6 +38,9 @@ package com.ania.apps.reddvin.view.mediators
 
         [Inject]
         public var refreshSignal:RefreshSignal;
+
+        [Inject]
+        public var manualRefreshSignal:ManualRefreshSignal;
 
         /**
          * SIGNALTONS
@@ -116,7 +120,7 @@ package com.ania.apps.reddvin.view.mediators
 
         private function onRefreshBtnClicked():void
         {
-            refreshSignal.dispatch();
+            manualRefreshSignal.dispatch();
 
             if (view.currentState.indexOf("portrait") > -1)
             {

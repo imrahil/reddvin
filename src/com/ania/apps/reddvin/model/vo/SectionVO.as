@@ -1,7 +1,12 @@
+/*
+ Copyright (c) 2012 Anna Dabrowska, All Rights Reserved
+ @author   Anna Dabrowska
+ @contact  ania.blackberry@gmail.com
+ @project  Reddvin
+ @internal
+ */
 package com.ania.apps.reddvin.model.vo
 {
-    import mx.collections.ArrayList;
-
     [Bindable]
     public class SectionVO
     {
@@ -9,8 +14,7 @@ package com.ania.apps.reddvin.model.vo
         {
         }
         
-        public var sectionList:ArrayList;
-        public var sectionRect:Number;
+        public var sectionScroll:Number;
         public var sortIndex:int = 0;
     }
 }
