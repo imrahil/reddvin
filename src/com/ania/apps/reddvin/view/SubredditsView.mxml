@@ -2,4 +2,33 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark" title="Subreddits">
 
+    <fx:Script>
+        <![CDATA[
+        import com.ania.apps.reddvin.model.vo.SubredditVO;
+
+        import org.osflash.signals.Signal;
+
+        public var backBtnClicked:Signal = new Signal();
+        public var itemClicked:Signal = new Signal();
+
+        private function subredditLblFunction(item:Object):String
+        {
+            var subReddit:SubredditVO = item as SubredditVO;
+
+            return subReddit.display_name + " - " + subReddit.title;
+        }
+        ]]>
+    </fx:Script>
+
+    <s:navigationContent>
+        <s:Button label="Back" click="backBtnClicked.dispatch()"/>
+    </s:navigationContent>
+
+    <s:List id="subredditsList" width="100%" height="100%" change="itemClicked.dispatch()"
+            itemRenderer="spark.components.LabelItemRenderer" labelFunction="subredditLblFunction" />
+
+    <s:Group left="0" right="0" top="0" bottom="0">
+        <s:BusyIndicator id="busyIndicator" horizontalCenter="0" verticalCenter="0" symbolColor="#3E3E3E" width="60"
+                         height="60" rotationInterval="50" visible="false"/>
+    </s:Group>
 </s:View>

@@ -12,6 +12,7 @@
         public var loginBtnClickSignal:Signal = new Signal();
         public var logoutBtnClickSignal:Signal = new Signal();
         public var refreshBtnClickSignal:Signal = new Signal();
+        public var subredditsBtnClickSignal:Signal = new Signal();
         public var accountBtnClickSignal:Signal = new Signal();
         public var settingsBtnClickSignal:Signal = new Signal();
 
@@ -55,7 +56,8 @@
                   click="refreshBtnClickSignal.dispatch()"/>
 
         <s:Button label="Subreddits" width="100%" icon="@Embed('/assets/images/linedpaper.png')" iconPlacement="right"
-                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"/>
+                  skinClass="com.ania.apps.reddvin.view.components.WideButtonSkin"
+                  click="subredditsBtnClickSignal.dispatch()"/>
 
         <s:Button label="Account" width="100%" icon="@Embed('/assets/images/user.png')" iconPlacement="right"
                   includeIn="loggedIn"

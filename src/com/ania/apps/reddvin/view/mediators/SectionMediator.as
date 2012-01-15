@@ -58,7 +58,6 @@ package com.ania.apps.reddvin.view.mediators
         [Inject]
         public var changeSortSignal:ChangeSortSignal;
 
-
         [Inject]
         public var getItem:GetItemSignal;
 
@@ -106,6 +105,8 @@ package com.ania.apps.reddvin.view.mediators
          */
         override public function onRemove():void
         {
+            logger.debug(": onRemove");
+
             sectionChanged.removeAll();
         }
 
@@ -117,6 +118,8 @@ package com.ania.apps.reddvin.view.mediators
          */
         private function onMenuButtonClicked(owner:Button):void
         {
+            logger.debug(": onMenuButtonClicked");
+
             displayPopupMenuSignal.dispatch(owner);
         }
 
@@ -125,6 +128,8 @@ package com.ania.apps.reddvin.view.mediators
          */
         private function onSortChanged(sortOrder:String):void
         {
+            logger.debug(": onSortChanged");
+
             changeSortSignal.dispatch(sortOrder);
         }
 
@@ -133,6 +138,8 @@ package com.ania.apps.reddvin.view.mediators
          */
         private function onIconClicked():void
         {
+            logger.debug(": onIconClicked");
+
             showLink = true;
         }
 
@@ -150,7 +157,7 @@ package com.ania.apps.reddvin.view.mediators
                 if (showLink && !item.is_self)
                 {
                     showLink = false;
-                    displayUrl.dispatch(true, item.url, item.title);
+                    displayUrl.dispatch(true, item);
                 }
                 else
                 {

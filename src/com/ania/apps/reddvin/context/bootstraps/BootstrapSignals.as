@@ -25,7 +25,7 @@ package com.ania.apps.reddvin.context.bootstraps
             signalCommandMap.mapSignalClass(ChangeSortSignal, ChangeSortCommand);
             signalCommandMap.mapSignalClass(ChangeScreenSignal, ChangeScreenCommand);
 //
-            signalCommandMap.mapSignalClass(GetSectionSignal, GetSectionCommand);
+            signalCommandMap.mapSignalClass(ChangeSectionSignal, ChangeSectionCommand);
             signalCommandMap.mapSignalClass(GetItemSignal, GetItemCommand);
 
             signalCommandMap.mapSignalClass(GetUserInfoSignal, GetUserInfoCommand);
@@ -38,6 +38,7 @@ package com.ania.apps.reddvin.context.bootstraps
             // response signals
             signalCommandMap.mapSignalClass(SectionLoadedSignal, SectionLoadedCommand);
             signalCommandMap.mapSignalClass(ItemLoadedSignal, ItemLoadedCommand);
+            signalCommandMap.mapSignalClass(SubredditsLoadedSignal, SubredditsLoadedCommand);
 
             signalCommandMap.mapSignalClass(LoginSuccessfulSignal, LoginSuccessfulCommand);
 

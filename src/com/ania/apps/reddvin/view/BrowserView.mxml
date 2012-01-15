@@ -1,11 +1,13 @@
 <?xml version="1.0"?>
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="com.ania.apps.reddvin.view.components.*"
-        title="{data.title}"
+        title="{redditItem.title}"
         viewActivate="stageWebViewContainer.load()">
 
     <fx:Script>
         <![CDATA[
+        import com.ania.apps.reddvin.model.vo.RedditVO;
+
         import org.osflash.signals.Signal;
 
         public var backBtnClicked:Signal = new Signal();
@@ -13,6 +15,15 @@
         public var upVoteClicked:Signal = new Signal();
         public var downVoteClicked:Signal = new Signal();
         public var showCommentsClicked:Signal = new Signal();
+
+        [Bindable]
+        private var redditItem:RedditVO;
+
+        override public function set data(value:Object):void
+        {
+            super.data = value;
+            redditItem = value as RedditVO;
+        }
         ]]>
     </fx:Script>
 
@@ -32,5 +43,5 @@
         <s:State name="loggedOut"/>
     </s:states>
 
-    <components:WebView id="stageWebViewContainer" source="{data.url}" width="100%" height="100%" autoLoad="false"/>
+    <components:WebView id="stageWebViewContainer" source="{redditItem.url}" width="100%" height="100%" autoLoad="false"/>
 </s:View>

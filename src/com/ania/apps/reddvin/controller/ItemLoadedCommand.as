@@ -31,7 +31,7 @@ package com.ania.apps.reddvin.controller
          */
         override public function execute():void
         {
-            redditModel.item = item;
+            redditModel.singleReddit = item;
 
             displayItem.dispatch(item);
         }

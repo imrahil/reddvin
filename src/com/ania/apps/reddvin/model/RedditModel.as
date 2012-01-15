@@ -21,8 +21,10 @@ package com.ania.apps.reddvin.model
     {
         /** variables **/
 
-        private var _items:ArrayList;
-        private var _item:RedditVO;
+        private var _sectionItems:ArrayList;
+        private var _singleReddit:RedditVO;
+        private var _subredditsList:ArrayList;
+
         private var _session:SessionVO;
         private var _selectedSubreddit:String = "";
 
@@ -53,31 +55,44 @@ package com.ania.apps.reddvin.model
         /**
          * List of all Reddits in section
          */
-        public function get items():ArrayList
+        public function get sectionItems():ArrayList
         {
-            return _items;
+            return _sectionItems;
         }
 
-        public function set items(value:ArrayList):void
+        public function set sectionItems(value:ArrayList):void
         {
             logger.debug(": set items");
 
-            _items = value;
+            _sectionItems = value;
         }
 
         /**
          * Single Reddit
          */
-        public function get item():RedditVO
+        public function get singleReddit():RedditVO
         {
-            return _item;
+            return _singleReddit;
         }
 
-        public function set item(value:RedditVO):void
+        public function set singleReddit(value:RedditVO):void
         {
             logger.debug(": set item");
 
-            _item = value;
+            _singleReddit = value;
+        }
+
+        /**
+         * List of subscribed/top/etc subreddits
+         */
+        public function get subredditsList():ArrayList
+        {
+            return _subredditsList;
+        }
+
+        public function set subredditsList(value:ArrayList):void
+        {
+            _subredditsList = value;
         }
 
         /**

@@ -5,13 +5,13 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.signals
+package com.ania.apps.reddvin.signals.signaltons
 {
     import org.osflash.signals.Signal;
 
-    public class GetSectionSignal extends Signal
+    public class DisplaySectionSignal extends Signal
     {
-        public function GetSectionSignal()
+        public function DisplaySectionSignal()
         {
             super();
         }

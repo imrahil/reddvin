@@ -66,6 +66,8 @@ package com.ania.apps.reddvin.view.mediators
 
         private function onLoginBtnClicked():void
         {
+            logger.debug(": onLoginBtnClicked");
+
             var userVO:UserVO = new UserVO();
             userVO.username = view.usernameTxt.text;
             userVO.password = view.passwordTxt.text;
@@ -76,6 +78,8 @@ package com.ania.apps.reddvin.view.mediators
 
         private function onCancelBtnClicked():void
         {
+            logger.debug(": onCancelBtnClicked");
+
             displayLoginForm.dispatch(false);
         }
     }

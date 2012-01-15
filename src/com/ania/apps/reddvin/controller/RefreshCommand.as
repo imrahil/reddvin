@@ -56,8 +56,12 @@ package com.ania.apps.reddvin.controller
 
             if (redditModel.initialized)
             {
+                logger.debug(": all system initialized");
+
                 if (redditModel.needReload)
                 {
+                    logger.debug(": need reload data");
+
                     redditModel.needReload = false;
                     displayActivityIndicator.dispatch(true);
 
@@ -73,9 +77,11 @@ package com.ania.apps.reddvin.controller
                             break;
                     }
                 }
-                else if (redditModel.items && redditModel.items)
+                else if (redditModel.sectionItems && redditModel.sectionItems)
                 {
-                    sectionChanged.dispatch(redditModel.items);
+                    logger.debug(": using local data");
+
+                    sectionChanged.dispatch(redditModel.sectionItems);
                 }
             }
         }
@@ -87,9 +93,9 @@ package com.ania.apps.reddvin.controller
 
         private function updateItem():void
         {
-            if (redditModel.item)
+            if (redditModel.singleReddit)
             {
-                redditService.getReddit(redditModel.item.id);
+                redditService.getReddit(redditModel.singleReddit.id);
             }
         }
     }

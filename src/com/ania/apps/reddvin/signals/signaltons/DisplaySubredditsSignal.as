@@ -7,15 +7,13 @@
  */
 package com.ania.apps.reddvin.signals.signaltons
 {
-    import com.ania.apps.reddvin.model.vo.RedditVO;
-
     import org.osflash.signals.Signal;
 
-    public class DisplayUrlSignal extends Signal
+    public class DisplaySubredditsSignal extends Signal
     {
-        public function DisplayUrlSignal()
+        public function DisplaySubredditsSignal()
         {
-            super(Boolean, RedditVO);
+            super(Boolean);
         }
     }
 }

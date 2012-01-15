@@ -11,6 +11,7 @@ package com.ania.apps.reddvin.view.mediators
     import com.ania.apps.reddvin.signals.ManualRefreshSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplaySubredditsSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.HidePopupMenuSignal;
     import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
@@ -55,6 +56,9 @@ package com.ania.apps.reddvin.view.mediators
         public var displayLoginForm:DisplayLoginFormSignal;
 
         [Inject]
+        public var displaySubredditsSignal:DisplaySubredditsSignal;
+
+        [Inject]
         public var displayUserInfoSignal:DisplayUserInfoSignal;
 
         [Inject]
@@ -88,6 +92,7 @@ package com.ania.apps.reddvin.view.mediators
             view.logoutBtnClickSignal.add(onLogoutBtnClicked);
             view.refreshBtnClickSignal.add(onRefreshBtnClicked);
 
+            view.subredditsBtnClickSignal.add(onSubredditsBtnClicked);
             view.accountBtnClickSignal.add(onAccountBtnClicked);
             view.settingsBtnClickSignal.add(onSettingsBtnClicked);
 
@@ -101,31 +106,32 @@ package com.ania.apps.reddvin.view.mediators
         private function onLoginBtnClicked():void
         {
             displayLoginForm.dispatch(true);
-
-            if (view.currentState.indexOf("portrait") > -1)
-            {
-                hidePopupMenuSignal.dispatch();
-            }
+            hidePopupMenu();
         }
 
         private function onLogoutBtnClicked():void
         {
             logoutSignal.dispatch();
+            hidePopupMenu();
+        }
 
+        private function onRefreshBtnClicked():void
+        {
+            manualRefreshSignal.dispatch();
+            hidePopupMenu();
+        }
+
+        private function hidePopupMenu():void
+        {
             if (view.currentState.indexOf("portrait") > -1)
             {
                 hidePopupMenuSignal.dispatch();
             }
         }
 
-        private function onRefreshBtnClicked():void
+        private function onSubredditsBtnClicked():void
         {
-            manualRefreshSignal.dispatch();
-
-            if (view.currentState.indexOf("portrait") > -1)
-            {
-                hidePopupMenuSignal.dispatch();
-            }
+            displaySubredditsSignal.dispatch(true);
         }
 
         private function onAccountBtnClicked():void

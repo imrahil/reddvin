@@ -5,17 +5,17 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.signals.signaltons
+package com.ania.apps.reddvin.signals
 {
-    import com.ania.apps.reddvin.model.vo.RedditVO;
+    import mx.collections.ArrayList;
 
     import org.osflash.signals.Signal;
 
-    public class DisplayUrlSignal extends Signal
+    public class SubredditsLoadedSignal extends Signal
     {
-        public function DisplayUrlSignal()
+        public function SubredditsLoadedSignal()
         {
-            super(Boolean, RedditVO);
+            super(ArrayList);
         }
     }
 }

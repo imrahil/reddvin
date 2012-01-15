@@ -18,6 +18,7 @@ package com.ania.apps.reddvin.services
     import com.ania.apps.reddvin.signals.LoginSuccessfulSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
     import com.ania.apps.reddvin.signals.SectionLoadedSignal;
+    import com.ania.apps.reddvin.signals.SubredditsLoadedSignal;
     import com.ania.apps.reddvin.signals.signaltons.ErrorSignal;
     import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
 
@@ -27,6 +28,7 @@ package com.ania.apps.reddvin.services
     import flash.events.IOErrorEvent;
     import flash.events.SecurityErrorEvent;
     import flash.net.URLLoader;
+    import flash.net.URLRequest;
 
     import mx.collections.ArrayList;
     import mx.logging.ILogger;
@@ -54,6 +56,9 @@ package com.ania.apps.reddvin.services
 
         [Inject]
         public var itemLoaded:ItemLoadedSignal;
+
+        [Inject]
+        public var subredditsLoaded:SubredditsLoadedSignal;
 
         [Inject]
         public var loginSuccessful:LoginSuccessfulSignal;
@@ -228,9 +233,9 @@ package com.ania.apps.reddvin.services
             loader.removeEventListener(Event.COMPLETE, handleUserSubredditsLoadComplete);
             removeLoaderListeners(loader);
 
-            var results:ArrayList = _parser.parseSearchResults(loader.data);
+            var results:ArrayList = _parser.parseUserSubreddits(loader.data as String);
 
-//            sectionLoaded.dispatch(results);
+            subredditsLoaded.dispatch(results);
         }
 
 //		protected function handleVoteComplete(event:Event):void
@@ -269,6 +274,15 @@ package com.ania.apps.reddvin.services
         {
             loader.removeEventListener(IOErrorEvent.IO_ERROR, handleError);
             loader.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, handleError);
+        }
+
+        protected function prepareRequest():URLRequest
+        {
+            var urlRequest:URLRequest = new URLRequest();
+            urlRequest.userAgent = userAgent;
+            urlRequest.manageCookies = false;
+
+            return urlRequest;
         }
     }
 }

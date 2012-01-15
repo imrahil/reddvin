@@ -5,16 +5,16 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.controller
+package com.ania.apps.reddvin.controller 
 {
     import com.ania.apps.reddvin.model.RedditModel;
-    import com.ania.apps.reddvin.signals.signaltons.SectionChangedSignal;
+    import com.ania.apps.reddvin.signals.signaltons.SubredditsChangedSignal;
 
     import mx.collections.ArrayList;
 
     import org.robotlegs.mvcs.SignalCommand;
 
-    public final class SectionLoadedCommand extends SignalCommand
+    public final class SubredditsLoadedCommand extends SignalCommand 
     {
         /** PARAMETERS **/
         [Inject]
@@ -25,16 +25,16 @@ package com.ania.apps.reddvin.controller
         public var redditModel:RedditModel;
 
         [Inject]
-        public var sectionChanged:SectionChangedSignal;
+        public var subredditsChanged:SubredditsChangedSignal;
 
         /**
-         * Method handle the logic for <code>SectionLoadedCommand</code>
-         */
-        override public function execute():void
+         * Method handle the logic for <code>SubredditsLoadedCommand</code>
+         */        
+        override public function execute():void    
         {
-            redditModel.sectionItems = items;
+            redditModel.subredditsList = items;
 
-            sectionChanged.dispatch(items)
+            subredditsChanged.dispatch(items)
         }
     }
 }

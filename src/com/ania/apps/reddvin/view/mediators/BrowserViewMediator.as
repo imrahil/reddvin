@@ -64,8 +64,10 @@ package com.ania.apps.reddvin.view.mediators
 
         private function onBackBtnClicked():void
         {
+            logger.debug(": onBackBtnClicked");
+
             view.stageWebViewContainer.hideWebView();
-            displayUrl.dispatch(false, "", "");
+            displayUrl.dispatch(false, null);
         }
 
         private function onUpVoteClicked():void

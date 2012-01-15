@@ -8,11 +8,11 @@
 package com.ania.apps.reddvin.controller.fetchdata
 {
     import com.ania.apps.reddvin.model.RedditModel;
-    import com.ania.apps.reddvin.signals.RefreshSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplaySectionSignal;
 
     import org.robotlegs.mvcs.SignalCommand;
 
-    public final class GetSectionCommand extends SignalCommand
+    public final class ChangeSectionCommand extends SignalCommand
     {
         /** PARAMETERS **/
         [Inject]
@@ -23,7 +23,7 @@ package com.ania.apps.reddvin.controller.fetchdata
         public var redditModel:RedditModel;
 
         [Inject]
-        public var refreshSignal:RefreshSignal;
+        public var displaySectionSignal:DisplaySectionSignal;
 
         /**
          * Method handle the logic for <code>GetSectionCommand</code>
@@ -31,8 +31,9 @@ package com.ania.apps.reddvin.controller.fetchdata
         override public function execute():void
         {
             redditModel.selectedSubreddit = sectionName;
+            redditModel.needReload = true;
 
-            refreshSignal.dispatch();
+            displaySectionSignal.dispatch()
         }
     }
 }

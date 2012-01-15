@@ -5,17 +5,15 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.signals.signaltons
+package com.ania.apps.reddvin.signals
 {
-    import com.ania.apps.reddvin.model.vo.RedditVO;
-
     import org.osflash.signals.Signal;
 
-    public class DisplayUrlSignal extends Signal
+    public class ChangeSectionSignal extends Signal
     {
-        public function DisplayUrlSignal()
+        public function ChangeSectionSignal()
         {
-            super(Boolean, RedditVO);
+            super(String);
         }
     }
 }

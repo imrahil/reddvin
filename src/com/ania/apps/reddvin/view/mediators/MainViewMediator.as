@@ -7,9 +7,12 @@
  */
 package com.ania.apps.reddvin.view.mediators
 {
+    import com.ania.apps.reddvin.model.vo.RedditVO;
     import com.ania.apps.reddvin.signals.StartupSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayPopupMenuSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplaySectionSignal;
+    import com.ania.apps.reddvin.signals.signaltons.DisplaySubredditsSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUrlSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.HidePopupMenuSignal;
@@ -18,7 +21,6 @@ package com.ania.apps.reddvin.view.mediators
     import com.ania.apps.reddvin.view.LoginForm;
     import com.ania.apps.reddvin.view.MainView;
     import com.ania.apps.reddvin.view.SubredditsView;
-    import com.ania.apps.reddvin.view.UserInfoView;
 
     import mx.logging.ILogger;
 
@@ -44,13 +46,19 @@ package com.ania.apps.reddvin.view.mediators
         public var hidePopupMenuSignal:HidePopupMenuSignal;
 
         [Inject]
+        public var displaySection:DisplaySectionSignal;
+
+        [Inject]
         public var displayLoginForm:DisplayLoginFormSignal;
 
         [Inject]
-        public var displayUserInfoSignal:DisplayUserInfoSignal;
+        public var displaySubreddits:DisplaySubredditsSignal;
 
         [Inject]
-        public var displayUrlSignal:DisplayUrlSignal;
+        public var displayUserInfo:DisplayUserInfoSignal;
+
+        [Inject]
+        public var displayUrl:DisplayUrlSignal;
 
         [Inject]
         public var startupSignal:StartupSignal;
@@ -80,10 +88,12 @@ package com.ania.apps.reddvin.view.mediators
             displayPopupMenuSignal.add(displayPopupMenu);
             hidePopupMenuSignal.add(hidePopupMenu);
 
+            displaySection.add(onDisplaySection);
             displayLoginForm.add(onDisplayLoginForm);
-            displayUrlSignal.add(onDisplayUrl);
+            displayUrl.add(onDisplayUrl);
 
-            displayUserInfoSignal.add(onDisplayUserInfo);
+            displaySubreddits.add(onDisplaySubreddits);
+            displayUserInfo.add(onDisplayUserInfo);
 
             startupSignal.dispatch();
         }
@@ -100,11 +110,23 @@ package com.ania.apps.reddvin.view.mediators
         }
 
         /**
+         * Display section view and pop all other views
+         */
+        private function onDisplaySection():void
+        {
+            logger.debug(": onDisplaySection");
+
+            view.contentNavigator.popToFirstView();
+        }
+
+        /**
          * Display login form
          * @param show if true show view, if not hide it
          */
         private function onDisplayLoginForm(show:Boolean):void
         {
+            logger.debug(": onDisplayLoginForm - show: " + show);
+
             if (show)
             {
                 view.contentNavigator.pushView(LoginForm);
@@ -117,16 +139,17 @@ package com.ania.apps.reddvin.view.mediators
 
         /**
          * Display browser view with selected link
-         * @param url
-         * @param title
+         * @param show
+         * @param item RedditVO
          */
-        private function onDisplayUrl(show:Boolean, url:String, title:String):void
+        private function onDisplayUrl(show:Boolean, item:RedditVO):void
         {
-            logger.debug(": displayUrl - show: " + show + ", url: " + url);
+            if (show)
+                logger.debug(": displayUrl - show: " + show + ", url: " + item.url);
 
             if (show)
             {
-                view.contentNavigator.pushView(BrowserView, {url: url, title: title});
+                view.contentNavigator.pushView(BrowserView, item);
             }
             else
             {
@@ -134,16 +157,24 @@ package com.ania.apps.reddvin.view.mediators
             }
         }
 
-        private function onDisplayUserInfo(show:Boolean):void
+        private function onDisplaySubreddits(show:Boolean):void
         {
+            logger.debug(": onDisplaySubreddits - show: " + show);
+
             if (show)
             {
-                view.contentNavigator.pushView(UserInfoView);
+                view.contentNavigator.pushView(SubredditsView);
             }
             else
             {
                 view.contentNavigator.popView();
             }
+
+        }
+
+        private function onDisplayUserInfo(show:Boolean):void
+        {
+            logger.debug(": onDisplayUserInfo - show: " + show);
         }
     }
 }

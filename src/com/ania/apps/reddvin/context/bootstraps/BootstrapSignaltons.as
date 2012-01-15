@@ -19,12 +19,15 @@ package com.ania.apps.reddvin.context.bootstraps
             injector.mapSingleton(LoginStatusSignal);
 
             injector.mapSingleton(SectionChangedSignal);
+            injector.mapSingleton(SubredditsChangedSignal);
 
+            injector.mapSingleton(DisplaySectionSignal);
             injector.mapSingleton(DisplayItemSignal);
             injector.mapSingleton(DisplayActivityIndicatorSignal);
             injector.mapSingleton(DisplayLoginFormSignal);
             injector.mapSingleton(DisplayUrlSignal);
 
+            injector.mapSingleton(DisplaySubredditsSignal);
             injector.mapSingleton(DisplayUserInfoSignal);
 
             injector.mapSingleton(DisplayPopupMenuSignal);

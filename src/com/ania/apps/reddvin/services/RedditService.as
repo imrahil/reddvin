@@ -41,9 +41,7 @@ package com.ania.apps.reddvin.services
             this.userVO = userVO;
 
             var loader:URLLoader = new URLLoader();
-            var urlRequest:URLRequest = new URLRequest();
-            urlRequest.userAgent = userAgent;
-            urlRequest.manageCookies = false;
+            var urlRequest:URLRequest = prepareRequest();
 
             urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/login/" + userVO.username;;
             urlRequest.method = URLRequestMethod.POST;
@@ -68,9 +66,7 @@ package com.ania.apps.reddvin.services
             logger.debug(": getSection - path: " + path + ", sortOrder: " + sortOrder);
 
             var loader:URLLoader = new URLLoader();
-            var urlRequest:URLRequest = new URLRequest();
-            urlRequest.userAgent = userAgent;
-            urlRequest.manageCookies = false;
+            var urlRequest:URLRequest = prepareRequest();
 
             var url:String = ApplicationConstants.REDDIT_API_ENDPOINT;
 
@@ -114,9 +110,7 @@ package com.ania.apps.reddvin.services
             logger.debug(" : getReddit");
 
             var loader:URLLoader = new URLLoader();
-            var urlRequest:URLRequest = new URLRequest();
-            urlRequest.userAgent = userAgent;
-            urlRequest.manageCookies = false;
+            var urlRequest:URLRequest = prepareRequest();
 
             urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/comments/" + id + ApplicationConstants.REDDIT_API_EXTENSION + "?limit=" + ApplicationConstants.REDDIT_API_LIMIT;
 
@@ -144,9 +138,7 @@ package com.ania.apps.reddvin.services
                 logger.debug(" : getUserInfo");
 
                 var loader:URLLoader = new URLLoader();
-                var urlRequest:URLRequest = new URLRequest();
-                urlRequest.userAgent = userAgent;
-                urlRequest.manageCookies = false;
+                var urlRequest:URLRequest = prepareRequest();
 
                 urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/me" + ApplicationConstants.REDDIT_API_EXTENSION;
 
@@ -176,9 +168,7 @@ package com.ania.apps.reddvin.services
                 logger.debug(" : getUserSubreddits");
 
                 var loader:URLLoader = new URLLoader();
-                var urlRequest:URLRequest = new URLRequest();
-                urlRequest.userAgent = userAgent;
-                urlRequest.manageCookies = false;
+                var urlRequest:URLRequest = prepareRequest();
 
                 urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/reddits/mine" + ApplicationConstants.REDDIT_API_EXTENSION;
 

@@ -52,12 +52,13 @@ package com.ania.apps.reddvin.view.mediators
             logger.debug(": onRegister");
 
             view.backBtnClicked.add(onBackBtnClicked);
-
         }
 
         /** methods **/
         private function onBackBtnClicked():void
         {
+            logger.debug(": onBackBtnClicked");
+
             displayUserInfoSignal.dispatch(false);
         }
     }
