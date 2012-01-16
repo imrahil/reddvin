@@ -9,9 +9,9 @@ package com.ania.apps.reddvin.signals.signaltons
 {
     import org.osflash.signals.Signal;
 
-    public class ResizeSignal extends Signal
+    public class AppCurrentStateSignal extends Signal
     {
-        public function ResizeSignal()
+        public function AppCurrentStateSignal()
         {
             super(String);
         }

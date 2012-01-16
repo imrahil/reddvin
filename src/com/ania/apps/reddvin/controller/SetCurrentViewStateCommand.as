@@ -10,18 +10,18 @@ package com.ania.apps.reddvin.controller
     import com.ania.apps.reddvin.constants.ApplicationConstants;
     import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.signals.GetCurrentAppStateSignal;
-    import com.ania.apps.reddvin.signals.RefreshSignal;
+    import com.ania.apps.reddvin.signals.signaltons.AppCurrentStateSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
-
-    import flash.net.SharedObject;
 
     import mx.logging.ILogger;
 
     import org.robotlegs.mvcs.SignalCommand;
 
-    public final class LogoutCommand extends SignalCommand
+    public class SetCurrentViewStateCommand extends SignalCommand
     {
         /** PARAMETERS **/
+        [Inject]
+        public var aspectRatio:String;
 
         /** INJECTIONS **/
         [Inject]
@@ -30,16 +30,13 @@ package com.ania.apps.reddvin.controller
         [Inject]
         public var getCurrentAppStateSignal:GetCurrentAppStateSignal;
 
-        [Inject]
-        public var refreshSignal:RefreshSignal;
-
         /** variables **/
         private var logger:ILogger;
 
         /**
          * CONSTRUCTOR
          */
-        public function LogoutCommand()
+        public function SetCurrentViewStateCommand()
         {
             super();
 
@@ -48,22 +45,20 @@ package com.ania.apps.reddvin.controller
         }
 
         /**
-         * Method handle the logic for <code>LoginCommand</code>
+         * Method handle the logic for <code>SetCurrentStateCommand</code>
          */
         override public function execute():void
         {
             logger.debug(": execute");
 
-            redditModel.session = null;
-            redditModel.loggedIn = false;
+            if (aspectRatio == ApplicationConstants.VIEW_STATE_PORTRAIT)
+                redditModel.viewState = ApplicationConstants.VIEW_STATE_PORTRAIT;
+            else
+                redditModel.viewState = ApplicationConstants.VIEW_STATE_LANDSCAPE;
 
-            var sessionSO:SharedObject = SharedObject.getLocal(ApplicationConstants.REDDIT_SO_NAME);
-            sessionSO.clear();
+            logger.debug(": viewState - " + redditModel.viewState);
 
             getCurrentAppStateSignal.dispatch();
-
-            redditModel.needReload = true;
-            refreshSignal.dispatch();
         }
     }
 }

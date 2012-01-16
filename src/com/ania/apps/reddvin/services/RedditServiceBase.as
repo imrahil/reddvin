@@ -20,7 +20,6 @@ package com.ania.apps.reddvin.services
     import com.ania.apps.reddvin.signals.SectionLoadedSignal;
     import com.ania.apps.reddvin.signals.SubredditsLoadedSignal;
     import com.ania.apps.reddvin.signals.signaltons.ErrorSignal;
-    import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
 
     import flash.desktop.NativeApplication;
     import flash.events.ErrorEvent;
@@ -62,9 +61,6 @@ package com.ania.apps.reddvin.services
 
         [Inject]
         public var loginSuccessful:LoginSuccessfulSignal;
-
-        [Inject]
-        public var loginStatusSignal:LoginStatusSignal;
 
         [Inject]
         public var refreshSignal:RefreshSignal;

@@ -20,6 +20,9 @@ package com.ania.apps.reddvin.context.bootstraps
             signalCommandMap.mapSignalClass(StartupSignal, StartupCommand);
 
             // request signals
+            signalCommandMap.mapSignalClass(SetCurrentViewStateSignal, SetCurrentViewStateCommand);
+            signalCommandMap.mapSignalClass(GetCurrentAppStateSignal, GetCurrentAppStateCommand);
+
             signalCommandMap.mapSignalClass(RefreshSignal, RefreshCommand);
             signalCommandMap.mapSignalClass(ManualRefreshSignal, ManualRefreshCommand);
             signalCommandMap.mapSignalClass(ChangeSortSignal, ChangeSortCommand);

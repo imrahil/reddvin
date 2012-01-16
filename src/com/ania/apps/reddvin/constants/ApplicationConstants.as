@@ -42,6 +42,9 @@ package com.ania.apps.reddvin.constants
         public static const USERNAME:String = CONFIG::username;
         public static const PASSWORD:String = CONFIG::password;
 
+        public static const VIEW_STATE_LANDSCAPE:String = "landscape";
+        public static const VIEW_STATE_PORTRAIT:String = "portrait";
+
         public function ApplicationConstants()
         {
         }

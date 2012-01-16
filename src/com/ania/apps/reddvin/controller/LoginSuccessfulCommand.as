@@ -10,9 +10,9 @@ package com.ania.apps.reddvin.controller
     import com.ania.apps.reddvin.constants.ApplicationConstants;
     import com.ania.apps.reddvin.model.RedditModel;
     import com.ania.apps.reddvin.model.vo.SessionVO;
+    import com.ania.apps.reddvin.signals.GetCurrentAppStateSignal;
     import com.ania.apps.reddvin.signals.GetUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
-    import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
 
     import flash.net.SharedObject;
@@ -35,7 +35,7 @@ package com.ania.apps.reddvin.controller
         public var getUserInfoSignal:GetUserInfoSignal;
 
         [Inject]
-        public var loginStatusSignal:LoginStatusSignal;
+        public var getCurrentAppStateSignal:GetCurrentAppStateSignal;
 
         [Inject]
         public var displayLoginForm:DisplayLoginFormSignal;
@@ -76,7 +76,7 @@ package com.ania.apps.reddvin.controller
             // dispatch GetUserInfoSignal to retrieve user's details
             getUserInfoSignal.dispatch();
 
-            loginStatusSignal.dispatch(true);
+            getCurrentAppStateSignal.dispatch();
             displayLoginForm.dispatch(false);
         }
     }

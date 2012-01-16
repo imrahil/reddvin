@@ -7,15 +7,15 @@
  */
 package com.ania.apps.reddvin.view.mediators
 {
+    import com.ania.apps.reddvin.constants.ApplicationConstants;
     import com.ania.apps.reddvin.signals.LogoutSignal;
     import com.ania.apps.reddvin.signals.ManualRefreshSignal;
     import com.ania.apps.reddvin.signals.RefreshSignal;
+    import com.ania.apps.reddvin.signals.signaltons.AppCurrentStateSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayLoginFormSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplaySubredditsSignal;
     import com.ania.apps.reddvin.signals.signaltons.DisplayUserInfoSignal;
     import com.ania.apps.reddvin.signals.signaltons.HidePopupMenuSignal;
-    import com.ania.apps.reddvin.signals.signaltons.LoginStatusSignal;
-    import com.ania.apps.reddvin.signals.signaltons.ResizeSignal;
     import com.ania.apps.reddvin.utils.LogUtil;
     import com.ania.apps.reddvin.view.MenuView;
 
@@ -47,10 +47,7 @@ package com.ania.apps.reddvin.view.mediators
          * SIGNALTONS
          */
         [Inject]
-        public var resizeSignal:ResizeSignal;
-
-        [Inject]
-        public var loginStatusSignal:LoginStatusSignal;
+        public var appCurrentStateSignal:AppCurrentStateSignal;
 
         [Inject]
         public var displayLoginForm:DisplayLoginFormSignal;
@@ -66,8 +63,6 @@ package com.ania.apps.reddvin.view.mediators
 
         /** variables **/
         private var logger:ILogger;
-        private var _loggedIn:Boolean;
-        private var _state:String;
 
         /**
          * CONSTRUCTOR
@@ -98,8 +93,7 @@ package com.ania.apps.reddvin.view.mediators
 
             view.closePopupBtnClickSignal.add(onClosePopupBtnClicked);
 
-            resizeSignal.add(onAppResize);
-            loginStatusSignal.add(onLoginStatusChange);
+            appCurrentStateSignal.add(onAppCurrentStateSignal);
         }
 
         /** methods **/
@@ -121,22 +115,16 @@ package com.ania.apps.reddvin.view.mediators
             hidePopupMenu();
         }
 
-        private function hidePopupMenu():void
-        {
-            if (view.currentState.indexOf("portrait") > -1)
-            {
-                hidePopupMenuSignal.dispatch();
-            }
-        }
-
         private function onSubredditsBtnClicked():void
         {
             displaySubredditsSignal.dispatch(true);
+            hidePopupMenu();
         }
 
         private function onAccountBtnClicked():void
         {
             displayUserInfoSignal.dispatch(true);
+            hidePopupMenu();
         }
 
         private function onSettingsBtnClicked():void
@@ -144,43 +132,28 @@ package com.ania.apps.reddvin.view.mediators
             // TODO
         }
 
+        private function hidePopupMenu():void
+        {
+            if (view.currentState.indexOf(ApplicationConstants.VIEW_STATE_PORTRAIT) > -1)
+            {
+                hidePopupMenuSignal.dispatch();
+            }
+        }
+
         private function onClosePopupBtnClicked():void
         {
             hidePopupMenuSignal.dispatch();
         }
 
-        private function onAppResize(state:String):void
+        /**
+         * Handle view state (portrait/landscape) or app state changes (logged in/logged out)
+         * @param state
+         */
+        private function onAppCurrentStateSignal(state:String):void
         {
-            logger.debug(": onAppResize - state: " + state);
+            logger.debug(": onAppCurrentStateSignal - state: " + state);
 
-            _state = state;
-            checkStatusOrientation();
-        }
-
-        private function onLoginStatusChange(status:Boolean):void
-        {
-            logger.debug(": onLoginStatusChange - status: " + status);
-
-            _loggedIn = status;
-            checkStatusOrientation();
-        }
-
-        private function checkStatusOrientation():void
-        {
-            if (_state == "portrait")
-            {
-                if (!_loggedIn)
-                    view.currentState = "portraitLoggedOut";
-                else
-                    view.currentState = "portraitLoggedIn";
-            }
-            else
-            {
-                if (!_loggedIn)
-                    view.currentState = "landscapeLoggedOut";
-                else
-                    view.currentState = "landscapeLoggedIn";
-            }
+            view.currentState = state;
         }
     }
 }

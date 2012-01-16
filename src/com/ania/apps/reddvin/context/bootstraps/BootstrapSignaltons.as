@@ -16,7 +16,6 @@ package com.ania.apps.reddvin.context.bootstraps
         public function BootstrapSignaltons(injector:IInjector)
         {
             injector.mapSingleton(ErrorSignal);
-            injector.mapSingleton(LoginStatusSignal);
 
             injector.mapSingleton(SectionChangedSignal);
             injector.mapSingleton(SubredditsChangedSignal);
@@ -32,7 +31,7 @@ package com.ania.apps.reddvin.context.bootstraps
 
             injector.mapSingleton(DisplayPopupMenuSignal);
             injector.mapSingleton(HidePopupMenuSignal);
-            injector.mapSingleton(ResizeSignal);
+            injector.mapSingleton(AppCurrentStateSignal);
         }
     }
 }

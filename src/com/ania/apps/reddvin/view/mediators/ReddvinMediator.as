@@ -7,9 +7,11 @@
  */
 package com.ania.apps.reddvin.view.mediators
 {
-    import com.ania.apps.reddvin.signals.signaltons.ResizeSignal;
+    import com.ania.apps.reddvin.signals.SetCurrentViewStateSignal;
+    import com.ania.apps.reddvin.utils.LogUtil;
 
     import mx.events.ResizeEvent;
+    import mx.logging.ILogger;
     import mx.logging.Log;
     import mx.logging.LogEventLevel;
     import mx.logging.targets.TraceTarget;
@@ -25,15 +27,23 @@ package com.ania.apps.reddvin.view.mediators
         public var view:Reddvin;
 
         [Inject]
-        public var resizeSignal:ResizeSignal;
+        public var setCurrentViewStateSignal:SetCurrentViewStateSignal;
+
+        /** variables **/
+        private var logger:ILogger;
 
         public function ReddvinMediator()
         {
             super();
+
+            logger = LogUtil.getLogger(this);
+            logger.debug(": constructor");
         }
 
         override public function onRegister():void
         {
+            logger.debug(": onRegister");
+
             addViewListener(ResizeEvent.RESIZE, onResize);
 
             CONFIG::debugMode
@@ -46,13 +56,15 @@ package com.ania.apps.reddvin.view.mediators
                 logTarget.includeLevel = true;
                 Log.addTarget(logTarget);
             }
+
+            onResize(null);
         }
 
         protected function onResize(event:ResizeEvent):void
         {
             view.currentState = view.aspectRatio;
 
-            resizeSignal.dispatch(view.aspectRatio);
+            setCurrentViewStateSignal.dispatch(view.aspectRatio);
         }
     }
 }

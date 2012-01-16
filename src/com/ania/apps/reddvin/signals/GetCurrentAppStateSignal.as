@@ -5,15 +5,15 @@
  @project  Reddvin
  @internal
  */
-package com.ania.apps.reddvin.signals.signaltons
+package com.ania.apps.reddvin.signals
 {
     import org.osflash.signals.Signal;
 
-    public class LoginStatusSignal extends Signal
+    public class GetCurrentAppStateSignal extends Signal
     {
-        public function LoginStatusSignal()
+        public function GetCurrentAppStateSignal()
         {
-            super(Boolean);
+            super();
         }
     }
 }

@@ -33,6 +33,8 @@ package com.ania.apps.reddvin.model
         private var _needReload:Boolean = false;
 
         private var _currentScreen:String = ApplicationConstants.SECTION_VIEW;
+        private var _viewState:String = "";
+        private var _appState:String = "";
 
         private var _loggedIn:Boolean = false;
 
@@ -169,6 +171,32 @@ package com.ania.apps.reddvin.model
         }
 
         /**
+         * Current view state (landscape or portrait)
+         */
+        public function get viewState():String
+        {
+            return _viewState;
+        }
+
+        public function set viewState(value:String):void
+        {
+            _viewState = value;
+        }
+
+        /**
+         * Current state for whole app
+         */
+        public function get appState():String
+        {
+            return _appState;
+        }
+
+        public function set appState(value:String):void
+        {
+            _appState = value;
+        }
+
+        /**
          * Logged in or not
          */
         public function get loggedIn():Boolean
@@ -178,7 +206,7 @@ package com.ania.apps.reddvin.model
 
         public function set loggedIn(value:Boolean):void
         {
-            logger.debug(": set loggedIn");
+            logger.debug(": set loggedIn - " + value);
 
             _loggedIn = value;
         }
@@ -193,7 +221,7 @@ package com.ania.apps.reddvin.model
 
         public function set initialized(value:Boolean):void
         {
-            logger.debug(": set initialized");
+            logger.debug(": set initialized - " + value);
 
             _initialized = value;
         }
