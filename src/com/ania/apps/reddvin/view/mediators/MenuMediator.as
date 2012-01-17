@@ -96,6 +96,17 @@ package com.ania.apps.reddvin.view.mediators
             appCurrentStateSignal.add(onAppCurrentStateSignal);
         }
 
+        /**
+         * Remove all listeners from sectionChange signal when removing from stage
+         */
+        override public function onRemove():void
+        {
+            logger.debug(": onRemove");
+
+            appCurrentStateSignal.remove(onAppCurrentStateSignal);
+        }
+
+
         /** methods **/
         private function onLoginBtnClicked():void
         {
@@ -147,13 +158,14 @@ package com.ania.apps.reddvin.view.mediators
 
         /**
          * Handle view state (portrait/landscape) or app state changes (logged in/logged out)
-         * @param state
+         * @param viewState
+         * @param appState
          */
-        private function onAppCurrentStateSignal(state:String):void
+        private function onAppCurrentStateSignal(viewState:String, appState:String):void
         {
-            logger.debug(": onAppCurrentStateSignal - state: " + state);
+            logger.debug(": onAppCurrentStateSignal - viewState: " + viewState + ", appState: " + appState);
 
-            view.currentState = state;
+            view.currentState = viewState + appState;
         }
     }
 }

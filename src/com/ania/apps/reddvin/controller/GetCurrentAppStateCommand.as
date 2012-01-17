@@ -18,6 +18,10 @@ package com.ania.apps.reddvin.controller
 
     public final class GetCurrentAppStateCommand extends SignalCommand
     {
+        /** PARAMETERS **/
+        [Inject]
+        public var saveState:Boolean;
+
         /** INJECTIONS **/
         [Inject]
         public var redditModel:RedditModel;
@@ -44,24 +48,25 @@ package com.ania.apps.reddvin.controller
          */        
         override public function execute():void    
         {
-            if (!redditModel.loggedIn)
+            logger.debug(": execute");
+
+            if (saveState)
             {
-                if (redditModel.viewState == ApplicationConstants.VIEW_STATE_PORTRAIT)
-                    redditModel.appState = "portraitLoggedOut";
+                logger.debug(": saving new app state");
+
+                if (!redditModel.loggedIn)
+                {
+                    redditModel.appState = ApplicationConstants.APP_STATE_LOGGED_OUT;
+                }
                 else
-                    redditModel.appState = "landscapeLoggedOut";
-            }
-            else
-            {
-                if (redditModel.viewState == ApplicationConstants.VIEW_STATE_PORTRAIT)
-                    redditModel.appState = "portraitLoggedIn";
-                else
-                    redditModel.appState = "landscapeLoggedIn";
+                {
+                    redditModel.appState = ApplicationConstants.APP_STATE_LOGGED_IN;
+                }
             }
 
             logger.debug(": loggedIn - " + redditModel.loggedIn + ", viewState - " + redditModel.viewState +", appState - " + redditModel.appState);
 
-            appCurrentStateSignal.dispatch(redditModel.appState);
+            appCurrentStateSignal.dispatch(redditModel.viewState, redditModel.appState);
         }
     }
 }

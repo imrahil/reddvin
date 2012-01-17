@@ -9,17 +9,17 @@ package com.ania.apps.reddvin.constants
 {
     public class Resources
     {
-        [Embed (source="/assets/images/arrow_up.png" )]
+        [Embed (source="/assets/images/uparrow.png" )]
         public static const ARROW_UP:Class;
 
-        [Embed (source="/assets/images/arrow_down.png" )]
+        [Embed (source="/assets/images/uparrow_active.png" )]
+        public static const ARROW_UP_ACTIVE:Class;
+
+        [Embed (source="/assets/images/downarrow.png" )]
         public static const ARROW_DOWN:Class;
 
-        [Embed (source="/assets/images/arrow_up_big.png" )]
-        public static const ARROW_UP_BIG:Class;
-
-        [Embed (source="/assets/images/arrow_down_big.png" )]
-        public static const ARROW_DOWN_BIG:Class;
+        [Embed (source="/assets/images/downarrow_active.png" )]
+        public static const ARROW_DOWN_ACTIVE:Class;
 
         [Embed (source="/assets/images/forward.png" )]
         public static const ARROW_RIGHT:Class;

@@ -63,6 +63,7 @@ package com.ania.apps.reddvin.controller
 
             redditModel.session = sessionVO;
             redditModel.loggedIn = true;
+            redditModel.needReload = true;
 
             if (sessionVO.userVO.rememberMe)
             {
@@ -73,11 +74,11 @@ package com.ania.apps.reddvin.controller
                 sessionSO.flush();
             }
 
+            getCurrentAppStateSignal.dispatch(true);
+            displayLoginForm.dispatch(false);
+
             // dispatch GetUserInfoSignal to retrieve user's details
             getUserInfoSignal.dispatch();
-
-            getCurrentAppStateSignal.dispatch();
-            displayLoginForm.dispatch(false);
         }
     }
 }

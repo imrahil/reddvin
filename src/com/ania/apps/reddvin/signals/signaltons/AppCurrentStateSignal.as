@@ -13,7 +13,7 @@ package com.ania.apps.reddvin.signals.signaltons
     {
         public function AppCurrentStateSignal()
         {
-            super(String);
+            super(String, String);
         }
     }
 }

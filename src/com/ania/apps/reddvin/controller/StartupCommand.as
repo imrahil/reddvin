@@ -86,7 +86,7 @@ package com.ania.apps.reddvin.controller
             redditModel.initialized = true;
             redditModel.needReload = true;
 
-            getCurrentAppStateSignal.dispatch();
+            getCurrentAppStateSignal.dispatch(true);
             refreshSignal.dispatch();
         }
     }

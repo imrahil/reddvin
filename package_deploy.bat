@@ -1,0 +1,1 @@
+call "%PLAYBOOK_HOME%\bin\blackberry-airpackager.bat" -devMode -debugToken debugtoken1.bar -package "bin-debug\Reddvin.bar" bin-debug\Reddvin-app.xml -C bin-debug bin-debug\Reddvin.swf -C src src\blackberry-tablet.xml src\reddvin-icon.png src\reddvin-splash.png -flexsdk c:\Dev\Flex_SDK\4.6.0 -installApp -launchApp -password jarek -device 192.168.1.7

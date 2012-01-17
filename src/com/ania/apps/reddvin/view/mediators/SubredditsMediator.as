@@ -74,6 +74,7 @@ package com.ania.apps.reddvin.view.mediators
             view.itemClicked.add(onItemClicked);
 
             view.busyIndicator.visible = true;
+
             getUserSubredditsSignal.dispatch();
         }
 
@@ -84,7 +85,7 @@ package com.ania.apps.reddvin.view.mediators
         {
             logger.debug(": onRemove");
 
-            subredditsChanged.removeAll();
+            subredditsChanged.remove(onSubredditsChanged);
         }
 
 

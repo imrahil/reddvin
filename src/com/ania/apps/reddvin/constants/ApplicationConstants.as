@@ -45,6 +45,9 @@ package com.ania.apps.reddvin.constants
         public static const VIEW_STATE_LANDSCAPE:String = "landscape";
         public static const VIEW_STATE_PORTRAIT:String = "portrait";
 
+        public static const APP_STATE_LOGGED_OUT:String = "LoggedOut";
+        public static const APP_STATE_LOGGED_IN:String = "LoggedIn";
+
         public function ApplicationConstants()
         {
         }

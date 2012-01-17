@@ -2,10 +2,11 @@
 <s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
         xmlns:s="library://ns.adobe.com/flex/spark" xmlns:components="com.ania.apps.reddvin.view.components.*"
         title="{redditItem.title}"
-        viewActivate="stageWebViewContainer.load()">
+        viewActivate="onViewActivate()" creationComplete="onCreationComplete()">
 
     <fx:Script>
         <![CDATA[
+        import com.ania.apps.reddvin.constants.Resources;
         import com.ania.apps.reddvin.model.vo.RedditVO;
 
         import org.osflash.signals.Signal;
@@ -24,12 +25,32 @@
             super.data = value;
             redditItem = value as RedditVO;
         }
+
+        private function onViewActivate():void
+        {
+            stageWebViewContainer.load();
+        }
+
+        private function onCreationComplete():void
+        {
+            if (redditItem.likes > -1)
+            {
+                if (redditItem.likes == 1)
+                {
+                    voteUpBtn.setStyle("icon", Resources.ARROW_UP_ACTIVE);
+                }
+                else
+                {
+                    voteDownBtn.setStyle("icon", Resources.ARROW_DOWN_ACTIVE);
+                }
+            }
+        }
         ]]>
     </fx:Script>
 
     <s:actionContent>
-        <s:Button icon="@Embed('/assets/images/uparrow.png')" includeIn="loggedIn" click="upVoteClicked.dispatch()"/>
-        <s:Button icon="@Embed('/assets/images/downarrow.png')" includeIn="loggedIn"
+        <s:Button id="voteUpBtn" icon="{Resources.ARROW_UP}" includeIn="loggedIn" click="upVoteClicked.dispatch()"/>
+        <s:Button id="voteDownBtn" icon="{Resources.ARROW_DOWN}" includeIn="loggedIn"
                   click="downVoteClicked.dispatch()"/>
         <s:Button icon="@Embed('/assets/images/comment.png')" click="showCommentsClicked.dispatch()"/>
     </s:actionContent>

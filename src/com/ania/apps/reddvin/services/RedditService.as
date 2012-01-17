@@ -90,7 +90,7 @@ package com.ania.apps.reddvin.services
 
             if (redditModel.loggedIn && redditModel.session.cookie != "")
             {
-                logger.debug(": cookie: " + redditModel.session.cookie);
+//                logger.debug(": cookie: " + redditModel.session.cookie);
 
                 var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];
@@ -116,7 +116,7 @@ package com.ania.apps.reddvin.services
 
             if (redditModel.loggedIn && redditModel.session.cookie != "")
             {
-                logger.debug(": cookie: " + redditModel.session.cookie);
+//                logger.debug(": cookie: " + redditModel.session.cookie);
 
                 var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];
@@ -142,7 +142,7 @@ package com.ania.apps.reddvin.services
 
                 urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/api/me" + ApplicationConstants.REDDIT_API_EXTENSION;
 
-                logger.debug(": cookie: " + redditModel.session.cookie);
+//                logger.debug(": cookie: " + redditModel.session.cookie);
 
                 var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];
@@ -172,7 +172,7 @@ package com.ania.apps.reddvin.services
 
                 urlRequest.url = ApplicationConstants.REDDIT_API_ENDPOINT + "/reddits/mine" + ApplicationConstants.REDDIT_API_EXTENSION;
 
-                logger.debug(": cookie: " + redditModel.session.cookie);
+//                logger.debug(": cookie: " + redditModel.session.cookie);
 
                 var cookieHeader:URLRequestHeader = new URLRequestHeader("Cookie", "reddit_session=" + redditModel.session.cookie);
                 urlRequest.requestHeaders = [cookieHeader];

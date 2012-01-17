@@ -52,13 +52,17 @@ package com.ania.apps.reddvin.controller
             logger.debug(": execute");
 
             if (aspectRatio == ApplicationConstants.VIEW_STATE_PORTRAIT)
+            {
                 redditModel.viewState = ApplicationConstants.VIEW_STATE_PORTRAIT;
+            }
             else
+            {
                 redditModel.viewState = ApplicationConstants.VIEW_STATE_LANDSCAPE;
+            }
 
             logger.debug(": viewState - " + redditModel.viewState);
 
-            getCurrentAppStateSignal.dispatch();
+            getCurrentAppStateSignal.dispatch(true);
         }
     }
 }

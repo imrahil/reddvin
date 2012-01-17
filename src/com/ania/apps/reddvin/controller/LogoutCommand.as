@@ -60,7 +60,7 @@ package com.ania.apps.reddvin.controller
             var sessionSO:SharedObject = SharedObject.getLocal(ApplicationConstants.REDDIT_SO_NAME);
             sessionSO.clear();
 
-            getCurrentAppStateSignal.dispatch();
+            getCurrentAppStateSignal.dispatch(true);
 
             redditModel.needReload = true;
             refreshSignal.dispatch();

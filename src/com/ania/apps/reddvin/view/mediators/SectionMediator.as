@@ -107,7 +107,8 @@ package com.ania.apps.reddvin.view.mediators
         {
             logger.debug(": onRemove");
 
-            sectionChanged.removeAll();
+            sectionChanged.remove(onSectionChanged);
+            displayActivityIndicator.remove(displayBusyIndicator);
         }
 
         /** methods **/
